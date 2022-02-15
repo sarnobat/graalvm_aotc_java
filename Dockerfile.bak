@@ -1,0 +1,8 @@
+#FROM alpine
+FROM ubuntu
+CMD ["echo", "Hello StackOverflow!"]
+
+ENTRYPOINT ["tail"]
+CMD ["-f","/dev/null"]
+
+COPY /media/sarnobat/homes/sarnobat/github/gmail/golang_example/gmail_list_messages.go /
