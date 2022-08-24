@@ -1,3 +1,5 @@
+package com;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,7 +28,7 @@ import java.util.stream.Stream;
 /**
  * find | /usr/local/Cellar/openjdk@11/11.0.12/bin/java helloworld.java
  */
-public class Main {
+public class Helloworld {
   public static void main(String args[]) throws IOException {
 
       System.out.println("Hi");
