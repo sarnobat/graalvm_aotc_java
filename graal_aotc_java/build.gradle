@@ -1,0 +1,23 @@
+plugins {
+    id 'application'
+    id 'org.graalvm.buildtools.native' version '0.9.13'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+}
+
+application {
+    mainClass = 'Helloworld'
+}
+
+graalvmNative {
+    binaries.all {
+        resources.autodetect()
+    }
+    toolchainDetection = false
+}
