@@ -1,63 +1,21 @@
 plugins {
     id 'application'
-    id 'org.graalvm.buildtools.native' version '0.9.5'
 }
 
 apply plugin : "java" 
 
-ext {
-   javaMainClass = "com.Helloworld"
-}
+mainClassName = "com.Helloworld"
 
 application {
-    mainClassName = javaMainClass
+//    mainClassName = "com.Helloworld"
+//     mainClass = 'com.Helloworld'
 }
+
 
 
 repositories {
     mavenCentral()
 }
 
-// 
-// task runWithJavaExec(type: JavaExec) {
-//     group = "Execution"
-//     description = "Run the main class with JavaExecTask"
-//     classpath = sourceSets.main.runtimeClasspath
-//     main = javaMainClass
-// }
-
-
 dependencies {
-}
-
-application {
-    mainClass = 'com.Helloworld'
-}
-
-
-graalvmNative {
-    binaries {
-        main {
-        
-//        resources.autodetect()
-            imageName = project.name
-            mainClass = project.mainClassName
-//            debug = true
-	          verbose = true
-    //        fallback = false
-
-      //      buildArgs.add('--native-image-info')
-        //    buildArgs.add("-H:TempDirectory=/tmp/")
-            //buildArgs.add('-H:+TraceNativeToolUsage')
-
-          //  useFatJar = false
-        }
-    }
-}
-
-tasks.named("nativeCompile") {
-    //use the uber jar if long classpath becomes a problem in Windows:
-    //dependsOn uberJar
-    //classpathJar = uberJar.archiveFile
-//    finalizedBy removeUnneededDllFiles
 }
