@@ -8,4 +8,4 @@ JAR_WITH_DEPS=./target/graalvmnidemos-1.0-SNAPSHOT-jar-with-dependencies.jar
 test -f $JAR_WITH_DEPS || echo "Does not exist: $JAR_WITH_DEPS"
 test -f $JAR_WITH_DEPS || exit 1
 
-native-image -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=oracle.HelloWorld -H:Name=helloworld
+$NATIVE_IMAGE -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=oracle.HelloWorld -H:Name=helloworld
