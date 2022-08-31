@@ -21,4 +21,7 @@ repositories {
 }
 
 dependencies {
+	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '2.25'
+	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25'
+
 }
