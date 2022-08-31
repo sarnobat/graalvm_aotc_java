@@ -1,21 +1,45 @@
 plugins {
     id 'application'
+    id 'org.graalvm.buildtools.native' version '0.9.4'
 }
 
 apply plugin : "java" 
 
+  repositories {
+    mavenCentral()
+    gradlePluginPortal()
+  }
+
 mainClassName = "com.Helloworld"
 
-application {
-//    mainClassName = "com.Helloworld"
-//     mainClass = 'com.Helloworld'
-}
+// application {
+// //    mainClassName = "com.Helloworld"
+// //     mainClass = 'com.Helloworld'
+// }
 
 
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
+}
+
+// mainClassName = "com.company.application.Main"
+
+jar {
+  manifest { 
+    attributes "Main-Class": "$mainClassName"
+  }  
+
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+graalvmNative {
+    binaries.all {
+       resources.autodetect()
+    }
+}
+
+javaVersions {
+    libraryTarget = 11
+    runtime = 11
 }
