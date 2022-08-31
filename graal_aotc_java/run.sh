@@ -16,6 +16,9 @@ test -d $GRAALVM_HOME || exit 1
 
 $GRAALVM_HOME/bin/gu install native-image
 
-./gradlew nativeBuild
+# ./gradlew nativeBuild
 
 # $NATIVE_IMAGE -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=oracle.HelloWorld -H:Name=helloworld
+
+./gradlew jar
+java -jar /Volumes/git/github/docker_image_helloworld/graal_aotc_java/build/libs/graal_aotc_java-all-1.0.jar
