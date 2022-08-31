@@ -5,16 +5,16 @@ version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-task fatJar(type: Jar) {
-	manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',  
-        	'Implementation-Version': version,
-        	'Main-Class': 'com.Helloworld'
-    }
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
+// task fatJar(type: Jar) {
+// 	manifest {
+//         attributes 'Implementation-Title': 'Gradle Jar File Example',  
+//         	'Implementation-Version': version,
+//         	'Main-Class': 'com.Helloworld'
+//     }
+//     baseName = project.name + '-all'
+//     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//     with jar
+// }
 
 repositories {
     mavenCentral()
@@ -23,5 +23,5 @@ repositories {
 dependencies {
 	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '2.25'
 	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25'
-
+	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
 }
