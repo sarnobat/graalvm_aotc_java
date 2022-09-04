@@ -22,7 +22,10 @@ test -f $JAR_WITH_DEPS || exit 1
 
 # ./gradlew nativeBuild
 
-# $NATIVE_IMAGE -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=oracle.HelloWorld -H:Name=helloworld
-
 ./gradlew jar
 java -jar /Volumes/git/github/docker_image_helloworld/graal_aotc_java/build/libs/graal_aotc_java-all-1.0.jar
+
+# Note: this is case-sensitive
+$NATIVE_IMAGE -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=com.Helloworld -H:Name=helloworld
+
+./helloworld
