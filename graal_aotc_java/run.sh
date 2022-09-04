@@ -3,11 +3,6 @@ NATIVE_IMAGE=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents
 test -f $NATIVE_IMAGE || echo "Does not exist: $NATIVE_IMAGE"
 test -f $NATIVE_IMAGE || exit 1
 
-JAR_WITH_DEPS=build/libs/graal_aotc_java.jar
-#./target/graalvmnidemos-1.0-SNAPSHOT-jar-with-dependencies.jar
-
-test -f $JAR_WITH_DEPS || echo "Does not exist: $JAR_WITH_DEPS"
-test -f $JAR_WITH_DEPS || exit 1
 
 GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/
 
@@ -15,6 +10,15 @@ test -d $GRAALVM_HOME || echo "Does not exist: $GRAALVM_HOME"
 test -d $GRAALVM_HOME || exit 1
 
 $GRAALVM_HOME/bin/gu install native-image
+
+# JAR_WITH_DEPS=build/libs/graal_aotc_java.jar
+JAR_WITH_DEPS=build/libs/graal_aotc_java-all-1.0.jar
+JAR_WITH_DEPS=build/libs/graal_aotc_java-1.0.jar
+#./target/graalvmnidemos-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+test -f $JAR_WITH_DEPS || echo "Does not exist: $JAR_WITH_DEPS"
+test -f $JAR_WITH_DEPS || exit 1
+
 
 # ./gradlew nativeBuild
 
