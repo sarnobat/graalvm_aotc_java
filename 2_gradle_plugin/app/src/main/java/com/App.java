@@ -5,7 +5,7 @@ package com;
 
 public class App {
     public String getGreeting() {
-        return "Hello World!";
+        return "Helloworld";
     }
 
     public static void main(String[] args) {
