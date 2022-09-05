@@ -12,7 +12,7 @@ public class App {
         System.out.println(new App().getGreeting());
                 Class c1 = Class.forName("java.lang.Boolean");
  
-        System.out.print("Class represented by c1: "
+        System.out.println("Class represented by c1: "
                          + c1.toString());
 
     }
