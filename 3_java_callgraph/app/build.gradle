@@ -19,10 +19,22 @@ repositories {
 dependencies {
 
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'com.google.guava:guava:19.0'
+	implementation 'org.apache.bcel:bcel:6.0'
+	implementation 'javassist:javassist:3.12.1.GA'
+implementation 'commons-lang:commons-lang:2.4'
+implementation 'net.sf.opencsv:opencsv:2.3'
+implementation 'commons-collections:commons-collections:3.2.2'
+// https://mvnrepository.com/artifact/commons-io/commons-io
+implementation 'commons-io:commons-io:2.4'
+
+
+
+
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.App'
+//    mainClass = 'com.App'
+	mainClass = 'com.rohidekar.callgraph.Main'
 }
