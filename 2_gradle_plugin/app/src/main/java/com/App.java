@@ -10,10 +10,10 @@ public class App {
 
     public static void main(String[] args) throws ClassNotFoundException {
         System.out.println(new App().getGreeting());
-                Class c1 = Class.forName("java.lang.Boolean");
- 
-        System.out.println("Class represented by c1: "
-                         + c1.toString());
+
+		// Reflection can be problematic with native images but this verifies it's working
+		Class c1 = Class.forName("java.lang.Boolean"); 
+        System.out.println("Class represented by c1: " + c1.toString());
 
     }
 }
