@@ -8,7 +8,12 @@ public class App {
         return "Helloworld";
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         System.out.println(new App().getGreeting());
+                Class c1 = Class.forName("java.lang.Boolean");
+ 
+        System.out.print("Class represented by c1: "
+                         + c1.toString());
+
     }
 }
