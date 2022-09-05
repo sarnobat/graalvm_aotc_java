@@ -1,3 +1,5 @@
+## This doesn't use a gradle plugin for native compilation, see next code sample
+
 set -e
 set -o pipefail
 
