@@ -1,1 +1,1 @@
-# docker_image_helloworld
+# graalvm_aotc_java
