@@ -19,8 +19,8 @@ repositories {
 dependencies {
 
     // This dependency is used by the application.
-	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '2.25.1'
-	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25.1'
+	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '3.0.8'
+	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '3.0.8'
 	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
 	implementation group: 'org.json', name: 'json', version: '20220320'
 	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
@@ -37,3 +37,25 @@ application {
 //   }
 //   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 // }
+graalvmNative {
+    agent {
+        defaultMode = "standard"
+
+        modes {
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("build/native/metadataCopyTest")
+        }
+    }
+    binaries {
+        test {
+            verbose = true
+        }
+    }
+}
