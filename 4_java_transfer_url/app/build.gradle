@@ -19,10 +19,21 @@ repositories {
 dependencies {
 
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:31.0.1-jre'
+	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '2.25.1'
+	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25.1'
+	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
+	implementation group: 'org.json', name: 'json', version: '20220320'
+	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.App'
+    mainClass = 'com.HttpCatPure'
 }
+
+// jar {
+//    from {
+//     configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+//   }
+//   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+// }
