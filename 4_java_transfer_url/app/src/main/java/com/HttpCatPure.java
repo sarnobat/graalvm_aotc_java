@@ -2,57 +2,101 @@ package com;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.process.Inflector;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.json.JSONException;
+import org.glassfish.jersey.server.model.Resource;
+
+import org.glassfish.grizzly.http.server.HttpServer;
 
 /**
-This is as thin as possible and depends on a reliable stdout, which so far we don't have.
-*/
+ * This is the example entry point, where Jersey application for the example
+ * gets populated and published using the Grizzly 2 HTTP container.
+ *
+ * @author Marek Potociar
+ */
 public class HttpCatPure {
 
-	@javax.ws.rs.Path("")
-	public static class MyResource { // Must be public
+    private static final URI BASE_URI = URI.create("http://localhost:8080/base/");
+    /**
+     * "Hello World" root resource path.
+     */
+    public static final String ROOT_PATH = "helloworld";
 
-		@GET
-		@javax.ws.rs.Path("")
-		@Produces("application/json")
-		public Response list(@QueryParam("value") String iValue)
-				throws JSONException, IOException {
-System.err.println("list()");
-System.out.println(iValue);
-//System.err.println("Writing to stdout: " + iCategoryId + "::" + System.currentTimeMillis() + "::" + iValue);
-//			System.out.println(iCategoryId + "::" + System.currentTimeMillis() + "::" + iValue);
+    /**
+     * Main application entry point.
+     *
+     * @param args application arguments.
+     */
+    public static void main(String[] args) {
+        try {
+            System.out.println("\"Hello World\" Jersey Example App");
 
-      return Response.ok().header("Access-Control-Allow-Origin", "*").type("application/json").build();
+            final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, create(), false);
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    server.shutdownNow();
+                }
+            }));
+            server.start();
+
+            System.out.println(
+                    String.format("Application started.%n"
+                    + "Try out %s%s%n"
+                    + "Stop the application using CTRL+C",
+                    BASE_URI, ROOT_PATH));
+
+            Thread.currentThread().join();
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(HttpCatPure.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-  }
 
+    /**
+     * Test assertion indicator that a GET method handler has been called.
+     */
+    public static volatile boolean getMethodCalled = false;
+    /**
+     * Test assertion indicator that a HEAD method handler has been called.
+     */
+    public static volatile boolean headMethodCalled = false;
 
+    /**
+     * Create example application resource configuration.
+     *
+     * @return initialized resource configuration of the example application.
+     */
+    public static ResourceConfig create() {
+        final Resource.Builder resourceBuilder = Resource.builder(ROOT_PATH);
 
+        resourceBuilder.addMethod("GET").handledBy(new Inflector<ContainerRequestContext, Response>() {
 
-	public static void main(String[] args) throws URISyntaxException, IOException,
-			KeyManagementException, UnrecoverableKeyException, NoSuchAlgorithmException,
-			KeyStoreException, CertificateException, InterruptedException {
-		try {
-			JdkHttpServerFactory.createHttpServer(new URI("http://localhost:" + args[0] + "/"),
-					new ResourceConfig(MyResource.class));
-		} catch (Exception e) {
-			// e.printStackTrace();
-			System.err.println("Port already listened on.");
-			System.exit(-1);
-		}
-	}
+                    @Override
+                    public Response apply(ContainerRequestContext data) {
+                        getMethodCalled = true;
+                        return Response.ok("Hello World!").build();
+                    }
+                });
+
+        Inflector<ContainerRequestContext, Response> noContentResponder = new Inflector<ContainerRequestContext, Response>() {
+
+            @Override
+            public Response apply(ContainerRequestContext data) {
+                headMethodCalled = true;
+                return Response.noContent().build();
+            }
+        };
+        resourceBuilder.addMethod("HEAD").handledBy(noContentResponder);
+        resourceBuilder.addMethod("OPTIONS").handledBy(noContentResponder);
+
+        return new ResourceConfig().registerResources(resourceBuilder.build());
+    }
 }
