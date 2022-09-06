@@ -25,13 +25,16 @@ import java.io.IOException;
  *
  * @author Jakub Podlesak
  */
-@Path("helloworld")
-public class HelloWorldResource {
+	@javax.ws.rs.Path("helloworld")
+public class HelloWorldResource { // Must be public
     public static final String CLICHED_MESSAGE = "Hello World!";
 
-    @GET
+		@GET
+		@javax.ws.rs.Path("helloworld")
     @Produces(MediaType.TEXT_PLAIN)
     public String getHello() {
+System.err.println("list()");
+//System.out.println(iValue);
         return CLICHED_MESSAGE;
     }
 
