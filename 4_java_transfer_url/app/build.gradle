@@ -48,6 +48,7 @@ implementation 'org.glassfish.hk2:hk2-locator:2.6.1'
 implementation 'org.glassfish.jersey.core:jersey-common:2.36'
 
 implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
+implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
 implementation 'org.osgi:org.osgi.framework:1.10.0'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -58,7 +59,7 @@ implementation 'org.osgi:org.osgi.framework:1.10.0'
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.HttpCatPure'
+    mainClass = 'com.App'
 }
 
 jar {
@@ -68,7 +69,7 @@ jar {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
   
   
-    manifest.attributes["Main-Class"] = 'com.HttpCatPure'
+    manifest.attributes["Main-Class"] = 'com.App'
 //     manifest.attributes["Class-Path"] = configurations
 //         .runtimeClasspath
 //         .get()
@@ -103,34 +104,15 @@ graalvmNative {
             buildArgs.add('-H:+ReportExceptionStackTraces')
             buildArgs.add('--no-fallback')
             buildArgs.add('--report-unsupported-elements-at-runtime')
-  
+            buildArgs.add('-J--add-modules')
+            buildArgs.add('-JALL-SYSTEM')
+    
             // Runtime options
             runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
 
         }
         test {
             verbose = true
-        }
-    }
-}
-
-
-graalvmNative {
-
-    binaries {
-        main {
-            // Main options
-
-            // Advanced options
-            buildArgs.add('-H:EnableURLProtocols=http,https') // Passes '-H:Extra' to the native image builder options. This can be used to pass parameters which are not directly supported by this extension
-            buildArgs.add('--initialize-at-build-time=org.glassfish.jersey.client.internal.HttpUrlConnector')
-            buildArgs.add('-H:+ReportExceptionStackTraces')
-            buildArgs.add('--no-fallback')
-            buildArgs.add('--report-unsupported-elements-at-runtime')
-  
-            // Runtime options
-            runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
-
         }
     }
 }

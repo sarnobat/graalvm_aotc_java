@@ -26,17 +26,28 @@
   {
     "name":"javax.xml.transform.sax.SAXSource"
   },
+    {
+    "name":"com.sun.net.httpserver.HttpHandler"
+  },
   {
     "name":"javax.xml.transform.stream.StreamSource"
   },
+
   {
-    "name":"org.glassfish.jersey.examples.helloworld.App$2",
+    "name":"com.HelloWorldResource",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allPublicMethods":true
+  },
+
+  {
+    "name":"com.JaxRsApplication",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allPublicMethods":true
   },
   {
-    "name":"org.glassfish.jersey.examples.helloworld.App$3",
+    "name":"com.App",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allPublicMethods":true
