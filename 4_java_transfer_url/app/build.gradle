@@ -76,3 +76,61 @@ jar {
 //             "libs/${file.name}"
 //         }
 }
+
+graalvmNative {
+    agent {
+        defaultMode = "standard"
+
+        modes {
+            conditional {
+                userCodeFilterPath = "user-code-filter.json"
+            }
+        }
+
+        metadataCopy {
+            mergeWithExisting = true
+            inputTaskNames.add("test")
+            outputDirectories.add("build/native/metadataCopyTest")
+        }
+    }
+    binaries {
+        main {
+            // Main options
+
+            // Advanced options
+            buildArgs.add('-H:EnableURLProtocols=http,https') // Passes '-H:Extra' to the native image builder options. This can be used to pass parameters which are not directly supported by this extension
+            buildArgs.add('--initialize-at-build-time=org.glassfish.jersey.client.internal.HttpUrlConnector')
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+            buildArgs.add('--no-fallback')
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+  
+            // Runtime options
+            runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
+
+        }
+        test {
+            verbose = true
+        }
+    }
+}
+
+
+graalvmNative {
+
+    binaries {
+        main {
+            // Main options
+
+            // Advanced options
+            buildArgs.add('-H:EnableURLProtocols=http,https') // Passes '-H:Extra' to the native image builder options. This can be used to pass parameters which are not directly supported by this extension
+            buildArgs.add('--initialize-at-build-time=org.glassfish.jersey.client.internal.HttpUrlConnector')
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+            buildArgs.add('--no-fallback')
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+  
+            // Runtime options
+            runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
+
+        }
+    }
+}
