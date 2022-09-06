@@ -35,7 +35,8 @@ public class HelloWorldResource { // Must be public
     public String getHello() {
 System.err.println("list()");
 //System.out.println(iValue);
-        return CLICHED_MESSAGE;
+//        return CLICHED_MESSAGE;
+      return "{}";
     }
 
 }
