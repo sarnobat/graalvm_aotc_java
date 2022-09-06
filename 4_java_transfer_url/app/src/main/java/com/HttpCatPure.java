@@ -33,11 +33,11 @@ import org.glassfish.grizzly.http.server.HttpServer;
  */
 public class HttpCatPure {
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/base/");
+    private static final URI BASE_URI = URI.create("http://localhost:4466/");
     /**
      * "Hello World" root resource path.
      */
-    public static final String ROOT_PATH = "helloworld";
+    public static final String ROOT_PATH = "/";
 
     /**
      * Main application entry point.
@@ -91,8 +91,11 @@ public class HttpCatPure {
 
                     @Override
                     public Response apply(ContainerRequestContext data) {
+                    String iValue = data.getUriInfo().getQueryParameters().getFirst("value");
+System.err.println("list()");
+System.out.println(iValue);
                         getMethodCalled = true;
-                        return Response.ok("Hello World!").build();
+                        return Response.ok().header("Access-Control-Allow-Origin", "*").type("application/json").build();
                     }
                 });
 
