@@ -48,7 +48,7 @@ implementation 'org.glassfish.hk2:hk2-locator:2.6.1'
 implementation 'org.glassfish.jersey.core:jersey-common:2.36'
 
 implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
-// implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
+implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
 implementation 'org.osgi:org.osgi.framework:1.10.0'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -59,7 +59,7 @@ implementation 'org.osgi:org.osgi.framework:1.10.0'
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.App'
+    mainClass = 'com.HttpCatPure'
 }
 
 jar {
@@ -69,7 +69,7 @@ jar {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
   
   
-    manifest.attributes["Main-Class"] = 'com.App'
+    manifest.attributes["Main-Class"] = 'com.HttpCatPure'
 //     manifest.attributes["Class-Path"] = configurations
 //         .runtimeClasspath
 //         .get()
