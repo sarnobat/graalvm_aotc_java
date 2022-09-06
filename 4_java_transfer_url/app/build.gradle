@@ -39,7 +39,7 @@ implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2
 // org.osgi.framework
 
 // https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api
-implementation 'jakarta.activation:jakarta.activation-api:1.2.2'
+// implementation 'jakarta.activation:jakarta.activation-api:1.2.2'
 // https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api
 implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
 // https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-locator

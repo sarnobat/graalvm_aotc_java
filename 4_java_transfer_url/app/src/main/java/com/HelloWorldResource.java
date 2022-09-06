@@ -23,6 +23,8 @@ import javax.ws.rs.core.MediaType;
 public class HelloWorldResource {
     public static final String CLICHED_MESSAGE = "Hello World!";
 
+public HelloWorldResource() {
+}
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getHello() {
