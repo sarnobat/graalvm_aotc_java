@@ -26,30 +26,47 @@
   {
     "name":"javax.xml.transform.sax.SAXSource"
   },
-    {
-    "name":"com.sun.net.httpserver.HttpHandler"
-  },
   {
     "name":"javax.xml.transform.stream.StreamSource"
   },
-
+  {
+    "name":"com.sun.net.httpserver.HttpHandler",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true
+  },
   {
     "name":"com.HelloWorldResource",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
-    "allPublicMethods":true
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true,
+    "allPublicConstructors":true
   },
 
   {
     "name":"com.JaxRsApplication",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
-    "allPublicMethods":true
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true,
+    "allPublicConstructors":true
   },
   {
     "name":"com.App",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
-    "allPublicMethods":true
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true,
+    "allPublicConstructors":true
+  },
+  {
+    "name":"com.HttpCatPure",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true,
+    "allPublicMethods":true,
+    "allDeclaredConstructors":true,
+    "allPublicConstructors":true
   }
 ]

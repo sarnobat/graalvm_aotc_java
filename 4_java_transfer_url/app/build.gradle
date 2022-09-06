@@ -28,10 +28,10 @@ dependencies {
 // implementation 'jakarta.activation:jakarta.activation-api:2.1.0'
 // implementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.0.0'
 // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
-implementation 'javax.ws.rs:javax.ws.rs-api:2.1'
+// implementation 'javax.ws.rs:javax.ws.rs-api:2.1'
 
 // implementation 'org.glassfish.jersey.core:jersey-server:3.0.8'
-implementation 'javax.ws.rs:jsr311-api:1.1.1'
+// implementation 'javax.ws.rs:jsr311-api:1.1.1'
 implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.36'
 // jakarta.activation-api
 // jakarta.xml.bind-api
@@ -48,7 +48,7 @@ implementation 'org.glassfish.hk2:hk2-locator:2.6.1'
 implementation 'org.glassfish.jersey.core:jersey-common:2.36'
 
 implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
-implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
+// implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
 implementation 'org.osgi:org.osgi.framework:1.10.0'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')

@@ -11,82 +11,102 @@
 package com;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.ext.RuntimeDelegate;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Response;
 
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.process.Inflector;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.model.Resource;
+
+import org.glassfish.grizzly.http.server.HttpServer;
 
 /**
- * Hello world application using only the standard JAX-RS API and lightweight HTTP server bundled in JDK.
+ * This is the example entry point, where Jersey application for the example
+ * gets populated and published using the Grizzly 2 HTTP container.
  *
- * @author Martin Matula
+ * @author Marek Potociar
  */
 public class App {
 
+    private static final URI BASE_URI = URI.create("http://localhost:8080/base/");
     /**
-     * Starts the lightweight HTTP server serving the JAX-RS application.
-     *
-     * @return new instance of the lightweight HTTP server
-     * @throws IOException
+     * "Hello World" root resource path.
      */
-    static HttpServer startServer() throws IOException {
-        // create a new server listening at port 8080
-        final HttpServer server = HttpServer.create(new InetSocketAddress(getBaseURI().getPort()), 0);
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                server.stop(0);
-            }
-        }));
+    public static final String ROOT_PATH = "helloworld";
 
-        // create a handler wrapping the JAX-RS application
-        HttpHandler handler = RuntimeDelegate.getInstance().createEndpoint(new JaxRsApplication(), HttpHandler.class);
+    /**
+     * Main application entry point.
+     *
+     * @param args application arguments.
+     */
+    public static void main(String[] args) {
+        try {
+            System.out.println("\"Hello World\" Jersey Example App");
 
-        // map JAX-RS handler to the server root
-        server.createContext(getBaseURI().getPath(), handler);
+            final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, create(), false);
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    server.shutdownNow();
+                }
+            }));
+            server.start();
 
-        // start the server
-        server.start();
+            System.out.println(
+                    String.format("Application started.%n"
+                    + "Try out %s%s%n"
+                    + "Stop the application using CTRL+C",
+                    BASE_URI, ROOT_PATH));
 
-        return server;
-    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("\"Hello World\" Jersey Example Application");
-
-        startServer();
-
-        System.out.println("Application started.\n"
-                + "Try accessing " + getBaseURI() + "helloworld in the browser.\n"
-                + "CTRL + C to stop the application...\n");
-
-        Thread.currentThread().join();
-    }
-
-    private static int getPort(int defaultPort) {
-        final String port = System.getProperty("jersey.config.test.container.port");
-        if (null != port) {
-            try {
-                return Integer.parseInt(port);
-            } catch (NumberFormatException e) {
-                System.out.println("Value of jersey.config.test.container.port property"
-                        + " is not a valid positive integer [" + port + "]."
-                        + " Reverting to default [" + defaultPort + "].");
-            }
+            Thread.currentThread().join();
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return defaultPort;
+
     }
 
     /**
-     * Gets base {@link URI}.
-     *
-     * @return base {@link URI}.
+     * Test assertion indicator that a GET method handler has been called.
      */
-    public static URI getBaseURI() {
-        return UriBuilder.fromUri("http://localhost/").port(getPort(8080)).build();
+    public static volatile boolean getMethodCalled = false;
+    /**
+     * Test assertion indicator that a HEAD method handler has been called.
+     */
+    public static volatile boolean headMethodCalled = false;
+
+    /**
+     * Create example application resource configuration.
+     *
+     * @return initialized resource configuration of the example application.
+     */
+    public static ResourceConfig create() {
+        final Resource.Builder resourceBuilder = Resource.builder(ROOT_PATH);
+
+        resourceBuilder.addMethod("GET").handledBy(new Inflector<ContainerRequestContext, Response>() {
+
+                    @Override
+                    public Response apply(ContainerRequestContext data) {
+                        getMethodCalled = true;
+                        return Response.ok("Hello World!").build();
+                    }
+                });
+
+        Inflector<ContainerRequestContext, Response> noContentResponder = new Inflector<ContainerRequestContext, Response>() {
+
+            @Override
+            public Response apply(ContainerRequestContext data) {
+                headMethodCalled = true;
+                return Response.noContent().build();
+            }
+        };
+        resourceBuilder.addMethod("HEAD").handledBy(noContentResponder);
+        resourceBuilder.addMethod("OPTIONS").handledBy(noContentResponder);
+
+        return new ResourceConfig().registerResources(resourceBuilder.build());
     }
 }
