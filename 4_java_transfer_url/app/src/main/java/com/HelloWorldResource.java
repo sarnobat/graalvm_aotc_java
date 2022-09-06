@@ -31,7 +31,7 @@ public class HelloWorldResource { // Must be public
 
 		@GET
 		@javax.ws.rs.Path("helloworld")
-    @Produces(MediaType.TEXT_PLAIN)
+		@Produces("application/json")
     public String getHello() {
 System.err.println("list()");
 //System.out.println(iValue);
