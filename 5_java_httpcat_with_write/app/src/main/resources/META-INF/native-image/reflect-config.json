@@ -37,31 +37,6 @@
     "allDeclaredConstructors":true
   },
   {
-    "name":"com.HelloWorldResource",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allPublicMethods":true,
-    "allDeclaredConstructors":true,
-    "allPublicConstructors":true
-  },
-
-  {
-    "name":"com.JaxRsApplication",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allPublicMethods":true,
-    "allDeclaredConstructors":true,
-    "allPublicConstructors":true
-  },
-  {
-    "name":"com.App",
-    "allDeclaredFields":true,
-    "allDeclaredMethods":true,
-    "allPublicMethods":true,
-    "allDeclaredConstructors":true,
-    "allPublicConstructors":true
-  },
-  {
     "name":"com.HttpCatWithWrite",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
