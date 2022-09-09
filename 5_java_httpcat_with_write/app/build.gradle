@@ -57,9 +57,11 @@ implementation 'org.osgi:org.osgi.framework:1.10.0'
 // 	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
 }
 
+def mainClass = 'com.HttpCatPure'
+
 application {
     // Define the main class for the application.
-    mainClass = 'com.HttpCatPure'
+    mainClass = mainClass
 }
 
 jar {
@@ -67,15 +69,7 @@ jar {
     configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
   }
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-  
-  
-    manifest.attributes["Main-Class"] = 'com.HttpCatPure'
-//     manifest.attributes["Class-Path"] = configurations
-//         .runtimeClasspath
-//         .get()
-//         .joinToString(separator = " ") { file ->
-//             "libs/${file.name}"
-//         }
+  manifest.attributes["Main-Class"] = mainClass
 }
 
 graalvmNative {

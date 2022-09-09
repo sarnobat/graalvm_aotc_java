@@ -31,9 +31,9 @@ import org.glassfish.grizzly.http.server.HttpServer;
  *
  * @author Marek Potociar
  */
-public class HttpCatPure {
+public class HttpCatWithWrite {
 
-	private static final URI BASE_URI = URI.create("http://0.0.0.0:4466/");
+	private static final URI BASE_URI = URI.create("http://0.0.0.0:4465/");
 	/**
 	 * "Hello World" root resource path.
 	 */
