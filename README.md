@@ -1,5 +1,5 @@
 ### Verdict
-2022-09-09 Is great when it works, but setting up any reflection is a lot of extra work. I could get it to work on Mac but not on Linux
+2022-09-09 Is great when it works, but setting up any reflection is a lot of extra work. I could get jersey to work on Mac but not on Linux
 
 # graalvm_aotc_java
 
