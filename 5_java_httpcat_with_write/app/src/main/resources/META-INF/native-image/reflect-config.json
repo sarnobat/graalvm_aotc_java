@@ -62,7 +62,7 @@
     "allPublicConstructors":true
   },
   {
-    "name":"com.HttpCatPure",
+    "name":"com.HttpCatWithWrite",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allPublicMethods":true,
