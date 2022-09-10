@@ -101,8 +101,8 @@ graalvmNative {
             buildArgs.add('--report-unsupported-elements-at-runtime')
             buildArgs.add('-J--add-modules')
             buildArgs.add('-JALL-SYSTEM')
-            buildArgs.add('-J-Xmx10G')
-            buildArgs.add('-J-Xms5G')
+            //buildArgs.add('-J-Xmx10G')
+            //buildArgs.add('-J-Xms5G')
     
             // Runtime options
             runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
