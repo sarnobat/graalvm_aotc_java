@@ -33,7 +33,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
  */
 public class HttpCatPure {
 
-	private static final URI BASE_URI = URI.create("http://0.0.0.0:4466/");
+
 	/**
 	 * "Hello World" root resource path.
 	 */
@@ -47,7 +47,11 @@ public class HttpCatPure {
 	public static void main(String[] args) {
 		try {
 			System.out.println("\"Hello World\" Jersey Example App");
-
+			String port = "4466";
+			if (args.length > 0) {
+				port = args[0];
+			}
+			URI BASE_URI = URI.create("http://0.0.0.0:"+port+"/");
 			final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, create(), true);
 			Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 				@Override
