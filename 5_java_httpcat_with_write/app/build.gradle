@@ -21,43 +21,18 @@ applicationDefaultJvmArgs = ["-J-Xmx10G -J-Xms5G"]
 
 dependencies {
 
-    // This dependency is used by the application.
-// 	implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-jdk-http', version: '3.0.8'
-// 	implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '3.0.8'
-// 	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
-// https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server
-
-
-// implementation 'jakarta.activation:jakarta.activation-api:2.1.0'
-// implementation 'jakarta.ws.rs:jakarta.ws.rs-api:2.0.0'
-// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
-// implementation 'javax.ws.rs:javax.ws.rs-api:2.1'
-
-// implementation 'org.glassfish.jersey.core:jersey-server:3.0.8'
-// implementation 'javax.ws.rs:jsr311-api:1.1.1'
-implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.36'
-// jakarta.activation-api
-// jakarta.xml.bind-api
-// hk2-locator
-// org.osgi.framework
-
-// https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api
-implementation 'jakarta.activation:jakarta.activation-api:1.2.2'
-// https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api
-implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
-// https://mvnrepository.com/artifact/org.glassfish.hk2/hk2-locator
-implementation 'org.glassfish.hk2:hk2-locator:2.6.1'
-// https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common
-implementation 'org.glassfish.jersey.core:jersey-common:2.36'
-
-implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
-implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
-implementation 'org.osgi:org.osgi.framework:1.10.0'
+	implementation 'jakarta.activation:jakarta.activation-api:1.2.2'
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
+	implementation 'org.glassfish.hk2:hk2-locator:2.6.1'
+	implementation 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.36'
+	implementation 'org.glassfish.jersey.containers:jersey-container-jdk-http:2.36'
+	implementation 'org.glassfish.jersey.core:jersey-common:2.36'
+	implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
+	implementation 'org.osgi:org.osgi.framework:1.10.0'
+	implementation group: 'org.json', name: 'json', version: '20220320'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-	implementation group: 'org.json', name: 'json', version: '20220320'
-// 	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
 }
 
 application {
