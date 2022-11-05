@@ -11,6 +11,8 @@ import java.io.SequenceInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -38,12 +40,12 @@ public class Main {
 				Path aPath = Paths.get(aLine);
 				File aFile = aPath.toFile();
 				if (aFile.exists()) {
-				if (aFile.isFile()) {
-					long aSizeBytes = Files.size(aPath);
-					System.out.printf("%s\t%s\n", toNumInUnits(aSizeBytes), aLine);
-				} else {
+					if (aFile.isFile()) {
+						long aSizeBytes = Files.size(aPath);
+						System.out.printf("%s\t%s\n", humanReadableByteCountSI(aSizeBytes), aLine);
+					} else {
 
-				}
+					}
 				} else {
 					System.err.printf("[missing] %s\n", aLine);
 				}
@@ -52,6 +54,35 @@ public class Main {
 		}
 	}
 
+	private static String humanReadableByteCountSI(long bytes) {
+		if (-1000 < bytes && bytes < 1000) {
+			return bytes + "";
+		}
+		CharacterIterator ci = new StringCharacterIterator("KMGTPE");
+		while (bytes <= -999_950 || bytes >= 999_950) {
+			bytes /= 1000;
+			ci.next();
+		}
+		return String.format("%.0f%c", bytes / 1000.0, ci.current());
+	}
+
+	@Deprecated
+	private static String humanReadableByteCountBin(long bytes) {
+		long absB = bytes == Long.MIN_VALUE ? Long.MAX_VALUE : Math.abs(bytes);
+		if (absB < 1024) {
+			return bytes + " B";
+		}
+		long value = absB;
+		CharacterIterator ci = new StringCharacterIterator("KMGTPE");
+		for (int i = 40; i >= 0 && absB > 0xfffccccccccccccL >> i; i -= 10) {
+			value >>= 10;
+			ci.next();
+		}
+		value *= Long.signum(bytes);
+		return String.format("%.1f %ciB", value / 1024.0, ci.current());
+	}
+
+	@Deprecated
 	private static String toNumInUnits(long iBytes) {
 		int theUnitIndex = 0;
 		for (; iBytes > 1024 * 1024; iBytes >>= 10) {
