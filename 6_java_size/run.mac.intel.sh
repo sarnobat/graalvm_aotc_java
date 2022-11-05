@@ -8,11 +8,6 @@ ls -d /usr/local/Cellar/openjdk@11/11.0.12/
 /Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/lib/installer/bin/gu  install native-image
 # If you try to use a vanilla JAVA_HOME with v11 you'll get
 # Error: Could not find option 'BuildOutputColorful'
-GRAALVM_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ JAVA_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ ./gradlew clean nativeCompile -b app/build.gradle --info
+GRAALVM_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ JAVA_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ ./gradlew clean nativeCompile -b app/build.gradle
 ls -lh app/build/native/nativeCompile/app
 cp app/build/native/nativeCompile/app ./size.mac.intel
-
-cat <<EOF
-# /Volumes/trash/trash/jersey/examples/helloworld-programmatic
-GRAALVM_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ JAVA_HOME=/Volumes/trash/trash/graalvm-ce-java11-22.2.0/Contents/Home/ mvn package -P native-image
-EOF
