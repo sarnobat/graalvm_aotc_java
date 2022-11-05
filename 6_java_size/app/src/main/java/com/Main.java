@@ -1,19 +1,26 @@
 package com;
 
-import java.io.*;
-import java.nio.*;
-import java.nio.file.*;
-import java.net.URI;
-import java.time.*;
-import java.time.format.*;
-import java.util.*;
-import java.util.stream.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.SequenceInputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
- * find | /Volumes/git/github/graalvm_aotc_java/6_java_size/size.mac.intel
+ * find | /Volumes/git/github/graalvm_aotc_java/6_java_size/size.mac.intel 
+ * find | /Volumes/numerous/usr/local/homebrew/Cellar/openjdk@17/17.0.4.1_1/bin/java -jar /Volumes/git/github/graalvm_aotc_java/6_java_size/app/build/libs/app.jar
  */
 public class Main {
-	public static void main(String args[]) throws IOException {
+	public static void main(String iArgs[]) throws IOException {
 
 		// 4) cli options
 		if (System.getProperties().containsKey("-h")) {
@@ -24,75 +31,63 @@ public class Main {
 
 		/////////////////////////////////////////////////////////////
 		// 8) concurrent
-		try (BufferedReader bufferedReader = read(args, System.in)) {
+		try (BufferedReader theBufferedReader = readStdin(iArgs, System.in)) {
 
 			// 1) stdin loop (with optional file arg)
-			for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
-				System.out.println(line);
+			for (String aLine = theBufferedReader.readLine(); aLine != null; aLine = theBufferedReader.readLine()) {
+				Path aPath = Paths.get(aLine);
+				File aFile = aPath.toFile();
+				if (aFile.isFile()) {
+					long aSizeBytes = Files.size(aPath);
+					System.out.printf("%s\t%s\n", toNumInUnits(aSizeBytes), aPath.toString());
+				} else {
 
-				// 5) Read and write to a map
-
-				// 11) create json object - not possible without a third party
-				// library
-
-				// 10) web scrape - hmmmmm, don't do this in the main loop, keep
-				// the input to something easy like file paths, not web links
-				// 6) embed shell code inside high level language connecting pipes
-				// 9) print with padding
-				// 10) write to file
+				}
 
 			}
 		}
-		/////////////////////////////////////////////////////////////
-
-		// 10) print current date
-		// 7) convert epoch to date and vv
-		long currentTime = System.currentTimeMillis();
-		String dateFormattedString = DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.ofEpochDay(currentTime));
-		System.out.println(dateFormattedString);
-		long dateEpoch = LocalDate.parse(dateFormattedString, DateTimeFormatter.ofPattern("yyyy-MM-DD")).toEpochDay();
-
-		Path path = Paths.get("/tmp/statistics " + dateFormattedString + ".txt");
-		// 3) parse file path
-		if (path.getParent().toFile().exists()) {
-
-			File file = Files.createFile(path).toFile();
-			System.err.println(dateEpoch);
-		}
-		/////////////////////////////////////////////////////////////
 	}
 
-	private static BufferedReader read(String[] args, InputStream in) throws IOException {
-		BufferedReader br;
-		BufferedReader br1 = new BufferedReader(new InputStreamReader(in));
+	private static String toNumInUnits(long iBytes) {
+		int theUnitIndex = 0;
+		for (; iBytes > 1024 * 1024; iBytes >>= 10) {
+			theUnitIndex++;
+		}
+		if (iBytes > 1024) {
+			theUnitIndex++;
+		}
+		return String.format("%.1f %cB", iBytes / 1024f, " kMGTPE".charAt(theUnitIndex));
+	}
 
-		if (br1.ready()) {
-			br = br1;
+	private static BufferedReader readStdin(String[] iArgs, InputStream iInputStream) throws IOException {
+		BufferedReader oBufferedReader;
+		BufferedReader theBufferedReader = new BufferedReader(new InputStreamReader(iInputStream));
+
+		if (theBufferedReader.ready()) {
+			oBufferedReader = theBufferedReader;
 			// problem: arg files get ignored
 		} else {
-			if (args.length == 0) {
+			if (iArgs.length == 0) {
 				System.out.println(help());
 				System.exit(-1);
 				throw new RuntimeException("so java compiles");
 			} else {
 				// Check file exists
-				SequenceInputStream is = new SequenceInputStream(Collections
-						.enumeration(Arrays.stream(args).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
+				SequenceInputStream theInputStream = new SequenceInputStream(Collections
+						.enumeration(Arrays.stream(iArgs).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
 							try {
-								// 1) file read
 								return new FileInputStream(f);
-							} catch (FileNotFoundException e) {
-								throw new RuntimeException(e);
+							} catch (FileNotFoundException anException) {
+								throw new RuntimeException(anException);
 							}
 						}).collect(Collectors.toList())));
-				br = new BufferedReader(new InputStreamReader(is));
+				oBufferedReader = new BufferedReader(new InputStreamReader(theInputStream));
 			}
 		}
-		return br;
+		return oBufferedReader;
 	}
 
 	private static String help() {
-		String help = "usage: helloworld [ARGS]";
-		return help;
+		return "usage: size [ARGS]";
 	}
 }
