@@ -37,11 +37,15 @@ public class Main {
 			for (String aLine = theBufferedReader.readLine(); aLine != null; aLine = theBufferedReader.readLine()) {
 				Path aPath = Paths.get(aLine);
 				File aFile = aPath.toFile();
+				if (aFile.exists()) {
 				if (aFile.isFile()) {
 					long aSizeBytes = Files.size(aPath);
-					System.out.printf("%s\t%s\n", toNumInUnits(aSizeBytes), aPath.toString());
+					System.out.printf("%s\t%s\n", toNumInUnits(aSizeBytes), aLine);
 				} else {
 
+				}
+				} else {
+					System.err.printf("[missing] %s\n", aLine);
 				}
 
 			}
@@ -56,7 +60,7 @@ public class Main {
 		if (iBytes > 1024) {
 			theUnitIndex++;
 		}
-		return String.format("%.0f%c", iBytes / 1024f, " kMGTPE".charAt(theUnitIndex));
+		return String.format("%.0f%c", iBytes / 1024f, " KMGTPE".charAt(theUnitIndex));
 	}
 
 	private static BufferedReader readStdin(String[] iArgs, InputStream iInputStream) throws IOException {
