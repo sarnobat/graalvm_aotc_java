@@ -56,7 +56,7 @@ public class Main {
 		if (iBytes > 1024) {
 			theUnitIndex++;
 		}
-		return String.format("%.1f %cB", iBytes / 1024f, " kMGTPE".charAt(theUnitIndex));
+		return String.format("%.0f%c", iBytes / 1024f, " kMGTPE".charAt(theUnitIndex));
 	}
 
 	private static BufferedReader readStdin(String[] iArgs, InputStream iInputStream) throws IOException {
