@@ -7,10 +7,7 @@ import java.net.URI;
 import java.time.*;
 import java.time.format.*;
 import java.util.*;
-import java.util.regex.*;
 import java.util.stream.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * find | /usr/local/Cellar/openjdk@11/11.0.12/bin/java helloworld.java
@@ -24,8 +21,6 @@ public class Main {
 			System.exit(-1);
 			throw new RuntimeException("so java compiles");
 		}
-		// 5) map/dictionary/associative array
-		Map<String, Integer> map = new HashMap<>();
 
 		/////////////////////////////////////////////////////////////
 		// 8) concurrent
@@ -35,18 +30,7 @@ public class Main {
 			for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
 				System.out.println(line);
 
-				// 2) regex capture groups
-				Pattern pattern = Pattern.compile("^(/.*)/([^\\.]*\\.([^$]*))$");
-				Matcher matcher = pattern.matcher(line);
-				String dir = matcher.group(1);
-				String file = matcher.group(2);
-				String extension = matcher.group(3);
-
 				// 5) Read and write to a map
-				int count = map.getOrDefault(extension, 0);
-				map.putIfAbsent(extension, count++);
-
-				System.out.printf("%s %s %s", extension, file, dir);
 
 				// 11) create json object - not possible without a third party
 				// library
@@ -73,25 +57,7 @@ public class Main {
 		if (path.getParent().toFile().exists()) {
 
 			File file = Files.createFile(path).toFile();
-			boolean createdReport = file.createNewFile();
 			System.err.println(dateEpoch);
-			try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE,
-					StandardOpenOption.TRUNCATE_EXISTING);) {
-				// Read the file using Files.lines and collect it into a
-				// List
-				map.entrySet().forEach(line -> {
-					try {
-						writer.write(String.format("%d %s\n", line.getValue(), line.getKey()));
-					} catch (IOException e) {
-						throw new UncheckedIOException(e);
-					}
-				});
-				writer.flush();
-			}
-
-			try (Stream<String> lines = Files.lines(Path.of(path.toUri()))) {
-				lines.sorted().forEach(System.out::println);
-			}
 		}
 		/////////////////////////////////////////////////////////////
 	}
