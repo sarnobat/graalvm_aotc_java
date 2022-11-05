@@ -1,3 +1,4 @@
+# For use on work computer
 set -e
 ls -d /Volumes/trash/trash/graalvm-ce-java17-22.2.0/
 ls -d /Volumes/Apps/homebrew/Cellar/openjdk@17/17.0.3/libexec/openjdk.jdk/Contents/Home
