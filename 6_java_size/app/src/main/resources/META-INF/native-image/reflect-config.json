@@ -37,7 +37,7 @@
     "allDeclaredConstructors":true
   },
   {
-    "name":"com.HttpCatWithWrite",
+    "name":"com.Main",
     "allDeclaredFields":true,
     "allDeclaredMethods":true,
     "allPublicMethods":true,
