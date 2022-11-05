@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.stream.*;
 
 /**
- * find | /usr/local/Cellar/openjdk@11/11.0.12/bin/java helloworld.java
+ * find | /Volumes/git/github/graalvm_aotc_java/6_java_size/size.mac.intel
  */
 public class Main {
 	public static void main(String args[]) throws IOException {
