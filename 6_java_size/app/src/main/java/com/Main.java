@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.CharacterIterator;
+import java.text.DecimalFormat;
 import java.text.StringCharacterIterator;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,6 +32,9 @@ public class Main {
 			throw new RuntimeException("so java compiles");
 		}
 
+		long theUpperLimit = getUpper(iArgs);
+		long theLowerLimit = getLower(iArgs);
+
 		/////////////////////////////////////////////////////////////
 		// 8) concurrent
 		try (BufferedReader theBufferedReader = readStdin(iArgs, System.in)) {
@@ -42,7 +46,12 @@ public class Main {
 				if (aFile.exists()) {
 					if (aFile.isFile()) {
 						long aSizeBytes = Files.size(aPath);
-						System.out.printf("%s\t%s\n", humanReadableByteCountSI(aSizeBytes), aLine);
+						if (aSizeBytes <= theUpperLimit) {
+							if (aSizeBytes >= theLowerLimit) {
+								System.err.printf("%10d >= %d\n", aSizeBytes, theLowerLimit);
+								System.out.printf("%s\t%s\n", humanReadableByteCountSI(aSizeBytes), aLine);
+							}
+						}
 					} else {
 
 					}
@@ -52,6 +61,79 @@ public class Main {
 
 			}
 		}
+	}
+
+	private static long getLower(String[] iArgs) {
+		long oLowerSizeBytes;
+		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
+		if (iArgs.length == 0) {
+			oLowerSizeBytes = Long.MIN_VALUE;
+		} else if (iArgs.length == 1) {
+			oLowerSizeBytes = toBytes(iArgs[0]);
+		} else if (iArgs.length == 2) {
+			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
+			oLowerSizeBytes = toBytes(iArgs[0]);
+		} else {
+			oLowerSizeBytes = Long.MIN_VALUE;
+		}
+		System.err.println("Main.getLower() oLowerSizeBytes = " + oLowerSizeBytes);
+		return oLowerSizeBytes;
+	}
+
+	private static long toBytes(String string) {
+		String numberWithoutSuffixStr;
+		long multiple;
+		if (string.endsWith("M")) {
+			numberWithoutSuffixStr = removeLastChars(string, 1);
+			multiple = 2;
+		} else if (string.endsWith("K")) {
+			numberWithoutSuffixStr = removeLastChars(string, 1);
+			multiple = 1;
+		} else if (string.endsWith("G")) {
+			numberWithoutSuffixStr = removeLastChars(string, 1);
+			multiple = 3;
+		} else if (string.endsWith("T")) {
+			numberWithoutSuffixStr = removeLastChars(string, 1);
+			multiple = 4;
+		} else {
+			numberWithoutSuffixStr = string;
+			multiple = 0;
+		}
+		long numberWithoutSuffix = Long.parseLong(numberWithoutSuffixStr);
+		System.err.printf("Main.toBytes() %d * 1024^%d\n", numberWithoutSuffix, multiple);
+		return numberWithoutSuffix * Math.round(Math.pow(1024, multiple));
+	}
+
+	private static String removeLastChars(String str, int chars) {
+		return str.substring(0, str.length() - chars);
+	}
+
+	private static long getUpper(String[] iArgs) {
+		long oUpperSizeBytes;
+		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
+		if (iArgs.length == 0) {
+			oUpperSizeBytes = Long.MAX_VALUE;
+		} else if (iArgs.length == 1) {
+			System.err.printf("getUpper() No upper specified");
+			oUpperSizeBytes = Long.MAX_VALUE;
+		} else if (iArgs.length == 2) {
+			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
+			oUpperSizeBytes = toBytes(iArgs[1]);
+		} else {
+			oUpperSizeBytes = Long.MAX_VALUE;
+		}
+		System.err.println("Main.getLower() oLowerSizeBytes = " + oUpperSizeBytes);
+		return oUpperSizeBytes;
+	}
+
+	@Deprecated
+	public static String readableFileSize(long size) {
+		if (size <= 0) {
+			return "0";
+		}
+		final String[] units = new String[] { "", "K", "M", "G", "T" };
+		int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+		return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
 	}
 
 	private static String humanReadableByteCountSI(long bytes) {
@@ -123,6 +205,6 @@ public class Main {
 	}
 
 	private static String help() {
-		return "usage: size [ARGS]";
+		return "usage: size [lower] [upper]?";
 	}
 }
