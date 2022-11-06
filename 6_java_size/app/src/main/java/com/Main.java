@@ -19,8 +19,8 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
- * find | /Volumes/git/github/graalvm_aotc_java/6_java_size/size.mac.intel 
- * find | /Volumes/numerous/usr/local/homebrew/Cellar/openjdk@17/17.0.4.1_1/bin/java -jar /Volumes/git/github/graalvm_aotc_java/6_java_size/app/build/libs/app.jar
+ * find | /Volumes/git/github/graalvm_aotc_java/6_java_size/size.mac.intel 1M 10M
+ * find | /Volumes/numerous/usr/local/homebrew/Cellar/openjdk@17/17.0.4.1_1/bin/java -jar /Volumes/git/github/graalvm_aotc_java/6_java_size/app/build/libs/app.jar 1M 10M
  */
 public class Main {
 	public static void main(String iArgs[]) throws IOException {
@@ -48,7 +48,7 @@ public class Main {
 						long aSizeBytes = Files.size(aPath);
 						if (aSizeBytes <= theUpperLimit) {
 							if (aSizeBytes >= theLowerLimit) {
-								System.err.printf("%10d >= %d\n", aSizeBytes, theLowerLimit);
+//								System.err.printf("%10d >= %d\n", aSizeBytes, theLowerLimit);
 								System.out.printf("%s\t%s\n", humanReadableByteCountSI(aSizeBytes), aLine);
 							}
 						}
@@ -65,18 +65,18 @@ public class Main {
 
 	private static long getLower(String[] iArgs) {
 		long oLowerSizeBytes;
-		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
+//		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
 		if (iArgs.length == 0) {
 			oLowerSizeBytes = Long.MIN_VALUE;
 		} else if (iArgs.length == 1) {
 			oLowerSizeBytes = toBytes(iArgs[0]);
 		} else if (iArgs.length == 2) {
-			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
+//			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
 			oLowerSizeBytes = toBytes(iArgs[0]);
 		} else {
 			oLowerSizeBytes = Long.MIN_VALUE;
 		}
-		System.err.println("Main.getLower() oLowerSizeBytes = " + oLowerSizeBytes);
+//		System.err.println("Main.getLower() oLowerSizeBytes = " + oLowerSizeBytes);
 		return oLowerSizeBytes;
 	}
 
@@ -100,7 +100,7 @@ public class Main {
 			multiple = 0;
 		}
 		long numberWithoutSuffix = Long.parseLong(numberWithoutSuffixStr);
-		System.err.printf("Main.toBytes() %d * 1024^%d\n", numberWithoutSuffix, multiple);
+//		System.err.printf("Main.toBytes() %d * 1024^%d\n", numberWithoutSuffix, multiple);
 		return numberWithoutSuffix * Math.round(Math.pow(1024, multiple));
 	}
 
@@ -110,19 +110,19 @@ public class Main {
 
 	private static long getUpper(String[] iArgs) {
 		long oUpperSizeBytes;
-		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
+//		System.err.println("Main.getLower() iArgs.length\t= " + iArgs.length);
 		if (iArgs.length == 0) {
 			oUpperSizeBytes = Long.MAX_VALUE;
 		} else if (iArgs.length == 1) {
-			System.err.printf("getUpper() No upper specified");
+//			System.err.printf("getUpper() No upper specified");
 			oUpperSizeBytes = Long.MAX_VALUE;
 		} else if (iArgs.length == 2) {
-			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
+//			System.err.println("Main.getLower() iArgs\t= " + iArgs[0] + "\t" + iArgs[1]);
 			oUpperSizeBytes = toBytes(iArgs[1]);
 		} else {
 			oUpperSizeBytes = Long.MAX_VALUE;
 		}
-		System.err.println("Main.getLower() oLowerSizeBytes = " + oUpperSizeBytes);
+//		System.err.println("Main.getLower() oLowerSizeBytes = " + oUpperSizeBytes);
 		return oUpperSizeBytes;
 	}
 
