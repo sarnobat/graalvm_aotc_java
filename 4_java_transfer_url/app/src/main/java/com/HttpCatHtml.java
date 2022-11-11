@@ -85,7 +85,9 @@ public class HttpCatHtml {
 					System.err.println("list()");
 					System.out.println(iValue);
 					response.setContentType("text/html");
-					String str = "<u>helloworld</u>";
+//					String str = "<u>helloworld</u>";
+					// Red: CC0033
+					String str = "<body style=\"background-color: #99CC33\">Success:<br><a href='" + iValue + "'>" + iValue + "</a></body>";
 					response.setContentLength(str.length());
 					response.getWriter().write(str);					
 				}
