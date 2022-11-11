@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry output="bin/main" kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry output="bin/main" kind="src" path="src/main/resources">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.36/33f4ccedaf5e46f31c4ad1f8e35c93e8b726d9da/jersey-container-grizzly2-http-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.containers/jersey-container-grizzly2-http/2.36/d19492b696bc3d32873420ec4443d8f7cd3fd298/jersey-container-grizzly2-http-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.xml.bind/jakarta.xml.bind-api/2.3.3/d83744bae211a4072c39f007000a13f501a88395/jakarta.xml.bind-api-2.3.3-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.xml.bind/jakarta.xml.bind-api/2.3.3/48e3b9cfc10752fba3521d6511f4165bea951801/jakarta.xml.bind-api-2.3.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.activation/jakarta.activation-api/1.2.2/c45b5962230be8a5f93759203870c98917bb8b31/jakarta.activation-api-1.2.2-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.activation/jakarta.activation-api/1.2.2/99f53adba383cb1bf7c3862844488574b559621f/jakarta.activation-api-1.2.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.inject/jersey-hk2/2.36/eb5a71c8797f342a799762dae7d71dac948be9eb/jersey-hk2-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.inject/jersey-hk2/2.36/69a57963b35428a261ac4313cfa89f6b3dc255c6/jersey-hk2-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-locator/2.6.1/73883e1a0effc4d1409743b515030a634f7b45c3/hk2-locator-2.6.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-locator/2.6.1/9dedf9d2022e38ec0743ed44c1ac94ad6149acdd/hk2-locator-2.6.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.containers/jersey-container-jdk-http/2.36/ae8f31dc0c78a20cd3705192843f4a0c06dc7b62/jersey-container-jdk-http-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.containers/jersey-container-jdk-http/2.36/9b585014a68e1717126501aef69a5acb29a42ab2/jersey-container-jdk-http-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-server/2.36/4d15c41eee7ee5b60b75f3556e9026c38cec9fdc/jersey-server-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-server/2.36/73cf67d0d761b60860b7721529503a121cfa9df4/jersey-server-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-client/2.36/8251b4eb6574ed538f7894d4025d1ea8b35885ce/jersey-client-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-client/2.36/755709fb31407d36c114afbe345b47cebf0fe60/jersey-client-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-common/2.36/afcc4a544d9bd617c5285015903d7fbdfe0608d4/jersey-common-2.36-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-common/2.36/5d259ea71ca3c1f4566ec5bfee7320e63d79673b/jersey-common-2.36.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.osgi/org.osgi.framework/1.10.0/7f14af51d5be199f2542a47bdc9648e8d680e591/org.osgi.framework-1.10.0-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.osgi/org.osgi.framework/1.10.0/b1b338ec78da4dbdd82c6938985bafeaac2b3b70/org.osgi.framework-1.10.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.json/json/20220320/914f9944826a81aefe4522fa73ddf397bc089cfd/json-20220320-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.json/json/20220320/6df2c050972619466f6dcef7654ef9bcc01dfd0/json-20220320.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-api/2.6.1/911d7e334b8b230b491bb130af8404fdb7a81059/hk2-api-2.6.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-api/2.6.1/114bd7afb4a1bd9993527f52a08a252b5d2acac5/hk2-api-2.6.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-utils/2.6.1/91a2264ed6d909c44763fc807d22a19da87b84c9/hk2-utils-2.6.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-utils/2.6.1/396513aa96c1d5a10aa4f75c4dcbf259a698d62d/hk2-utils-2.6.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/jakarta.inject/2.6.1/74132e0252fda12812a851695e488d3a862e09de/jakarta.inject-2.6.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/jakarta.inject/2.6.1/8096ebf722902e75fbd4f532a751e514f02e1eb7/jakarta.inject-2.6.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-http-server/2.4.4/289ed9b73dbc3bb09a3a18ce5a9c99e340676d71/grizzly-http-server-2.4.4-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-http-server/2.4.4/f9a62c711eb51f351cc5ba48faf44d5a49faa0a7/grizzly-http-server-2.4.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.ws.rs/jakarta.ws.rs-api/2.1.6/6c66d1fc6dfd1de469e831d2cab362ce07b2561d/jakarta.ws.rs-api-2.1.6-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.ws.rs/jakarta.ws.rs-api/2.1.6/1dcb770bce80a490dff49729b99c7a60e9ecb122/jakarta.ws.rs-api-2.1.6.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/aopalliance-repackaged/2.6.1/8225e1c5c5615a447227ed9164e709be1e77802d/aopalliance-repackaged-2.6.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/aopalliance-repackaged/2.6.1/b2eb0a83bcbb44cc5d25f8b18f23be116313a638/aopalliance-repackaged-2.6.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.annotation/jakarta.annotation-api/1.3.5/1ad35f11d17abb52426bfe15ea7b4c583795012/jakarta.annotation-api-1.3.5-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.annotation/jakarta.annotation-api/1.3.5/59eb84ee0d616332ff44aba065f3888cf002cd2d/jakarta.annotation-api-1.3.5.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.25.0-GA/f00308c31650161577a0d152898ec606a08945da/javassist-3.25.0-GA-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.25.0-GA/442dc1f9fd520130bd18da938622f4f9b2e5fba3/javassist-3.25.0-GA.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/osgi-resource-locator/1.0.3/2f01d4501f52f63016fe70f7aea79c19cccb8d44/osgi-resource-locator-1.0.3-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/osgi-resource-locator/1.0.3/de3b21279df7e755e38275137539be5e2c80dd58/osgi-resource-locator-1.0.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-http/2.4.4/cd7921124be251b16a0106c3e273057b05dd05d2/grizzly-http-2.4.4-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-http/2.4.4/c789d449906458d4174126f6a4fefdd7a6008777/grizzly-http-2.4.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.validation/jakarta.validation-api/2.0.2/ef429a7f3bc2d2d1784a1135668a857a6aaedf31/jakarta.validation-api-2.0.2-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/jakarta.validation/jakarta.validation-api/2.0.2/5eacc6522521f7eacb081f95cee1e231648461e7/jakarta.validation-api-2.0.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-framework/2.4.4/1eeb6761586a7038132403d8e614518015aa1170/grizzly-framework-2.4.4-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.glassfish.grizzly/grizzly-framework/2.4.4/85ff29df39616972a074737948f116ef25addfee/grizzly-framework-2.4.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/afc478acad44d01bdb208834d5785dc326b61e56/junit-platform-native-0.9.13-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/9090abf809877fa90d5a51ba0c8cad2430adf843/junit-platform-native-0.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/c8094df9ba31ddf07a9a7ae91d6eb6aff4aa25b6/junit-platform-console-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/3499405657205c4d6307c1886155edd3c51b6ee1/junit-platform-console-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/427b4e79162e24bb9f245a322ff61f1da710b3bc/junit-platform-reporting-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/20dde69627366422eb49055414a57e226a3650be/junit-platform-reporting-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c402dbc15f998e67966816133fcc49196faa8aa3/junit-platform-launcher-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c77eab66c4c4ef92ce6bd2175a5184771ff1d0dd/junit-platform-launcher-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/5fd01c33132462aab3905cb74bd1097a713ab91a/junit-jupiter-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/73a218cf02d36d4e87bb9697fdbe0780e92b6bd3/junit-jupiter-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/ea87fe3d752e24397f71f347872e79a89c61a704/junit-jupiter-engine-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/21b86e08aae2720bbf017703669948be96d1388c/junit-jupiter-engine-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/9d87ea7959823714ad803aa91e0618bf2213b52c/junit-platform-engine-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/e6c63bf990dc88a6527b4ed617b23e47048f07e0/junit-platform-engine-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/d69300e26c3af1d798f412df28d060333e052472/junit-jupiter-params-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/13afdb5d414cbe991fce3ef6b864de77c9644dae/junit-jupiter-params-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/a3e13f34a2a47fb2c0d7385c5e6e0e8623194061/junit-jupiter-api-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/6538b88eb8bf8811bc7b6efb5246f835c15e0bfe/junit-jupiter-api-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/386b61876dd33d0ef0381189d3c1db9455d99659/junit-platform-commons-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/1e362cbe6d0f225b066757865e233972557484/junit-platform-commons-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/41d55b3c2254de9837b4ec8923cbd371b8a7eab5/opentest4j-1.2.0-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+</classpath>

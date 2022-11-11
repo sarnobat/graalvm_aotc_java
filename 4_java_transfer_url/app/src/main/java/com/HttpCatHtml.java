@@ -79,6 +79,11 @@ public class HttpCatHtml {
 				@Override
 				public void service(Request request, org.glassfish.grizzly.http.server.Response response)
 						throws Exception {
+					String iValue =
+					request.getParameter("value");
+					
+					System.err.println("list()");
+					System.out.println(iValue);
 					response.setContentType("text/html");
 					String str = "<u>helloworld</u>";
 					response.setContentLength(str.length());
