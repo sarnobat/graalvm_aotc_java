@@ -31,7 +31,7 @@ public class Main {
 			System.exit(-1);
 			throw new RuntimeException("so java compiles");
 		}
-
+// TODO: if args.length = 0, just print all the sizes
 		long theUpperLimit = getUpper(iArgs);
 		long theLowerLimit = getLower(iArgs);
 

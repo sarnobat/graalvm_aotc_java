@@ -46,7 +46,7 @@ public class HttpCatWithWrite {
 	 */
 	public static void main(String[] args) {
 		try {
-			System.out.println("\"Hello World\" Jersey Example App");
+			System.err.println("\"Hello World\" Jersey Example App");
 
 			final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, create(), true);
 			Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -57,7 +57,7 @@ public class HttpCatWithWrite {
 			}));
 			server.start();
 
-			System.out.println(
+			System.err.println(
 			    String.format("Application started.%n"
 			                  + "Try out %s%s%n"
 			                  + "Stop the application using CTRL+C",
@@ -92,8 +92,10 @@ public class HttpCatWithWrite {
 			@Override
 			public Response apply(ContainerRequestContext data) {
 				String iValue = data.getUriInfo().getQueryParameters().getFirst("value");
+				String iCategoryId = data.getUriInfo().getQueryParameters().getFirst("categoryId");
 				System.err.println("list()");
 				System.out.println(iValue);
+			System.out.println(iCategoryId + "::" + System.currentTimeMillis() + "::" + iValue);
 				getMethodCalled = true;
 				return Response.ok().header("Access-Control-Allow-Origin", "*").type("application/json").build();
 			}

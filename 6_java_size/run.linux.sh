@@ -7,8 +7,4 @@ cat <<EOF
 EOF
 GRAALVM_HOME=$HOME/trash/graalvm-ce-java11-22.2.0/ JAVA_HOME=$HOME/trash/graalvm-ce-java11-22.2.0/ ./gradlew clean nativeCompile -b app/build.gradle
 ls -lh app/build/native/nativeCompile/app
-
-cat <<EOF
-# /Volumes/trash/trash/jersey/examples/helloworld-programmatic
-GRAALVM_HOME=$HOME/trash/graalvm-ce-java11-22.2.0/ JAVA_HOME=$HOME/trash/graalvm-ce-java11-22.2.0/ mvn package -P native-image
-EOF
+cp app/build/native/nativeCompile/app ./size.linux
