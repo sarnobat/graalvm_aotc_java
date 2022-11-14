@@ -86,6 +86,25 @@ graalvmNative {
             runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
 
         }
+        main {
+            // Main options
+
+            // Advanced options
+            buildArgs.add('-H:EnableURLProtocols=http,https') // Passes '-H:Extra' to the native image builder options. This can be used to
+            buildArgs.add('--initialize-at-build-time=org.glassfish.jersey.client.internal.HttpUrlConnector')
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+            buildArgs.add('-H:Name=httpcatpure')
+            buildArgs.add('--no-fallback')
+            buildArgs.add('--report-unsupported-elements-at-runtime')
+            buildArgs.add('-J--add-modules')
+            buildArgs.add('-JALL-SYSTEM')
+            //buildArgs.add('-J-Xmx10G')
+            //buildArgs.add('-J-Xms5G')
+
+            // Runtime options
+            runtimeArgs.add('--help') // Passes '--help' to built image, during "nativeRun" task
+
+        }
         test {
             verbose = true
         }
