@@ -52,7 +52,7 @@ public class HttpCatWithWrite {
 	NoSuchAlgorithmException, KeyStoreException, CertificateException, InterruptedException {
 
 		try {
-			JdkHttpServerFactory.createHttpServer(new URI("http://localhost:" + 4465 + "/"), new ResourceConfig(MyResource.class));
+			JdkHttpServerFactory.createHttpServer(new URI("http://0.0.0.0:" + 4465 + "/"), new ResourceConfig(MyResource.class));
 		} catch (Exception e) {
 			System.err.println("Port already listened on: 4465");
 			System.exit(-1);
