@@ -38,7 +38,11 @@ public class HttpCatHtml {
 					String iValue = request.getParameter("value");
 
 					System.err.println("list()");
-					System.out.println(iValue);
+					if (iValue == null) {
+						System.err.println(iValue);
+					} else {
+						System.out.println(iValue);
+					}
 					response.setContentType("text/html");
 					// Red: CC0033
 					String str = "<body style=\"background-color: #99CC33\">Success:<br><a href='" + iValue + "'>"
