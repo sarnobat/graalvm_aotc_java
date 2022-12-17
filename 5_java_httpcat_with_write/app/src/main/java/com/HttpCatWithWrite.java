@@ -5,6 +5,15 @@ import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.GET;
@@ -28,8 +37,9 @@ import org.glassfish.grizzly.http.server.HttpServer;
  *
  * @author Marek Potociar
  */
-public class HttpCatPure {
+public class HttpCatWithWrite {
 
+	private static String filepath = System.getProperty("user.home") + "/db.git/yurl_flatfile_db/yurl_queue_httpcat.txt";
 
 	/**
 	 * "Hello World" root resource path.
@@ -44,7 +54,7 @@ public class HttpCatPure {
 	public static void main(String[] args) {
 		try {
 			System.out.println("\"Hello World\" Jersey Example App");
-			String port = "4466";
+			String port = "4465";
 			if (args.length > 0) {
 				port = args[0];
 			}
@@ -93,7 +103,10 @@ public class HttpCatPure {
 			@Override
 			public Response apply(ContainerRequestContext data) {
 				String iValue = data.getUriInfo().getQueryParameters().getFirst("value");
+				String iKey = data.getUriInfo().getQueryParameters().getFirst("key");
+				String iCategoryId = data.getUriInfo().getQueryParameters().getFirst("categoryId");
 				System.err.println("list()");
+try {
 			String line = iCategoryId + "::" + System.currentTimeMillis() + "::" + iValue;
 			System.err.println("Writing to stdout: " + line);
 			// I wish I didn't have to do this in Java but I found that even though
@@ -104,6 +117,10 @@ public class HttpCatPure {
 			System.err.println("[DEBUG] wrote to file");
 			System.out.println(line);
 				return Response.ok().header("Access-Control-Allow-Origin", "*").type("application/json").build();
+} catch (Exception e) {
+throw new RuntimeException(e);
+}
+
 			}
 		});
 
