@@ -21,6 +21,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'org.antlr:antlr-runtime:3.4'
+    
 }
 
 application {

@@ -3,17 +3,68 @@
  */
 package com;
 
-public class App {
-    public String getGreeting() {
-        return "Helloworld";
-    }
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Paths;
 
-    public static void main(String[] args) throws ClassNotFoundException {
-        System.out.println(new App().getGreeting());
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.TreeAdaptor;
+import org.antlr.runtime.tree.TreeVisitor;
+import org.antlr.runtime.tree.TreeVisitorAction;
+import org.gentoo.libbash.java_libbashLexer;
+import org.gentoo.libbash.java_libbashParser;
+
+public class App {
+	public String getGreeting() {
+		return "Helloworld";
+	}
+
+	public static void main(String[] args)
+			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException {
+		System.out.println(new App().getGreeting());
+
+		ANTLRInputStream inputStream = new ANTLRInputStream(new FileInputStream(Paths.get("helloworld.sh").toFile()));
+		CommonTokenStream tokenStream = new CommonTokenStream(new java_libbashLexer(inputStream));
+		java_libbashParser p = new java_libbashParser(tokenStream);
+
+		TreeAdaptor treeAdaptor = p.getTreeAdaptor();
+		TreeVisitor v = new TreeVisitor(treeAdaptor);
+		TreeVisitorAction actions = new TreeVisitorAction() {
+			public Object pre(Object t) {
+				if (t instanceof CommonTree) {
+					CommonTree tree = (CommonTree) t;
+					int ty = tree.getType();
+					if (ty == java_libbashParser.STRING) {
+						String stringTree = tree.toStringTree();
+
+						System.out.println("App.main() stringTree  = " + stringTree);
+						System.out.println("App.main() tree.toString() = " + tree.getText());
+					}
+
+					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + t.getClass());
+					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + tree.getType());
+					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + tree.getText());
+					System.out.println();
+				} else {
+
+				}
+				return t;
+			}
+
+			public Object post(Object t) {
+				//				System.out.println("App.main(...).new TreeVisitorAction() {...}.post() " + t);
+				return t;
+			}
+		};
+		v.visit(p.start().getTree(), actions);
 
 		// Reflection can be problematic with native images but this verifies it's working
-		Class c1 = Class.forName("java.lang.Boolean"); 
-        System.out.println("Class represented by c1: " + c1.toString());
+		Class c1 = Class.forName("java.lang.Boolean");
+		System.out.println("Class represented by c1: " + c1.toString());
 
-    }
+	}
 }
