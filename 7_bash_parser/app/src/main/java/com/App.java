@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.function.Consumer;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Stream;
 
 import org.antlr.runtime.ANTLRInputStream;
@@ -23,30 +23,31 @@ import org.gentoo.libbash.java_libbashParser;
 public class App {
 
 	public static void main(String[] args)
-			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException {
+			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException, InterruptedException {
 		File file = Paths.get(getArg(args)).toFile();
 		java_libbashParser theParser = new java_libbashParser(
 				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
 		Stream<String> s1 = Stream.of();
-		new Thread() {
+		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<>();
+		Thread t = new Thread() {
 
 			@Override
 			public void run() {
 				try {
-					extracted(theParser, s1);
+					extracted(theParser, s1, q);
 				} catch (RecognitionException e) {
 					e.printStackTrace();
 				}
 			}
 
-		}.start();
-		s1.forEach(new Consumer<String>() {
+		};
+		t.start();
+		t.join();
+		while (!q.isEmpty()) {
+			String symbol = q.remove();
+			System.out.println(symbol);
+		}
 
-			@Override
-			public void accept(String symbol) {
-				System.out.println(symbol);
-			}
-		});
 	}
 
 	//	Set<String> s = s1;
@@ -61,7 +62,8 @@ public class App {
 		return script;
 	}
 
-	private static void extracted(java_libbashParser theParser, Stream<String> s1) throws RecognitionException {
+	private static void extracted(java_libbashParser theParser, Stream<String> s1, ConcurrentLinkedQueue<String> q)
+			throws RecognitionException {
 		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
 			public Object pre(Object iObject) {
 				return iObject;
@@ -79,8 +81,7 @@ public class App {
 							CommonTree aChildTree = (CommonTree) child;
 							aStringBuffer.append(aChildTree.getText());
 						}
-						//						System.out.println(aStringBuffer.toString());
-						s1.flatMap(e -> Stream.of(aStringBuffer.toString()));
+						q.add(aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
 
 					} else if (aType == java_libbashParser.LSHIFT) {
