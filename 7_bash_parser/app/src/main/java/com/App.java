@@ -12,7 +12,6 @@ import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.TreeAdaptor;
 import org.antlr.runtime.tree.TreeVisitor;
 import org.antlr.runtime.tree.TreeVisitorAction;
 import org.gentoo.libbash.java_libbashLexer;
@@ -22,13 +21,10 @@ public class App {
 
 	public static void main(String[] args)
 			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException {
+		java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
+				new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
 
-		ANTLRInputStream theInputStream = new ANTLRInputStream(new FileInputStream(Paths.get("helloworld.sh").toFile()));
-		CommonTokenStream theTokenStream = new CommonTokenStream(new java_libbashLexer(theInputStream));
-		java_libbashParser theParser = new java_libbashParser(theTokenStream);
-		TreeAdaptor treeAdaptor = theParser.getTreeAdaptor();
-		TreeVisitor treeVisitor = new TreeVisitor(treeAdaptor);
-		TreeVisitorAction actions = new TreeVisitorAction() {
+		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
 			public Object pre(Object iObject) {
 				return iObject;
 			}
@@ -77,8 +73,17 @@ public class App {
 				}
 				return iObject;
 			}
-		};
-		treeVisitor.visit(theParser.start().getTree(), actions);
+		});
 
+	}
+
+	private static String getArg(String[] args) {
+		String script;
+		if (args.length < 1) {
+			script = "helloworld.sh";
+		} else {
+			script = args[0];
+		}
+		return script;
 	}
 }
