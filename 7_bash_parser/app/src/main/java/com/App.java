@@ -22,8 +22,8 @@ import org.gentoo.libbash.java_libbashParser;
 
 public class App {
 
-	public static void main(String[] args)
-			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException, InterruptedException {
+	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
+			RecognitionException, InterruptedException {
 		File file = Paths.get(getArg(args)).toFile();
 		java_libbashParser theParser = new java_libbashParser(
 				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
@@ -45,6 +45,9 @@ public class App {
 		t.join();
 		while (!q.isEmpty()) {
 			String symbol = q.remove();
+			if (symbol.startsWith("-")) {
+				continue;
+			}
 			System.out.println(symbol);
 		}
 
