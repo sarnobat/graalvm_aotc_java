@@ -19,13 +19,9 @@ import org.gentoo.libbash.java_libbashLexer;
 import org.gentoo.libbash.java_libbashParser;
 
 public class App {
-	public String getGreeting() {
-		return "Helloworld";
-	}
 
 	public static void main(String[] args)
 			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException {
-		System.out.println(new App().getGreeting());
 
 		ANTLRInputStream theInputStream = new ANTLRInputStream(new FileInputStream(Paths.get("helloworld.sh").toFile()));
 		CommonTokenStream theTokenStream = new CommonTokenStream(new java_libbashLexer(theInputStream));
@@ -45,14 +41,14 @@ public class App {
 					int aType = aTreeObject.getType();
 					if (aType == java_libbashParser.STRING) {
 
-						StringBuffer sb = new StringBuffer();
+						StringBuffer aStringBuffer = new StringBuffer();
 						for (Object child : aTreeObject.getChildren()) {
 							CommonTree aChildTree = (CommonTree) child;
 							System.err.println("App.main() STRING child = " + aChildTree.getText());
-							sb.append(aChildTree.getText());
+							aStringBuffer.append(aChildTree.getText());
 						}
-						System.err.println("STRING App.main() sb = " + sb.toString());
-						System.out.println(sb.toString());
+						System.err.println("STRING App.main() sb = " + aStringBuffer.toString());
+						System.out.println(aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
 
 					} else if (aType == java_libbashParser.LSHIFT) {
