@@ -3,7 +3,6 @@
  */
 package com;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,9 +23,9 @@ public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
 			RecognitionException, InterruptedException {
-		File file = Paths.get(getArg(args)).toFile();
+		
 		java_libbashParser theParser = new java_libbashParser(
-				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
+				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
 		Stream<String> s1 = Stream.of();
 		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<>();
 		Thread t = new Thread() {
@@ -52,8 +51,6 @@ public class App {
 		}
 
 	}
-
-	//	Set<String> s = s1;
 
 	private static String getArg(String[] args) {
 		String script;
