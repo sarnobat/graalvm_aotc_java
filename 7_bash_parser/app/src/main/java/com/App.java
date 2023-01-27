@@ -8,8 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -27,7 +27,41 @@ public class App {
 		File file = Paths.get(getArg(args)).toFile();
 		java_libbashParser theParser = new java_libbashParser(
 				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
-		Set<String> s1 = ConcurrentHashMap.newKeySet();
+		Stream<String> s1 = Stream.of();
+		new Thread() {
+
+			@Override
+			public void run() {
+				try {
+					extracted(theParser, s1);
+				} catch (RecognitionException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}.start();
+		s1.forEach(new Consumer<String>() {
+
+			@Override
+			public void accept(String symbol) {
+				System.out.println(symbol);
+			}
+		});
+	}
+
+	//	Set<String> s = s1;
+
+	private static String getArg(String[] args) {
+		String script;
+		if (args.length < 1) {
+			script = "helloworld.sh";
+		} else {
+			script = args[0];
+		}
+		return script;
+	}
+
+	private static void extracted(java_libbashParser theParser, Stream<String> s1) throws RecognitionException {
 		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
 			public Object pre(Object iObject) {
 				return iObject;
@@ -46,7 +80,7 @@ public class App {
 							aStringBuffer.append(aChildTree.getText());
 						}
 						//						System.out.println(aStringBuffer.toString());
-						s1.add(aStringBuffer.toString());
+						s1.flatMap(e -> Stream.of(aStringBuffer.toString()));
 					} else if (aType == java_libbashParser.RBRACE) {
 
 					} else if (aType == java_libbashParser.LSHIFT) {
@@ -72,18 +106,5 @@ public class App {
 				return iObject;
 			}
 		});
-
-		Set<String> s = s1;
-
-	}
-
-	private static String getArg(String[] args) {
-		String script;
-		if (args.length < 1) {
-			script = "helloworld.sh";
-		} else {
-			script = args[0];
-		}
-		return script;
-	}
+	};
 }
