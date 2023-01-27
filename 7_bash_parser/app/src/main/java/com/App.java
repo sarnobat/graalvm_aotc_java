@@ -23,9 +23,9 @@ public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
 			RecognitionException, InterruptedException {
-		
-		java_libbashParser theParser = new java_libbashParser(
-				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
+
+		java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
+				new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
 		Stream<String> s1 = Stream.of();
 		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<>();
 		Thread t = new Thread() {
@@ -46,6 +46,8 @@ public class App {
 			String symbol = q.remove();
 			if (symbol.startsWith("-")) {
 				continue;
+			} else if (symbol.startsWith("$")) {
+				continue;
 			}
 			System.out.println(symbol);
 		}
@@ -55,7 +57,7 @@ public class App {
 	private static String getArg(String[] args) {
 		String script;
 		if (args.length < 1) {
-			script = "helloworld.sh";
+			script = System.getProperty("user.home") + "/bin/du_inodes.sh";
 		} else {
 			script = args[0];
 		}
@@ -79,12 +81,43 @@ public class App {
 						StringBuffer aStringBuffer = new StringBuffer();
 						for (Object child : aTreeObject.getChildren()) {
 							CommonTree aChildTree = (CommonTree) child;
-							aStringBuffer.append(aChildTree.getText());
+							if (aChildTree.getText().equals("SINGLE_QUOTED_STRING")) {
+								// don't add this, just add what's inside it
+							} else if (aChildTree.getText().equals("DOUBLE_QUOTED_STRING")) {
+								// don't add this, just add what's inside it
+							} else if (aChildTree.getText().equals("COMMAND_SUB")) {
+								// don't add this, just add what's inside it
+							} else if (aChildTree.getText().equals("VAR_REF")) {
+								// don't add this, just add what's inside it
+							} else {
+								aStringBuffer.append(aChildTree.getText());
+							}
 						}
-						q.add(aStringBuffer.toString());
+						if (aStringBuffer.length() > 0) {
+							q.add(aStringBuffer.toString());
+						}
+						System.err.println("App.extracted(...).new TreeVisitorAction() {...}.post() STRING - "
+								+ aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
-
+					} else if (aType == java_libbashParser.USE_DEFAULT_WHEN_UNSET_OR_NULL) {
+					} else if (aType == java_libbashParser.VARIABLE_DEFINITIONS) {
+					} else if (aType == java_libbashParser.VAR_REF) {
 					} else if (aType == java_libbashParser.LSHIFT) {
+					} else if (aType == java_libbashParser.ARRAY_SIZE) {
+					} else if (aType == java_libbashParser.OP) {
+					} else if (aType == java_libbashParser.MATCH_ANY) {
+					} else if (aType == java_libbashParser.COMMAND_SUB) {
+						//						System.out.println("App.extracted(...).new TreeVisitorAction() {...}.post()  - are we coming here?");
+						//						System.exit(-1);
+					} else if (aType == java_libbashParser.DOUBLE_QUOTED_STRING) {
+					} else if (aType == java_libbashParser.SINGLE_QUOTED_STRING) {
+						//
+						//						StringBuffer aStringBuffer = new StringBuffer();
+						//						for (Object child : aTreeObject.getChildren()) {
+						//							CommonTree aChildTree = (CommonTree) child;
+						//							aStringBuffer.append(aChildTree.getText());
+						//						}
+						//						q.add(aStringBuffer.toString());
 					} else if (aType == java_libbashParser.NAME) {
 					} else if (aType == java_libbashParser.COMMAND) {
 					} else if (aType == java_libbashParser.LIST) {
@@ -96,6 +129,8 @@ public class App {
 
 					} else if (aType == java_libbashParser.CURRENT_SHELL) {
 					} else if (aType == java_libbashParser.SLASH) {
+					} else if (aType == 2) {
+						// pipe
 					} else {
 						System.err.println("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
 						System.err.println("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
