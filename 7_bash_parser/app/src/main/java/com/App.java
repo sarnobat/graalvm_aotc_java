@@ -12,6 +12,7 @@ import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.ParseTree;
 import org.antlr.runtime.tree.TreeAdaptor;
 import org.antlr.runtime.tree.TreeVisitor;
 import org.antlr.runtime.tree.TreeVisitorAction;
@@ -30,29 +31,70 @@ public class App {
 		ANTLRInputStream inputStream = new ANTLRInputStream(new FileInputStream(Paths.get("helloworld.sh").toFile()));
 		CommonTokenStream tokenStream = new CommonTokenStream(new java_libbashLexer(inputStream));
 		java_libbashParser p = new java_libbashParser(tokenStream);
-
+		//ParseTree pt = new ParseTree(p);
+		//pt.
+		//System.out.println("App.main() pt = " + pt.toStringTree(p));
 		TreeAdaptor treeAdaptor = p.getTreeAdaptor();
 		TreeVisitor v = new TreeVisitor(treeAdaptor);
 		TreeVisitorAction actions = new TreeVisitorAction() {
-			public Object pre(Object t) {
-				if (t instanceof CommonTree) {
-					CommonTree tree = (CommonTree) t;
-					int ty = tree.getType();
+			public Object pre(Object object) {
+
+				if (object instanceof CommonTree) {
+					CommonTree treeObject = (CommonTree) object;
+					System.err.println("App.main() ALL 0 treeObject.getText() = " + treeObject.getText());
+					int ty = treeObject.getType();
 					if (ty == java_libbashParser.STRING) {
-						String stringTree = tree.toStringTree();
+						//						String stringTree = treeObject.toStringTree();
+//						System.out.println(
+//								"App.main() - STRING treeObject.getChildCount() = " + treeObject.getChildCount());
 
-						System.out.println("App.main() stringTree  = " + stringTree);
-						System.out.println("App.main() tree.toString() = " + tree.getText());
+						StringBuffer sb = new StringBuffer();
+						for (Object child : treeObject.getChildren()) {
+//							System.out.println("App.main() STRING child.getClass() = " + child.getClass());
+							CommonTree childTree = (CommonTree) child;
+							System.err.println("App.main() STRING child = " + childTree.getText());
+							sb.append(childTree.getText());
+						}
+						System.err.println("STRING App.main() sb = " + sb.toString());
+						System.out.println(sb.toString());
+						//						System.out.println("App.main() stringTree  = " + stringTree);
+						//						System.out.println("App.main() treeObject.getText() = " + treeObject.getText());
+
+						// 28, 13. 118, 154, 30
+					} else if (ty == java_libbashParser.RBRACE) {
+
+					} else if (ty == java_libbashParser.LSHIFT) {
+					} else if (ty == java_libbashParser.NAME) {
+					} else if (ty == java_libbashParser.COMMAND) {
+					} else if (ty == java_libbashParser.LIST) {
+						StringBuffer sb = new StringBuffer();
+						for (Object child : treeObject.getChildren()) {
+//							System.out.println("App.main() child.getClass() = " + child.getClass());
+							CommonTree childTree = (CommonTree) child;
+
+							System.err.println("App.main() LIST 1 child.getClass() = " + child.getClass());
+							System.err.println("App.main() LIST 2 child = " + childTree.getText());
+							sb.append(childTree.getText());
+						}
+						System.err.println("App.main() LIST sb = " + sb.toString());
+
+					} else if (ty == java_libbashParser.CURRENT_SHELL) {
+					} else if (ty == java_libbashParser.SLASH) {
+					} else {
+						System.err.println("App.main() 3 ty = " + ty);
+						System.err.println("App.main() UNKNOWN 4 treeObject.getLine() = " + treeObject.getLine());
 					}
+//					System.out.println("App.main() ALL treeObject.toStringTree() = " + treeObject.toStringTree());
 
-					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + t.getClass());
-					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + tree.getType());
-					System.out.println("App.main(...).new TreeVisitorAction() {...}.pre() " + tree.getText());
-					System.out.println();
+//					System.out.println("App.main() ALL object.getClass() = " + object.getClass());
+					//					System.out.println("App.main() treeObject.getType() = "
+					//							+ treeObject.getType());
+
 				} else {
-
+					System.err.println("App.main() " + object.getClass());
 				}
-				return t;
+//				System.out.println();
+				return object;
 			}
 
 			public Object post(Object t) {
@@ -61,10 +103,6 @@ public class App {
 			}
 		};
 		v.visit(p.start().getTree(), actions);
-
-		// Reflection can be problematic with native images but this verifies it's working
-		Class c1 = Class.forName("java.lang.Boolean");
-		System.out.println("Class represented by c1: " + c1.toString());
 
 	}
 }
