@@ -27,13 +27,7 @@ public class App {
 		File file = Paths.get(getArg(args)).toFile();
 		java_libbashParser theParser = new java_libbashParser(
 				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
-
-		Set<String> s = getSymbols(theParser);
-
-	}
-
-	private static Set<String> getSymbols(java_libbashParser theParser) throws RecognitionException {
-		Set<String> s = ConcurrentHashMap.newKeySet();
+		Set<String> s1 = ConcurrentHashMap.newKeySet();
 		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
 			public Object pre(Object iObject) {
 				return iObject;
@@ -51,8 +45,8 @@ public class App {
 							CommonTree aChildTree = (CommonTree) child;
 							aStringBuffer.append(aChildTree.getText());
 						}
-//						System.out.println(aStringBuffer.toString());
-						s.add(aStringBuffer.toString());
+						//						System.out.println(aStringBuffer.toString());
+						s1.add(aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
 
 					} else if (aType == java_libbashParser.LSHIFT) {
@@ -78,7 +72,9 @@ public class App {
 				return iObject;
 			}
 		});
-		return s;
+
+		Set<String> s = s1;
+
 	}
 
 	private static String getArg(String[] args) {
