@@ -3,10 +3,13 @@
  */
 package com;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -21,9 +24,16 @@ public class App {
 
 	public static void main(String[] args)
 			throws ClassNotFoundException, FileNotFoundException, IOException, RecognitionException {
-		java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
-				new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
+		File file = Paths.get(getArg(args)).toFile();
+		java_libbashParser theParser = new java_libbashParser(
+				new CommonTokenStream(new java_libbashLexer(new ANTLRInputStream(new FileInputStream(file)))));
 
+		Set<String> s = getSymbols(theParser);
+
+	}
+
+	private static Set<String> getSymbols(java_libbashParser theParser) throws RecognitionException {
+		Set<String> s = ConcurrentHashMap.newKeySet();
 		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
 			public Object pre(Object iObject) {
 				return iObject;
@@ -33,39 +43,33 @@ public class App {
 
 				if (iObject instanceof CommonTree) {
 					CommonTree aTreeObject = (CommonTree) iObject;
-					System.err.println("App.main() ALL 0 treeObject.getText() = " + aTreeObject.getText());
 					int aType = aTreeObject.getType();
 					if (aType == java_libbashParser.STRING) {
 
 						StringBuffer aStringBuffer = new StringBuffer();
 						for (Object child : aTreeObject.getChildren()) {
 							CommonTree aChildTree = (CommonTree) child;
-							System.err.println("App.main() STRING child = " + aChildTree.getText());
 							aStringBuffer.append(aChildTree.getText());
 						}
-						System.err.println("STRING App.main() sb = " + aStringBuffer.toString());
-						System.out.println(aStringBuffer.toString());
+//						System.out.println(aStringBuffer.toString());
+						s.add(aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
 
 					} else if (aType == java_libbashParser.LSHIFT) {
 					} else if (aType == java_libbashParser.NAME) {
 					} else if (aType == java_libbashParser.COMMAND) {
 					} else if (aType == java_libbashParser.LIST) {
-						StringBuffer sb = new StringBuffer();
 						for (Object aChild : aTreeObject.getChildren()) {
 							CommonTree aChildTree = (CommonTree) aChild;
-
-							System.err.println("App.main() LIST 1 child.getClass() = " + aChild.getClass());
-							System.err.println("App.main() LIST 2 child = " + aChildTree.getText());
-							sb.append(aChildTree.getText());
+							System.err.println(
+									"App.main() LIST aChildTree.toStringTree() = " + aChildTree.toStringTree());
 						}
-						System.err.println("App.main() LIST sb = " + sb.toString());
 
 					} else if (aType == java_libbashParser.CURRENT_SHELL) {
 					} else if (aType == java_libbashParser.SLASH) {
 					} else {
-						System.err.println("App.main() 3 ty = " + aType);
 						System.err.println("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
+						System.err.println("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
 					}
 
 				} else {
@@ -74,7 +78,7 @@ public class App {
 				return iObject;
 			}
 		});
-
+		return s;
 	}
 
 	private static String getArg(String[] args) {
