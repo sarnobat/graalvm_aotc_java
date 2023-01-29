@@ -58,6 +58,7 @@ public class App {
 		String script;
 		if (args.length < 1) {
 			script = System.getProperty("user.home") + "/bin/du_inodes.sh";
+			System.err.println("[warn] No input file specified, using " + script);
 		} else {
 			script = args[0];
 		}
