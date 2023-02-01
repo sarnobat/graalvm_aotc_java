@@ -21,6 +21,10 @@ import org.antlr.runtime.tree.TreeVisitorAction;
 import org.gentoo.libbash.java_libbashLexer;
 import org.gentoo.libbash.java_libbashParser;
 
+/**
+ * Unlike some rudimentary regex, we parse the bash script properly so that whitespace 
+ * inside legitimate commands gets interpreted correctly.
+ */
 public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
@@ -44,6 +48,8 @@ public class App {
 		};
 		t.start();
 		t.join();
+		// I don't think it's possible to use a stream instead of a queue.
+		// Streams need to be closed before being consumed, apparently.
 		while (!q.isEmpty()) {
 			String symbol = q.remove();
 			if (visited.contains(symbol)) {
@@ -61,10 +67,17 @@ public class App {
 
 	}
 
+	private static void debug(String msg) {
+		if (false) {
+			System.err.println(msg);
+		}
+	}
+
 	private static String getArg(String[] args) {
 		String script;
 		if (args.length < 1) {
 			script = System.getProperty("user.home") + "/bin/du_inodes.sh";
+			debug("[warn] No input file specified, using " + script);
 		} else {
 			script = args[0];
 		}
@@ -103,7 +116,7 @@ public class App {
 						if (aStringBuffer.length() > 0) {
 							q.add(aStringBuffer.toString());
 						}
-						System.err.println("App.extracted(...).new TreeVisitorAction() {...}.post() STRING - "
+						debug("App.extracted(...).new TreeVisitorAction() {...}.post() STRING - "
 								+ aStringBuffer.toString());
 					} else if (aType == java_libbashParser.RBRACE) {
 					} else if (aType == java_libbashParser.USE_DEFAULT_WHEN_UNSET_OR_NULL) {
@@ -130,7 +143,7 @@ public class App {
 					} else if (aType == java_libbashParser.LIST) {
 						for (Object aChild : aTreeObject.getChildren()) {
 							CommonTree aChildTree = (CommonTree) aChild;
-							System.err.println(
+							debug(
 									"App.main() LIST aChildTree.toStringTree() = " + aChildTree.toStringTree());
 						}
 
@@ -139,12 +152,12 @@ public class App {
 					} else if (aType == 2) {
 						// pipe
 					} else {
-						System.err.println("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
-						System.err.println("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
+						debug("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
+						debug("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
 					}
 
 				} else {
-					System.err.println("App.main() " + iObject.getClass());
+					debug("App.main() " + iObject.getClass());
 				}
 				return iObject;
 			}
