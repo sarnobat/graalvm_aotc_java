@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Stream;
 
@@ -23,7 +25,7 @@ public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
 			RecognitionException, InterruptedException {
-
+		Set<String> visited = new HashSet<String>();
 		java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
 				new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
 		Stream<String> s1 = Stream.of();
@@ -44,6 +46,11 @@ public class App {
 		t.join();
 		while (!q.isEmpty()) {
 			String symbol = q.remove();
+			if (visited.contains(symbol)) {
+				continue;
+			}
+			visited.add(symbol);
+			
 			if (symbol.startsWith("-")) {
 				continue;
 			} else if (symbol.startsWith("$")) {
