@@ -40,7 +40,7 @@ public class GedcomCli {
     @Deprecated
     private static Map<String, Individual> displayNameToIndividual = new HashMap<>();
     private static Map<String, Individual> displayNameToIndividualWithSpouse = new HashMap<>();
-    private static Map<String, Family> idToFamily = new HashMap<>();
+    private static Map<String, Marriage> idToFamily = new HashMap<>();
     private static Set<Individual> individualsWithNoParent = new HashSet<>();
     @Deprecated
     // we are mixing different marriages
@@ -67,7 +67,7 @@ public class GedcomCli {
                 throw new RuntimeException(e);
             }
             Individual individual = null;
-            Family family = null;
+            Marriage family = null;
             System.out.println("App.main.run() 4");
             while (myReader.hasNextLine()) {
 //                      System.out.println("App.main.run() 5");
@@ -105,7 +105,7 @@ public class GedcomCli {
                     Matcher matcher = p.matcher(data);
                     if (matcher.find()) {
                         String s = matcher.group(1);
-                        family = new Family(s);
+                        family = new Marriage(s);
                         idToFamily.put(s, family);
                     } else {
                         throw new RuntimeException("Developer error");
@@ -139,12 +139,12 @@ public class GedcomCli {
             // }
             // attach each individual to its family
             for (Individual i : individualToChildFamilyId.keySet()) {
-                Family f = idToFamily.get(individualToChildFamilyId.get(i));
+                Marriage f = idToFamily.get(individualToChildFamilyId.get(i));
                 i.setChildFamily(f);
                 i.addChildFamily(f);
                 // System.out.println("Has parent: " + i.toString());
             }
-            for (Family f : idToFamily.values()) {
+            for (Marriage f : idToFamily.values()) {
 //                      System.out .println("SRIDHAR App.main.run() family father = " + f.getHusband().toString() + "\thas " + f.getChildren().size() + " children: " + f.getChildren().toString());
                 f.getHusband().setSpouse(f.getWife());
                 f.getWife().setSpouse(f.getHusband());
@@ -168,7 +168,7 @@ public class GedcomCli {
 //                          System.exit(-1);
                 }
             }
-            for (Family f : idToFamily.values()) {
+            for (Marriage f : idToFamily.values()) {
                 System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
                 displayNameToIndividualWithSpouse.put(f.getHusband().toString(), f.getHusband());
                 displayNameToIndividualWithSpouse.put(f.getWife().toString(), f.getWife());
@@ -204,7 +204,7 @@ public class GedcomCli {
 
     }
 
-    private static String printFamily(Family f, String string) {
+    private static String printFamily(Marriage f, String string) {
         if (f == null) {
             return "";
         }
@@ -213,18 +213,15 @@ public class GedcomCli {
             if (c == f.getHusband()) {
                 throw new RuntimeException("infinite loop");
             }
-            s += "\n" + string + c.toString();// + (c.getSpouse() == null ? "" : " -- " + c.getSpouse().toString());
-//          Family childFamily1 = c.getChildFamily();
-//          s += printFamily(childFamily1, string + "  ");
-            for (Family childFamily : c.getChildFamilies()) {
+            s += "\n" + string + c.toString();
+            for (Marriage childFamily : c.getChildFamilies()) {
                 s += printFamily(childFamily, string + "  ");
             }
         }
         return s;
     }
 
-    // TODO: rename this to Marriage
-    private static class Family {
+    private static class Marriage {
         private final String id;
         private Individual husband;
         private Individual wife;
@@ -258,7 +255,7 @@ public class GedcomCli {
             this.wife = wife;
         }
 
-        Family(String id) {
+        Marriage(String id) {
             this.id = id;
         }
 
@@ -282,17 +279,17 @@ public class GedcomCli {
         String firstName;
         // TODO: this should be a collection of child families
         @Deprecated
-        Family childFamily;
-        Map<String, Family> childFamilies = new HashMap<>();
-        Family parentFamily;
+        Marriage childFamily;
+        Map<String, Marriage> childFamilies = new HashMap<>();
+        Marriage parentFamily;
         Individual spouse;
 
         @Deprecated
-        Family getChildFamily() {
+        Marriage getChildFamily() {
             return childFamily;
         }
 
-        public Iterable<Family> getChildFamilies() {
+        public Iterable<Marriage> getChildFamilies() {
             return childFamilies.values();
         }
 
@@ -309,19 +306,19 @@ public class GedcomCli {
         }
 
         @Deprecated
-        void setChildFamily(Family childFamily) {
+        void setChildFamily(Marriage childFamily) {
             this.childFamily = childFamily;
         }
 
-        void addChildFamily(Family childFamily) {
+        void addChildFamily(Marriage childFamily) {
             this.childFamilies.put(childFamily.getId(), childFamily);
         }
 
-        Family getParentFamily() {
+        Marriage getParentFamily() {
             return parentFamily;
         }
 
-        void setParentFamily(Family parentFamily) {
+        void setParentFamily(Marriage parentFamily) {
             this.parentFamily = parentFamily;
         }
 
@@ -353,15 +350,5 @@ public class GedcomCli {
                     : " -- " + spouse.getFirstName() + " " + spouse.getLastName() + " " + spouse.id;
             return getFirstName() + " " + getLastName() + " " + id + string;
         }
-
     }
-
-    private String getLastPartOf(String path) {
-        Path path2 = Paths.get(path);
-        // String string = path2.getName(path2.getNameCount()).toString();
-        String string = path2.getFileName().toString();
-        // System.out.println("SRIDHAR App.getLastPartOf() " + string);
-        return string;
-    }
-
 }
