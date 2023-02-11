@@ -27,8 +27,8 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * Unlike some rudimentary regex, we parse the bash script properly so that whitespace 
- * inside legitimate commands gets interpreted correctly.
+ * Unlike some rudimentary regex, we parse the bash script properly so that
+ * whitespace inside legitimate commands gets interpreted correctly.
  */
 public class GedcomCli {
 
@@ -55,151 +55,152 @@ public class GedcomCli {
         System.out.println("App.main() 1");
         if (args.length == 1) {
         } else {
-                    File myObj = new File(System.getProperty("user.home") + "/sarnobat.git/2021/gedcom/rohidekar.ged");
-                    Scanner myReader;
+            File myObj = new File(System.getProperty("user.home") + "/sarnobat.git/2021/gedcom/rohidekar.ged");
+            Scanner myReader;
 
-                    try {
-                        System.out.println("App.main.run() 2");
-                        myReader = new Scanner(myObj);
+            try {
+                System.out.println("App.main.run() 2");
+                myReader = new Scanner(myObj);
 
-                        System.out.println("App.main.run() 3");
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
-                    Individual individual = null;
-                    Family family = null;
-                    System.out.println("App.main.run() 4");
-                    while (myReader.hasNextLine()) {
+                System.out.println("App.main.run() 3");
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            Individual individual = null;
+            Family family = null;
+            System.out.println("App.main.run() 4");
+            while (myReader.hasNextLine()) {
 //                      System.out.println("App.main.run() 5");
-                        String data = myReader.nextLine();
-                        if (data.startsWith("0") && data.endsWith("INDI")) {
+                String data = myReader.nextLine();
+                if (data.startsWith("0") && data.endsWith("INDI")) {
 
-                            if (individual != null) {
-                                // System.out.println(individual.toString());
-                            }
-                            String regex = "0..(.*)..INDI";
-                            Pattern p = Pattern.compile(regex);
-                            Matcher matcher = p.matcher(data);
-                            if (matcher.find()) {
-                                String s = matcher.group(1);
-                                individual = new Individual(s);
-                                idToIndividual.put(s, individual);
-                            } else {
-                                throw new RuntimeException("Developer error for line: " + data);
-                            }
-                            continue;
-                        }
-                        if (individual == null) {
-                            continue;
-                        }
-                        if (data.startsWith("2 GIVN")) {
-                            String replaceAll = data.replaceAll(".*GIVN ", "");
-                            individual.setFirstName(replaceAll);
-                        } else if (data.startsWith("2 SURN")) {
-                            String replaceAll = data.replaceAll(".*SURN ", "");
-                            individual.setLastName(replaceAll);
-                            displayNameToIndividual.put(individual.toString(), individual);
-                        } else if (data.startsWith("0") && data.endsWith("FAM")) {
-                            String regex = "0..(.*)..FAM";
-                            Pattern p = Pattern.compile(regex);
-                            Matcher matcher = p.matcher(data);
-                            if (matcher.find()) {
-                                String s = matcher.group(1);
-                                family = new Family(s);
-                                idToFamily.put(s, family);
-                            } else {
-                                throw new RuntimeException("Developer error");
-                            }
-                        } else if (data.startsWith("1 FAMS")) {
-                            String replaceAll = data.replaceAll("1 FAMS .", "").replaceAll(".\044", "");
-                            individualToChildFamilyId.put(individual, replaceAll);
-                        } else if (data.startsWith("1 HUSB")) {
-                            String replaceAll = data.replaceAll(".*HUSB .", "").replaceAll(".\044", "");
-                            Individual husband = idToIndividual.get(replaceAll);
-                            family.setHusband(husband);
-                        } else if (data.startsWith("1 WIFE")) {
-                            String replaceAll = data.replaceAll(".*WIFE .", "").replaceAll(".\044", "");
-                            family.setWife(idToIndividual.get(replaceAll));
-                        } else if (data.startsWith("1 CHIL")) {
-                            String replaceAll = data.replaceAll(".*CHIL .", "").replaceAll(".\044", "");
-                            Individual i = idToIndividual.get(replaceAll);
-                            family.addChild(i);
-                            i.setParentFamily(family);
-                        }
+                    if (individual != null) {
+                        // System.out.println(individual.toString());
                     }
-                    myReader.close();
-                    if (idToFamily.size() < 88) {
-                        throw new RuntimeException("missing families");
+                    String regex = "0..(.*)..INDI";
+                    Pattern p = Pattern.compile(regex);
+                    Matcher matcher = p.matcher(data);
+                    if (matcher.find()) {
+                        String s = matcher.group(1);
+                        individual = new Individual(s);
+                        idToIndividual.put(s, individual);
+                    } else {
+                        throw new RuntimeException("Developer error for line: " + data);
                     }
-                    if (idToIndividual.size() < 256) {
-                        throw new RuntimeException("missing individual");
-                    }
-                    // if (!idToIndividual.keySet().contains("F10")) {
-                    // throw new RuntimeException();
-                    // }
-                    // attach each individual to its family
-                    for (Individual i : individualToChildFamilyId.keySet()) {
-                        Family f = idToFamily.get(individualToChildFamilyId.get(i));
-                        i.setChildFamily(f);
-                        i.addChildFamily(f);
-                        // System.out.println("Has parent: " + i.toString());
-                    }
-                    for (Family f : idToFamily.values()) {
-//                      System.out .println("SRIDHAR App.main.run() family father = " + f.getHusband().toString() + "\thas " + f.getChildren().size() + " children: " + f.getChildren().toString());
-                        f.getHusband().setSpouse(f.getWife());
-                        f.getWife().setSpouse(f.getHusband());
-                        for (Individual child : f.getChildren()) {
-
-                            if ("I119".equals(child.getId())) {
-
-                            }
-                            childToFather.put(child.getId(), f.getHusband());
-                            childToMother.put(child.getId(), f.getWife());
-
-                            displayNameToChildren.put(f.getHusband().toString(), child);
-                            displayNameToChildren.put(f.getWife().toString(), child);
-                            displayNameToChildrenWithSpouse.put(f.getHusband().toString(), child);
-                            displayNameToChildrenWithSpouse.put(f.getWife().toString(), child);
-
-                        }
-                        if (!f.getHusband().toString().contains("--")) {
-                            System.err.println("[warn] SRIDHAR App.run() missing " + f.getHusband().toString() + " . See if showid=true fixes it.");
-//                          System.exit(-1);
-                        }
-                    }
-                    for (Family f : idToFamily.values()) {
-                        System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
-                        displayNameToIndividualWithSpouse.put(f.getHusband().toString(), f.getHusband());
-                        displayNameToIndividualWithSpouse.put(f.getWife().toString(), f.getWife());
-                    }
-                    for (String id : idToIndividual.keySet()) {
-                        if (!childToFather.containsKey(id) && !childToMother.containsKey(id)) {
-                            System.out.println(id + " has no parents :" + idToIndividual.get(id));
-                        }
-                    }
-
-                    if (displayNameToChildrenWithSpouse.size() < 20) {
-                        throw new RuntimeException();
-                    }
-                    if (!idToIndividual.keySet().contains(ROOT_ID)) {
-                        throw new RuntimeException("Missing root ID " + ROOT_ID);
-                    }
-
-                    String o = "Venkat Rao Rohidekar I29 -- Tarabai  I30";
-                    if (!displayNameToIndividualWithSpouse.keySet().contains(o)) {
-                        throw new RuntimeException("developer error: could not find entry for " + o);
-                    }
-
-                    Individual child = displayNameToIndividualWithSpouse.get(o);
-                    if (!displayNameToIndividualWithSpouse.containsKey(child.toString())) {
-                        for (String s : displayNameToIndividualWithSpouse.keySet()) {
-                            System.out.println("// SRIDHAR App.main.run() " + s);
-                        }
-                        throw new RuntimeException("");
-                    }
-                    // I24 - root
-                    System.out.println(printFamily(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
+                    continue;
                 }
+                if (individual == null) {
+                    continue;
+                }
+                if (data.startsWith("2 GIVN")) {
+                    String replaceAll = data.replaceAll(".*GIVN ", "");
+                    individual.setFirstName(replaceAll);
+                } else if (data.startsWith("2 SURN")) {
+                    String replaceAll = data.replaceAll(".*SURN ", "");
+                    individual.setLastName(replaceAll);
+                    displayNameToIndividual.put(individual.toString(), individual);
+                } else if (data.startsWith("0") && data.endsWith("FAM")) {
+                    String regex = "0..(.*)..FAM";
+                    Pattern p = Pattern.compile(regex);
+                    Matcher matcher = p.matcher(data);
+                    if (matcher.find()) {
+                        String s = matcher.group(1);
+                        family = new Family(s);
+                        idToFamily.put(s, family);
+                    } else {
+                        throw new RuntimeException("Developer error");
+                    }
+                } else if (data.startsWith("1 FAMS")) {
+                    String replaceAll = data.replaceAll("1 FAMS .", "").replaceAll(".\044", "");
+                    individualToChildFamilyId.put(individual, replaceAll);
+                } else if (data.startsWith("1 HUSB")) {
+                    String replaceAll = data.replaceAll(".*HUSB .", "").replaceAll(".\044", "");
+                    Individual husband = idToIndividual.get(replaceAll);
+                    family.setHusband(husband);
+                } else if (data.startsWith("1 WIFE")) {
+                    String replaceAll = data.replaceAll(".*WIFE .", "").replaceAll(".\044", "");
+                    family.setWife(idToIndividual.get(replaceAll));
+                } else if (data.startsWith("1 CHIL")) {
+                    String replaceAll = data.replaceAll(".*CHIL .", "").replaceAll(".\044", "");
+                    Individual i = idToIndividual.get(replaceAll);
+                    family.addChild(i);
+                    i.setParentFamily(family);
+                }
+            }
+            myReader.close();
+            if (idToFamily.size() < 88) {
+                throw new RuntimeException("missing families");
+            }
+            if (idToIndividual.size() < 256) {
+                throw new RuntimeException("missing individual");
+            }
+            // if (!idToIndividual.keySet().contains("F10")) {
+            // throw new RuntimeException();
+            // }
+            // attach each individual to its family
+            for (Individual i : individualToChildFamilyId.keySet()) {
+                Family f = idToFamily.get(individualToChildFamilyId.get(i));
+                i.setChildFamily(f);
+                i.addChildFamily(f);
+                // System.out.println("Has parent: " + i.toString());
+            }
+            for (Family f : idToFamily.values()) {
+//                      System.out .println("SRIDHAR App.main.run() family father = " + f.getHusband().toString() + "\thas " + f.getChildren().size() + " children: " + f.getChildren().toString());
+                f.getHusband().setSpouse(f.getWife());
+                f.getWife().setSpouse(f.getHusband());
+                for (Individual child : f.getChildren()) {
+
+                    if ("I119".equals(child.getId())) {
+
+                    }
+                    childToFather.put(child.getId(), f.getHusband());
+                    childToMother.put(child.getId(), f.getWife());
+
+                    displayNameToChildren.put(f.getHusband().toString(), child);
+                    displayNameToChildren.put(f.getWife().toString(), child);
+                    displayNameToChildrenWithSpouse.put(f.getHusband().toString(), child);
+                    displayNameToChildrenWithSpouse.put(f.getWife().toString(), child);
+
+                }
+                if (!f.getHusband().toString().contains("--")) {
+                    System.err.println("[warn] SRIDHAR App.run() missing " + f.getHusband().toString()
+                            + " . See if showid=true fixes it.");
+//                          System.exit(-1);
+                }
+            }
+            for (Family f : idToFamily.values()) {
+                System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
+                displayNameToIndividualWithSpouse.put(f.getHusband().toString(), f.getHusband());
+                displayNameToIndividualWithSpouse.put(f.getWife().toString(), f.getWife());
+            }
+            for (String id : idToIndividual.keySet()) {
+                if (!childToFather.containsKey(id) && !childToMother.containsKey(id)) {
+                    System.out.println(id + " has no parents :" + idToIndividual.get(id));
+                }
+            }
+
+            if (displayNameToChildrenWithSpouse.size() < 20) {
+                throw new RuntimeException();
+            }
+            if (!idToIndividual.keySet().contains(ROOT_ID)) {
+                throw new RuntimeException("Missing root ID " + ROOT_ID);
+            }
+
+            String o = "Venkat Rao Rohidekar I29 -- Tarabai  I30";
+            if (!displayNameToIndividualWithSpouse.keySet().contains(o)) {
+                throw new RuntimeException("developer error: could not find entry for " + o);
+            }
+
+            Individual child = displayNameToIndividualWithSpouse.get(o);
+            if (!displayNameToIndividualWithSpouse.containsKey(child.toString())) {
+                for (String s : displayNameToIndividualWithSpouse.keySet()) {
+                    System.out.println("// SRIDHAR App.main.run() " + s);
+                }
+                throw new RuntimeException("");
+            }
+            // I24 - root
+            System.out.println(printFamily(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
+        }
 
     }
 
@@ -346,11 +347,11 @@ public class GedcomCli {
 
         String lastName;
 
-
         @Override
         public String toString() {
-            String string = spouse == null ? "" : " -- " + spouse.getFirstName() + " " + spouse.getLastName() + " " + spouse.id;
-            return getFirstName() + " " + getLastName() + " " + id + string; 
+            String string = spouse == null ? ""
+                    : " -- " + spouse.getFirstName() + " " + spouse.getLastName() + " " + spouse.id;
+            return getFirstName() + " " + getLastName() + " " + id + string;
         }
 
     }
@@ -362,6 +363,5 @@ public class GedcomCli {
         // System.out.println("SRIDHAR App.getLastPartOf() " + string);
         return string;
     }
-
 
 }
