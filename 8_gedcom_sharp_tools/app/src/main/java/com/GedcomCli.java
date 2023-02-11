@@ -257,13 +257,13 @@ public class GedcomCli {
     private static class Individual {
         private final String id;
 
-        String firstName;
+        private String firstName;
         // TODO: this should be a collection of child families
         @Deprecated
-        Marriage childFamily;
-        Map<String, Marriage> childFamilies = new HashMap<>();
-        Marriage parentFamily;
-        Individual spouse;
+        private Marriage childFamily;
+        private final Map<String, Marriage> childFamilies = new HashMap<>();
+        private Marriage parentFamily;
+        private Individual spouse;
 
         @Deprecated
         Marriage getChildFamily() {
