@@ -25,18 +25,18 @@ public class GedcomCli {
     private static Map<String, Individual> childToMother = new HashMap<>();
     private static Map<String, Individual> childToFather = new HashMap<>();
     private static Map<Individual, String> individualToChildFamilyId = new HashMap<>();
-    private static Map<String, String> displayNameOfChildToParent = new HashMap<>();
+//    private static Map<String, String> displayNameOfChildToParent = new HashMap<>();
     private static Map<String, Individual> idToIndividual = new HashMap<>();
     private static Map<String, Individual> displayNameToIndividualWithSpouse = new HashMap<>();
     private static Map<String, Marriage> idToFamily = new HashMap<>();
-    private static Set<Individual> individualsWithNoParent = new HashSet<>();
+//    private static Set<Individual> individualsWithNoParent = new HashSet<>();
     private static Multimap<String, Individual> displayNameToChildrenWithSpouse = HashMultimap.create();
 
     private static final String ROOT_ID = "I25";
 //  private static final String ROOT_ID = "I44";
 
     public static void main(String[] args) throws IOException {
-        boolean showSpouses = Boolean.parseBoolean(System.getProperty("spouses", "true"));
+//        boolean showSpouses = Boolean.parseBoolean(System.getProperty("spouses", "true"));
         System.err.println("GedcomCli.main() 1");
         if (args.length == 0) {
             printHelp();
@@ -112,7 +112,7 @@ public class GedcomCli {
                 String replaceAll = data.replaceAll(".*CHIL .", "").replaceAll(".\044", "");
                 Individual i = idToIndividual.get(replaceAll);
                 family.addChild(i);
-                i.setParentFamily(family);
+//                i.setParentFamily(family);
             }
         }
         myReader.close();
@@ -184,8 +184,8 @@ public class GedcomCli {
             throw new RuntimeException("");
         }
 //        System.out.println(printEdges(idToFamily));
-//        System.out.println(printIndividuals(idToIndividual));
-        if (true) {
+        System.out.println(printIndividuals(idToIndividual));
+        if (false) {
             switch (args[0]) {
             case "dump":
                 System.out.println(printFamiliesRecursive(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
@@ -257,7 +257,7 @@ public class GedcomCli {
             sb.append(id);
             sb.append(separator);
             Individual individual = idToIndividual.get(id);
-            sb.append(individual.toString());
+            sb.append(individual.toStringReadable());
             sb.append("\n"); 
         }
         return sb;
@@ -348,7 +348,7 @@ public class GedcomCli {
         @Deprecated
         private Marriage childFamily;
         private final Map<String, Marriage> childFamilies = new HashMap<>();
-        private Marriage parentFamily;
+//        private Marriage parentFamily;
         private Individual spouse;
 
         @Deprecated
@@ -368,9 +368,9 @@ public class GedcomCli {
             this.spouse = husband;
         }
 
-        public Individual getSpouse() {
-            return this.spouse;
-        }
+//        public Individual getSpouse() {
+//            return this.spouse;
+//        }
 
         @Deprecated
         void setChildFamily(Marriage childFamily) {
@@ -381,13 +381,13 @@ public class GedcomCli {
             this.childFamilies.put(childFamily.getId(), childFamily);
         }
 
-        Marriage getParentFamily() {
-            return parentFamily;
-        }
+//        Marriage getParentFamily() {
+//            return parentFamily;
+//        }
 
-        void setParentFamily(Marriage parentFamily) {
-            this.parentFamily = parentFamily;
-        }
+//        void setParentFamily(Marriage parentFamily) {
+//            this.parentFamily = parentFamily;
+//        }
 
         Individual(String id) {
             this.id = id;
@@ -411,6 +411,14 @@ public class GedcomCli {
 
         String lastName;
 
+
+        String toStringReadable() {
+            String spouseString = spouse == null ? ""
+                    : " -- " + spouse.getFirstName() + " " + spouse.getLastName();
+            return getFirstName() + " " + getLastName() + " " + spouseString;
+        }
+
+        
         @Override
         public String toString() {
             String string = spouse == null ? ""
