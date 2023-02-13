@@ -12,9 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
@@ -185,14 +183,19 @@ public class GedcomCli {
             }
             throw new RuntimeException("");
         }
-        System.out.println(printFamilies(idToFamily));
-        if (false) {
+//        System.out.println(printEdges(idToFamily));
+//        System.out.println(printIndividuals(idToIndividual));
+        if (true) {
             switch (args[0]) {
             case "dump":
                 System.out.println(printFamiliesRecursive(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
                 break;
+            case "nodes":
             case "individuals":
                 System.out.println(printIndividuals(idToIndividual));
+                break;
+            case "edges":
+                System.out.println(printEdges(idToFamily));
                 break;
             case "families":
                 System.out.println(printFamilies(idToFamily));
@@ -204,6 +207,18 @@ public class GedcomCli {
         }
         // I24 - root
 
+    }
+
+    private static String separator = "\t";
+    private static StringBuffer printEdges(Map<String, Marriage> idToFamily3) {
+        StringBuffer sb = new StringBuffer();
+        for (String id : new TreeSet<>(idToFamily3.keySet())) {
+            Marriage f = idToFamily3.get(id);
+            for (Individual c : f.getChildren()) {
+                sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
+            }
+        }
+        return sb;
     }
 
     private static StringBuffer printFamilies(Map<String, Marriage> idToFamily) {
@@ -236,17 +251,14 @@ public class GedcomCli {
         return sb;
     }
 
-    private static String extracted(String id, Individual c) {
-        return c.toString() + "\t" + idToIndividual.get(id).toString();
-    }
-
     private static StringBuffer printIndividuals(Map<String, Individual> idToIndividual) {
         StringBuffer sb = new StringBuffer();
         for (String id : new TreeSet<>(idToIndividual.keySet())) {
             sb.append(id);
-            sb.append("\n");
+            sb.append(separator);
             Individual individual = idToIndividual.get(id);
-            sb.append("\n" + individual.toString());
+            sb.append(individual.toString());
+            sb.append("\n"); 
         }
         return sb;
     }
@@ -280,6 +292,10 @@ public class GedcomCli {
 
         Individual getHusband() {
             return husband;
+        }
+
+        public String getCouple() {
+            return husband.toString();
         }
 
         public Collection<Individual> getChildren() {
