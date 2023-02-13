@@ -184,8 +184,8 @@ public class GedcomCli {
             throw new RuntimeException("");
         }
 //        System.out.println(printEdges(idToFamily));
-        System.out.println(printIndividuals(idToIndividual));
-        if (false) {
+//        System.out.println(printIndividuals(idToIndividual));
+        if (true) {
             switch (args[0]) {
             case "dump":
                 System.out.println(printFamiliesRecursive(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
