@@ -9,11 +9,16 @@ import java.io.InputStreamReader;
 import java.io.SequenceInputStream;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  */
@@ -29,7 +34,7 @@ public class App {
 
         try (BufferedReader bufferedReader = read(args, System.in)) {
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
-                System.out.println(line);
+//                System.out.println(line);
                 String[] csv = new com.opencsv.CSVParser().parseLine(line);
                 String child = csv[0];
                 String parent = csv[1];
@@ -37,6 +42,37 @@ public class App {
             }
         }
 
+        for (Entry<String, String> entry : map.entries()) {
+            System.err.println("App.main() entry = " + entry);
+        }
+        
+        Set<String> roots = Sets.difference(map.keySet(), new HashSet<>(map.values()));
+
+        StringBuffer sb = new StringBuffer();
+        for (String parent : roots) {
+            System.err.println("App.main() root: " + parent);
+            sb.append(printAllPaths("", parent, map));
+        }
+        System.out.println(sb.toString());
+
+    }
+
+    private static StringBuffer printAllPaths(String prefix, String parent, Multimap<String, String> map) {
+        StringBuffer sbPrefix = new StringBuffer();
+        sbPrefix.append(prefix);
+        sbPrefix.append("/");
+        sbPrefix.append(parent);
+        sbPrefix.toString();
+        String prefixNew = sbPrefix.toString();
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(prefixNew);
+        sb.append("\n");
+        for (String child : map.get(parent)) {
+            System.err.println("App.printAllPaths() " + child);
+            sb.append(printAllPaths(prefixNew, child, map));
+        }
+        return sb;
     }
 
     private static BufferedReader read(String[] args, InputStream in) throws IOException {
