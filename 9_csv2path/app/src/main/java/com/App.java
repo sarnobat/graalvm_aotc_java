@@ -1,12 +1,15 @@
 package com;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.SequenceInputStream;
+import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,8 +51,73 @@ public class App {
         for (String parent : roots) {
             sb.append(printAllPaths("", parent, map));
         }
-        System.out.println(sb.toString());
+        // This doesn't work with pipes flushing
+        {
 
+//        System.out.println(sb.toString());
+        }
+        {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(System.out);
+            outputStreamWriter.write(sb.toString());
+            outputStreamWriter.flush();
+            outputStreamWriter.close();
+        }
+        {
+//        try {    
+//            BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+////            System.out.println(sb.toString());
+//            log.write(sb.toString());
+//            log.flush();
+//            log.close();
+//          }
+//          catch (Exception e) {
+//            e.printStackTrace();
+//          }
+        }
+        // This doesn't solve it either
+        {
+            String[] lines = sb.toString().split("\n");
+            for (String s : lines) {
+//                System.out.println(s);
+            }
+        }
+        {
+            StringWriter sw = null;
+            BufferedWriter bw = null;
+            
+            String str = "Hello World!";
+            
+            try {
+            
+               // create string writer
+               sw = new StringWriter();
+               
+               //create buffered writer
+               bw = new BufferedWriter(sw);
+               
+               // writing string to writer
+               bw.write(sb.toString());
+               
+               // forces out the characters to string writer
+               bw.flush();
+               
+               
+               //prints the string
+               System.out.println(sb);
+                  
+            } catch(IOException e) {
+            
+               // if I/O error occurs
+               e.printStackTrace();
+            } finally {
+            
+               // releases any system resources associated with the stream
+               if(sw!=null)
+                  sw.close();
+               if(bw!=null)
+                  bw.close();
+            }
+        }
     }
 
     private static StringBuffer printAllPaths(String prefix, String parent, Multimap<String, String> map) {
@@ -83,17 +151,17 @@ public class App {
 //                System.exit(-1);
 //                throw new RuntimeException("so java compiles");
 //            } else {
-                // Check file exists
-                SequenceInputStream is = new SequenceInputStream(Collections
-                        .enumeration(Arrays.stream(args).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
-                            try {
-                                // 1) file read
-                                return new FileInputStream(f);
-                            } catch (FileNotFoundException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }).collect(Collectors.toList())));
-                br = new BufferedReader(new InputStreamReader(is));
+            // Check file exists
+            SequenceInputStream is = new SequenceInputStream(
+                    Collections.enumeration(Arrays.stream(args).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
+                        try {
+                            // 1) file read
+                            return new FileInputStream(f);
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }).collect(Collectors.toList())));
+            br = new BufferedReader(new InputStreamReader(is));
 //            }
         }
         return br;

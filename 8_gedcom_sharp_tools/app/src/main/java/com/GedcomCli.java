@@ -195,6 +195,7 @@ public class GedcomCli {
                 break;
             case "edges":
                 System.out.println(printEdges(idToFamily));
+                System.out.flush();
                 break;
             case "families":
                 System.out.println(printFamilies(idToFamily));
