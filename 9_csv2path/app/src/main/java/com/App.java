@@ -33,6 +33,9 @@ public class App {
         try (BufferedReader bufferedReader = read(args, System.in)) {
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
                 String[] csv = new com.opencsv.CSVParser().parseLine(line);
+                if (csv.length < 2) {
+                    continue;
+                }
                 String child = csv[0];
                 String parent = csv[1];
                 map.put(parent, child);
@@ -61,7 +64,7 @@ public class App {
         sb.append(prefixNew);
         sb.append("\n");
         for (String child : map.get(parent)) {
-            System.err.println("App.printAllPaths() " + child);
+//            System.err.println("App.printAllPaths() " + child);
             sb.append(printAllPaths(prefixNew, child, map));
         }
         return sb;
@@ -75,11 +78,11 @@ public class App {
             br = br1;
             // problem: arg files get ignored
         } else {
-            if (args.length == 0) {
-                System.out.println(help());
-                System.exit(-1);
-                throw new RuntimeException("so java compiles");
-            } else {
+//            if (args.length == 0) {
+//                System.out.println(help());
+//                System.exit(-1);
+//                throw new RuntimeException("so java compiles");
+//            } else {
                 // Check file exists
                 SequenceInputStream is = new SequenceInputStream(Collections
                         .enumeration(Arrays.stream(args).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
@@ -91,7 +94,7 @@ public class App {
                             }
                         }).collect(Collectors.toList())));
                 br = new BufferedReader(new InputStreamReader(is));
-            }
+//            }
         }
         return br;
     }

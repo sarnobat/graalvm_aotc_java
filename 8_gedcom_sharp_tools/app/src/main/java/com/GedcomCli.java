@@ -17,8 +17,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * Unlike some rudimentary regex, we parse the bash script properly so that
- * whitespace inside legitimate commands gets interpreted correctly.
+ * ./gedcom.osx edges  | stdbuf --output=L --error=L  /Volumes/git/github/graalvm_aotc_java/9_csv2path/csv2path.osx | stdbuf --output=L --error=L path2indent.osx --absolute
  */
 public class GedcomCli {
 
@@ -37,26 +36,26 @@ public class GedcomCli {
 
     public static void main(String[] args) throws IOException {
 //        boolean showSpouses = Boolean.parseBoolean(System.getProperty("spouses", "true"));
-        System.err.println("GedcomCli.main() 1");
+//        System.err.println("GedcomCli.main() 1");
         if (args.length == 0) {
             printHelp();
-//            System.exit(0);
+            System.exit(0);
         }
 
         File myObj = new File(System.getProperty("user.home") + "/sarnobat.git/2021/gedcom/rohidekar.ged");
         Scanner myReader;
 
         try {
-            System.err.println("GedcomCli.main.run() 2");
+//            System.err.println("GedcomCli.main.run() 2");
             myReader = new Scanner(myObj);
 
-            System.err.println("GedcomCli.main.run() 3");
+//            System.err.println("GedcomCli.main.run() 3");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         Individual individual = null;
         Marriage family = null;
-        System.err.println("GedcomCli.main.run() 4");
+//        System.err.println("GedcomCli.main.run() 4");
         while (myReader.hasNextLine()) {
 //                      System.err.println("GedcomCli.main.run() 5");
             String data = myReader.nextLine();
@@ -154,13 +153,13 @@ public class GedcomCli {
             }
         }
         for (Marriage f : idToFamily.values()) {
-            System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
+//            System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
             displayNameToIndividualWithSpouse.put(f.getHusband().toString(), f.getHusband());
             displayNameToIndividualWithSpouse.put(f.getWife().toString(), f.getWife());
         }
         for (String id : idToIndividual.keySet()) {
             if (!childToFather.containsKey(id) && !childToMother.containsKey(id)) {
-                System.err.println("[debug] " + id + " has no parents :" + idToIndividual.get(id));
+//                System.err.println("[debug] " + id + " has no parents :" + idToIndividual.get(id));
             }
         }
 
@@ -179,7 +178,7 @@ public class GedcomCli {
         Individual child = displayNameToIndividualWithSpouse.get(o);
         if (!displayNameToIndividualWithSpouse.containsKey(child.toString())) {
             for (String s : displayNameToIndividualWithSpouse.keySet()) {
-                System.err.println("SRIDHAR GedcomCli.main.run() " + s);
+//                System.err.println("SRIDHAR GedcomCli.main.run() " + s);
             }
             throw new RuntimeException("");
         }
@@ -215,7 +214,8 @@ public class GedcomCli {
         for (String id : new TreeSet<>(idToFamily3.keySet())) {
             Marriage f = idToFamily3.get(id);
             for (Individual c : f.getChildren()) {
-                sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
+                //sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
+                sb.append(String.format("%s,%30s\n", c.toString(), f.getCouple()));
             }
         }
         return sb;
