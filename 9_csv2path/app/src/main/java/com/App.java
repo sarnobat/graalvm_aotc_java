@@ -27,14 +27,43 @@ public class App {
     public static void main(String args[]) throws IOException {
 
         if (System.getProperties().containsKey("-h")) {
-            System.out.println(help());
+            System.err.println(help());
             System.exit(-1);
             throw new RuntimeException("so java compiles");
         }
         Multimap<String, String> map = HashMultimap.create();
-
-        try (BufferedReader bufferedReader = read(args, System.in)) {
+        System.err.println("App.main() 1");
+//BufferedReader br;
+//        BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+//
+//        if (br1.ready()) {
+//            br = br1;
+//            // problem: arg files get ignored
+//            System.err.println("App.read() 1");
+//        } else {
+//            System.err.println("App.read() 2");
+////            if (args.length == 0) {
+////                System.out.println(help());
+////                System.exit(-1);
+////                throw new RuntimeException("so java compiles");
+////            } else {
+//            // Check file exists
+//            SequenceInputStream is = new SequenceInputStream(
+//                    Collections.enumeration(Arrays.stream(args).filter(f -> Paths.get(f).toFile().exists()).map(f -> {
+//                        try {
+//                            // 1) file read
+//                            return new FileInputStream(f);
+//                        } catch (FileNotFoundException e1) {
+//                            throw new RuntimeException(e1);
+//                        }
+//                    }).collect(Collectors.toList())));
+//            br = new BufferedReader(new InputStreamReader(is));
+////            }
+//        }
+//        BufferedReader read = br;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
+                System.err.println("[debug] App.main() 2 line = " + line);
                 String[] csv = new com.opencsv.CSVParser().parseLine(line);
                 if (csv.length < 2) {
                     continue;
@@ -43,6 +72,10 @@ public class App {
                 String parent = csv[1];
                 map.put(parent, child);
             }
+        } catch (Exception e) {
+            System.out.println("App.main() " + e.getStackTrace());
+            System.exit(-1);
+
         }
 
         Set<String> roots = Sets.difference(map.keySet(), new HashSet<>(map.values()));
@@ -84,40 +117,42 @@ public class App {
         {
             StringWriter sw = null;
             BufferedWriter bw = null;
-            
+
             String str = "Hello World!";
-            
+
             try {
-            
-               // create string writer
-               sw = new StringWriter();
-               
-               //create buffered writer
-               bw = new BufferedWriter(sw);
-               
-               // writing string to writer
-               bw.write(sb.toString());
-               
-               // forces out the characters to string writer
-               bw.flush();
-               
-               
-               //prints the string
-               System.out.println(sb);
-                  
-            } catch(IOException e) {
-            
-               // if I/O error occurs
-               e.printStackTrace();
+
+                // create string writer
+                sw = new StringWriter();
+
+                // create buffered writer
+                bw = new BufferedWriter(sw);
+
+                // writing string to writer
+                bw.write(sb.toString());
+
+                // forces out the characters to string writer
+                bw.flush();
+
+                // prints the string
+                System.out.println(sb);
+
+            } catch (IOException e) {
+
+                // if I/O error occurs
+                e.printStackTrace();
             } finally {
-            
-               // releases any system resources associated with the stream
-               if(sw!=null)
-                  sw.close();
-               if(bw!=null)
-                  bw.close();
+
+                // releases any system resources associated with the stream
+                if (sw != null) {
+                    sw.close();
+                }
+                if (bw != null) {
+                    bw.close();
+                }
             }
         }
+        System.out.println("App.main()");
     }
 
     private static StringBuffer printAllPaths(String prefix, String parent, Multimap<String, String> map) {
@@ -145,7 +180,9 @@ public class App {
         if (br1.ready()) {
             br = br1;
             // problem: arg files get ignored
+            System.err.println("App.read() 1");
         } else {
+            System.err.println("App.read() 2");
 //            if (args.length == 0) {
 //                System.out.println(help());
 //                System.exit(-1);
