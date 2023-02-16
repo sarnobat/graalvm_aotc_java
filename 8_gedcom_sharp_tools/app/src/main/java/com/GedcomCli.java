@@ -17,7 +17,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * ./gedcom.osx edges  | stdbuf --output=L --error=L  /Volumes/git/github/graalvm_aotc_java/9_csv2path/csv2path.osx | stdbuf --output=L --error=L path2indent.osx --absolute
+ * ./gedcom.osx edges  | /Volumes/git/github/graalvm_aotc_java/9_csv2path/csv2path.osx | path2indent.osx --absolute
  */
 public class GedcomCli {
 
@@ -189,10 +189,13 @@ public class GedcomCli {
             case "dump":
                 System.out.println(printFamiliesRecursive(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
                 break;
+            case "ls":
+            case "list":
             case "nodes":
             case "individuals":
                 System.out.println(printIndividuals(idToIndividual));
                 break;
+            case "find":
             case "edges":
                 System.out.println(printEdges(idToFamily));
                 System.out.flush();
@@ -216,7 +219,15 @@ public class GedcomCli {
             Marriage f = idToFamily3.get(id);
             for (Individual c : f.getChildren()) {
                 //sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
-                sb.append(String.format("%s,%30s\n", c.toString(), f.getCouple()));
+                if (c.toString().contains("/")) {
+                    System.out.println("GedcomCli.printEdges(): 1 escape slashes in: " + c.toString());
+                    System.exit(-1);
+                }
+                if (f.getCouple().contains("/")) {
+                    System.out.println("GedcomCli.printEdges(): 2 escape slashes in: " + f.getCouple());
+//                    System.exit(-1);
+                }
+                sb.append(String.format("%s,%30s\n", c.toString().replace("/", "\\/"), f.getCouple().replace("/", "\\/")));
             }
         }
         return sb;
@@ -337,7 +348,7 @@ public class GedcomCli {
                 }
             }
             string += ")";
-            return string;
+            return string.trim();
         }
     }
 
