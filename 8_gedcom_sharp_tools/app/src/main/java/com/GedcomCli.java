@@ -220,14 +220,14 @@ public class GedcomCli {
             for (Individual c : f.getChildren()) {
                 //sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
                 if (c.toString().contains("/")) {
-                    System.out.println("GedcomCli.printEdges(): 1 escape slashes in: " + c.toString());
-                    System.exit(-1);
-                }
-                if (f.getCouple().contains("/")) {
-                    System.out.println("GedcomCli.printEdges(): 2 escape slashes in: " + f.getCouple());
+                    System.err.println("[warn] GedcomCli.printEdges(): 1 escape slashes in: " + c.toString());
 //                    System.exit(-1);
                 }
-                sb.append(String.format("%s,%30s\n", c.toString().replace("/", "\\/"), f.getCouple().replace("/", "\\/")));
+                if (f.getCouple().contains("/")) {
+                    System.err.println("[warn] GedcomCli.printEdges(): 2 escape slashes in: " + f.getCouple());
+//                    System.exit(-1);
+                }
+                sb.append(String.format("%s,%s\n", c.toString().replace("/", "__").stripLeading(), f.getCouple().replace("/", "__").stripLeading()));
             }
         }
         return sb;
