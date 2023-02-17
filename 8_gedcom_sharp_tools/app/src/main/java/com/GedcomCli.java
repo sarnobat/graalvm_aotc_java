@@ -170,7 +170,7 @@ public class GedcomCli {
             throw new RuntimeException("Missing root ID " + ROOT_ID);
         }
 
-        String o = "Venkat Rao Rohidekar I29 -- Tarabai  I30";
+        String o = "Venkat Rao Rohidekar I29 -- Tarabai I30";
         if (!displayNameToIndividualWithSpouse.keySet().contains(o)) {
             throw new RuntimeException("developer error: could not find entry for " + o);
         }
@@ -228,6 +228,7 @@ public class GedcomCli {
 //                    System.exit(-1);
                 }
                 sb.append(String.format("%s,%s\n", c.toString().replace("/", "__").stripLeading(), f.getCouple().replace("/", "__").stripLeading()));
+                sb.append(String.format("%s,%s\n", c.toString().replace("/", "__").stripLeading(), f.getCoupleReversed().replace("/", "__").stripLeading()));
             }
         }
         return sb;
@@ -309,6 +310,10 @@ public class GedcomCli {
         public String getCouple() {
             return husband.toString();
         }
+        
+        public String getCoupleReversed() {
+            return wife.toString();
+        }
 
         public Collection<Individual> getChildren() {
             return children;
@@ -373,7 +378,7 @@ public class GedcomCli {
         }
 
         public String getId() {
-            return id;
+            return id.trim();
         }
 
         public void setSpouse(Individual husband) {
@@ -402,32 +407,31 @@ public class GedcomCli {
 //        }
 
         Individual(String id) {
-            this.id = id;
+            this.id = id.trim();
         }
 
         String getFirstName() {
-            return firstName == null ? "" : firstName;
+            return firstName == null ? "" : firstName.trim();
         }
 
         void setFirstName(String firstName) {
-            this.firstName = firstName;
+            this.firstName = firstName.trim();
         }
 
         String getLastName() {
-            return lastName == null ? "" : lastName;
+            return lastName == null ? "" : lastName.trim();
         }
 
         void setLastName(String lastName) {
-            this.lastName = lastName;
+            this.lastName = lastName.trim();
         }
 
         String lastName;
 
-
         String toStringReadable() {
             String spouseString = spouse == null ? ""
                     : " -- " + spouse.getFirstName() + " " + spouse.getLastName();
-            return getFirstName() + " " + getLastName() + " " + spouseString;
+            return (getFirstName() + " " + getLastName() + " " + spouseString).trim().replaceAll("\\s+", " ");
         }
 
         
@@ -435,7 +439,7 @@ public class GedcomCli {
         public String toString() {
             String string = spouse == null ? ""
                     : " -- " + spouse.getFirstName() + " " + spouse.getLastName() + " " + spouse.id;
-            return getFirstName() + " " + getLastName() + " " + id + string;
+            return (getFirstName() + " " + getLastName() + " " + id + string).trim().replaceAll("\\s+", " ");
         }
     }
 }
