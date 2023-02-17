@@ -24,19 +24,14 @@ public class GedcomCli {
     private static Map<String, Individual> childToMother = new HashMap<>();
     private static Map<String, Individual> childToFather = new HashMap<>();
     private static Map<Individual, String> individualToChildFamilyId = new HashMap<>();
-//    private static Map<String, String> displayNameOfChildToParent = new HashMap<>();
     private static Map<String, Individual> idToIndividual = new HashMap<>();
     private static Map<String, Individual> displayNameToIndividualWithSpouse = new HashMap<>();
     private static Map<String, Marriage> idToFamily = new HashMap<>();
-//    private static Set<Individual> individualsWithNoParent = new HashSet<>();
     private static Multimap<String, Individual> displayNameToChildrenWithSpouse = HashMultimap.create();
 
     private static final String ROOT_ID = "I25";
-//  private static final String ROOT_ID = "I44";
 
     public static void main(String[] args) throws IOException {
-//        boolean showSpouses = Boolean.parseBoolean(System.getProperty("spouses", "true"));
-//        System.err.println("GedcomCli.main() 1");
         if (args.length == 0) {
             printHelp();
             System.exit(0);
@@ -44,26 +39,17 @@ public class GedcomCli {
 
         File myObj = new File(System.getProperty("user.home") + "/sarnobat.git/2021/gedcom/rohidekar.ged");
         Scanner myReader;
-
         try {
-//            System.err.println("GedcomCli.main.run() 2");
             myReader = new Scanner(myObj);
-
-//            System.err.println("GedcomCli.main.run() 3");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         Individual individual = null;
         Marriage family = null;
-//        System.err.println("GedcomCli.main.run() 4");
         while (myReader.hasNextLine()) {
-//                      System.err.println("GedcomCli.main.run() 5");
             String data = myReader.nextLine();
             if (data.startsWith("0") && data.endsWith("INDI")) {
 
-                if (individual != null) {
-                    // System.err.println(individual.toString());
-                }
                 String regex = "0..(.*)..INDI";
                 Pattern p = Pattern.compile(regex);
                 Matcher matcher = p.matcher(data);
@@ -85,7 +71,6 @@ public class GedcomCli {
             } else if (data.startsWith("2 SURN")) {
                 String replaceAll = data.replaceAll(".*SURN ", "");
                 individual.setLastName(replaceAll);
-//                    displayNameToIndividual.put(individual.toString(), individual);
             } else if (data.startsWith("0") && data.endsWith("FAM")) {
                 String regex = "0..(.*)..FAM";
                 Pattern p = Pattern.compile(regex);
@@ -111,7 +96,6 @@ public class GedcomCli {
                 String replaceAll = data.replaceAll(".*CHIL .", "").replaceAll(".\044", "");
                 Individual i = idToIndividual.get(replaceAll);
                 family.addChild(i);
-//                i.setParentFamily(family);
             }
         }
         myReader.close();
@@ -121,18 +105,13 @@ public class GedcomCli {
         if (idToIndividual.size() < 256) {
             throw new RuntimeException("missing individual");
         }
-        // if (!idToIndividual.keySet().contains("F10")) {
-        // throw new RuntimeException();
-        // }
         // attach each individual to its family
         for (Individual i : individualToChildFamilyId.keySet()) {
             Marriage f = idToFamily.get(individualToChildFamilyId.get(i));
             i.setChildFamily(f);
             i.addChildFamily(f);
-            // System.err.println("Has parent: " + i.toString());
         }
         for (Marriage f : idToFamily.values()) {
-//                      System.out .println("SRIDHAR GedcomCli.main.run() family father = " + f.getHusband().toString() + "\thas " + f.getChildren().size() + " children: " + f.getChildren().toString());
             f.getHusband().setSpouse(f.getWife());
             f.getWife().setSpouse(f.getHusband());
             for (Individual child : f.getChildren()) {
@@ -153,14 +132,8 @@ public class GedcomCli {
             }
         }
         for (Marriage f : idToFamily.values()) {
-//            System.err.println("[debug] f.getHusband().toString() = " + f.getHusband().toString());
             displayNameToIndividualWithSpouse.put(f.getHusband().toString(), f.getHusband());
             displayNameToIndividualWithSpouse.put(f.getWife().toString(), f.getWife());
-        }
-        for (String id : idToIndividual.keySet()) {
-            if (!childToFather.containsKey(id) && !childToMother.containsKey(id)) {
-//                System.err.println("[debug] " + id + " has no parents :" + idToIndividual.get(id));
-            }
         }
 
         if (displayNameToChildrenWithSpouse.size() < 20) {
@@ -177,13 +150,8 @@ public class GedcomCli {
 
         Individual child = displayNameToIndividualWithSpouse.get(o);
         if (!displayNameToIndividualWithSpouse.containsKey(child.toString())) {
-            for (String s : displayNameToIndividualWithSpouse.keySet()) {
-//                System.err.println("SRIDHAR GedcomCli.main.run() " + s);
-            }
             throw new RuntimeException("");
         }
-//        System.out.println(printEdges(idToFamily));
-//        System.out.println(printIndividuals(idToIndividual));
         if (true) {
             switch (args[0]) {
             case "dump":
@@ -208,8 +176,6 @@ public class GedcomCli {
                 break;
             }
         }
-        // I24 - root
-
     }
 
     private static String separator = "\t";
@@ -218,14 +184,11 @@ public class GedcomCli {
         for (String id : new TreeSet<>(idToFamily3.keySet())) {
             Marriage f = idToFamily3.get(id);
             for (Individual c : f.getChildren()) {
-                //sb.append(String.format("%-50s %s %30s\n", c.toString(), separator, f.getCouple()));
                 if (c.toString().contains("/")) {
                     System.err.println("[warn] GedcomCli.printEdges(): 1 escape slashes in: " + c.toString());
-//                    System.exit(-1);
                 }
                 if (f.getCouple().contains("/")) {
                     System.err.println("[warn] GedcomCli.printEdges(): 2 escape slashes in: " + f.getCouple());
-//                    System.exit(-1);
                 }
                 sb.append(String.format("%s,%s\n", c.toString().replace("/", "__").stripLeading(), f.getCouple().replace("/", "__").stripLeading()));
                 sb.append(String.format("%s,%s\n", c.toString().replace("/", "__").stripLeading(), f.getCoupleReversed().replace("/", "__").stripLeading()));
@@ -284,7 +247,7 @@ public class GedcomCli {
         if (f == null) {
             return "";
         }
-        String s = "";// " " + f.getWife().toString();
+        String s = "";
         for (Individual individual : f.getChildren()) {
             if (individual == f.getHusband()) {
                 throw new RuntimeException("infinite loop");
@@ -365,7 +328,6 @@ public class GedcomCli {
         @Deprecated
         private Marriage childFamily;
         private final Map<String, Marriage> childFamilies = new HashMap<>();
-//        private Marriage parentFamily;
         private Individual spouse;
 
         @Deprecated
@@ -385,10 +347,6 @@ public class GedcomCli {
             this.spouse = husband;
         }
 
-//        public Individual getSpouse() {
-//            return this.spouse;
-//        }
-
         @Deprecated
         void setChildFamily(Marriage childFamily) {
             this.childFamily = childFamily;
@@ -397,14 +355,6 @@ public class GedcomCli {
         void addChildFamily(Marriage childFamily) {
             this.childFamilies.put(childFamily.getId(), childFamily);
         }
-
-//        Marriage getParentFamily() {
-//            return parentFamily;
-//        }
-
-//        void setParentFamily(Marriage parentFamily) {
-//            this.parentFamily = parentFamily;
-//        }
 
         Individual(String id) {
             this.id = id.trim();
