@@ -116,15 +116,11 @@ public class GedcomCli {
             f.getWife().setSpouse(f.getHusband());
             for (Individual child : f.getChildren()) {
 
-                if ("I119".equals(child.getId())) {
-
-                }
                 childToFather.put(child.getId(), f.getHusband());
                 childToMother.put(child.getId(), f.getWife());
 
                 displayNameToChildrenWithSpouse.put(f.getHusband().toString(), child);
                 displayNameToChildrenWithSpouse.put(f.getWife().toString(), child);
-
             }
             if (!f.getHusband().toString().contains("--")) {
                 System.err.println("[warn] SRIDHAR GedcomCli.run() missing " + f.getHusband().toString()
