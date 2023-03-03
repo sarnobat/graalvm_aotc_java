@@ -34,7 +34,7 @@ public class GedcomList {
 
         GedcomParser gedcomParser = new GedcomParser();
         String ged;
-        //I30
+        // I30
         String root;
 
         if (true) {
@@ -43,10 +43,10 @@ public class GedcomList {
 //                root = System.getProperty("root", "I30");
             } else {
                 ged = args[0];
-                //root = System.getProperty("root", "I210");
+                // root = System.getProperty("root", "I210");
             }
             root = System.getProperty("root", "I30");
-           
+
         } else { // JIT
             root = "I210";
             // With graalvm native image this gets ignored despite what the documentation
@@ -96,30 +96,39 @@ public class GedcomList {
         System.out.println(ret);
         System.err.println(
                 "TIP: Use PlantUML (https://plantuml.com/style-evolution) or pandoc (see tree_rohidekar_master.mwk header for command)");
-        System.err.println("GedcomList.main()\n./gedcom2mwk.osx ~/sarnobat.git/genealogy/rohidekar.ged | pandoc --from mediawiki --to html | tee /tmp/index.html");
+        System.err.println(
+                "GedcomList.main()\n./gedcom2mwk.osx ~/sarnobat.git/genealogy/rohidekar.ged | pandoc --from mediawiki --to html | tee /tmp/index.html");
 
     }
 
     private static String printFamilyOf(Individual iIndividual, String iIndentation, String star) {
         String familyStr = iIndentation + " ";
-        familyStr += getName(iIndividual); 
+        familyStr += getName(iIndividual);
         String familyStr2 = "";
         List<FamilySpouse> familiesWhereSpouse = iIndividual.getFamiliesWhereSpouse();
         if (familiesWhereSpouse != null) {
             for (FamilySpouse aFamilySpouse : familiesWhereSpouse) {
                 Family aFamily2 = aFamilySpouse.getFamily();
-                IndividualReference aSpouse = iIndividual.equals(aFamily2.getWife().getIndividual()) ? aFamily2.getHusband() : aFamily2.getWife();
+                IndividualReference aSpouse = iIndividual.equals(aFamily2.getWife().getIndividual())
+                        ? aFamily2.getHusband()
+                        : aFamily2.getWife();
                 if (aSpouse != null) {
                     // sanity check
                     if (aSpouse.getIndividual().getXref().equals(iIndividual.getXref())) {
-                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual().getXref() = " + aSpouse.getIndividual().getXref());
-                        System.err.println("[error] GedcomList.printFamilyOf() iIndividual.getXref() = " + iIndividual.getXref());
-                        System.err.println("[error] GedcomList.printFamilyOf() iIndividual.getFormattedName() = " + iIndividual.getFormattedName());
-                        System.err.println("[error] GedcomList.printFamilyOf() aFamily2.getHusband().getIndividual().getXref() = " + aFamily2.getHusband().getIndividual().getXref());
+                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual().getXref() = "
+                                + aSpouse.getIndividual().getXref());
+                        System.err.println(
+                                "[error] GedcomList.printFamilyOf() iIndividual.getXref() = " + iIndividual.getXref());
+                        System.err.println("[error] GedcomList.printFamilyOf() iIndividual.getFormattedName() = "
+                                + iIndividual.getFormattedName());
+                        System.err.println(
+                                "[error] GedcomList.printFamilyOf() aFamily2.getHusband().getIndividual().getXref() = "
+                                        + aFamily2.getHusband().getIndividual().getXref());
                         System.exit(-1);
                     }
                     if (getName(aSpouse.getIndividual()).contains(getName(iIndividual))) {
-                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual() = " + aSpouse.getIndividual());
+                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual() = "
+                                + aSpouse.getIndividual());
                         System.exit(-1);
                     }
                     familyStr += " (-- " + getName(aSpouse.getIndividual()) + ")";
@@ -156,6 +165,9 @@ public class GedcomList {
                 }
             }
         }
-        return familyStrRet.trim();
+        if (familyStrRet.length() == 0) {
+            familyStrRet = iIndividual.getXref();
+        } 
+        return familyStrRet.replaceAll("Vallis", "").trim();
     }
 }
