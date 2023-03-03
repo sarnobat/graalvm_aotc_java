@@ -16,7 +16,8 @@ import org.gedcom4j.parser.GedcomParser;
 
 /*
 
-TODO (2023-03): Make this a graalvm program. The classpath is a nuisance
+gedcom2mwk.osx ~/sarnobat.git/genealogy/rohidekar.ged
+gedcom2mwk.osx ~/sarnobat.git/genealogy/rohidekar.ged | pandoc --from mediawiki --to html | tee /tmp/index.html
 
 groovy -Dged=$HOME/sarnobat.git/genealogy/rohidekar.ged -Droot=I30 -Dindent='*'  ~/bin/gedcom_list.groovy
 groovy -Dged=$HOME/sarnobat.git/genealogy/sarnobat.ged  ~/bin/gedcom_list.groovy
@@ -38,7 +39,7 @@ public class GedcomList {
 
         if (true) {
             if (args.length == 0) {
-                ged = System.getProperty("user.home") + "/" + "/sarnobat.git/genealogy/2022/sarnobat.ged";
+                ged = System.getProperty("user.home") + "/" + "sarnobat.git/genealogy/sarnobat.ged";
             } else {
                 ged = args[0];
                 //root = System.getProperty("root", "I210");
@@ -93,6 +94,7 @@ public class GedcomList {
         System.out.println(ret);
         System.err.println(
                 "TIP: Use PlantUML (https://plantuml.com/style-evolution) or pandoc (see tree_rohidekar_master.mwk header for command)");
+        System.err.println("GedcomList.main()\n./gedcom2mwk.osx ~/sarnobat.git/genealogy/rohidekar.ged | pandoc --from mediawiki --to html | tee /tmp/index.html");
 
     }
 
@@ -106,8 +108,6 @@ public class GedcomList {
                     String first = personalName.getBasic().replace("/", "");
                     familyStr += first;
                 }
-                // familyStr += "\nTODO: why are the latest generation missing?"
-                System.out.print("TODO: why are the latest generation missing?\n");
             }
         }
         String familyStr2 = "";
