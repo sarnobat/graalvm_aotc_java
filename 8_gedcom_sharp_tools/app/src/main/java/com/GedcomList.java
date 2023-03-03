@@ -37,6 +37,7 @@ public class GedcomList {
         if (System.getProperty("ged") != null) {
             ged = System.getProperty("ged");
         } else {
+            // rohidekar.get has an issue
             ged = System.getProperty("user.home") + "/" +  "/sarnobat.git/genealogy/sarnobat.ged";
         }
         System.err.println("GedcomList.main() ged = " + ged );
