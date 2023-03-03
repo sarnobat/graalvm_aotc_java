@@ -22,6 +22,7 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'org.antlr:antlr-runtime:3.4'
+	implementation group: 'org.gedcom4j', name: 'gedcom4j', version: '4.0.1'
     
 }
 
