@@ -27,48 +27,72 @@ groovy -Dged=$HOME/sarnobat.git/genealogy/sarnobat.ged  ~/bin/gedcom_list.groovy
 // structure so I'd have to add that myself. Would be a good experience
 public class GedcomList {
 
-    public static void main(String[] args) throws FileNotFoundException,
-            IOException, GedcomParserException {
-        
+    public static void main(String[] args) throws FileNotFoundException, IOException, GedcomParserException {
+
         String star = System.getProperty("indent", "*");
-            
+
         GedcomParser gedcomParser = new GedcomParser();
-        String ged ;
-        if (System.getProperty("ged") != null) {
-            ged = System.getProperty("ged");
-        } else {
-            // rohidekar.get has an issue
-            ged = System.getProperty("user.home") + "/" +  "/sarnobat.git/genealogy/sarnobat.ged";
-        }
-        System.err.println("GedcomList.main() ged = " + ged );
-        gedcomParser.load(ged);
+        String ged;
+        //I30
+        String root = "I210";
+
+        if (true) {
+            if (args.length == 0) {
+                ged = System.getProperty("user.home") + "/" + "/sarnobat.git/genealogy/2022/sarnobat.ged";
+            } else {
+                ged = args[0];
+                //root = System.getProperty("root", "I210");
+                root = System.getProperty("root", "I30");
+            }
+           
+        } else { // JIT
+            // With graalvm native image this gets ignored despite what the documentation
+            // claims
+            if (System.getProperty("ged") != null) {
+                ged = System.getProperty("ged");
+            } else {
+                // rohidekar.get has an issue
+                // https://github.com/frizbog/gedcom4j/blob/master/src/main/java/org/gedcom4j/parser/LinePieces.java
+//                org.gedcom4j.exception.GedcomParserException: All GEDCOM lines are required to have a tag value, but no tag could be found on line 21
+//                at org.gedcom4j.parser.LinePieces.processTag(LinePieces.java:148)
+//                at org.gedcom4j.parser.LinePieces.<init>(LinePieces.java:86)
+//                at org.gedcom4j.parser.StringTreeBuilder.addNewNode(StringTreeBuilder.java:172)
+//                at org.gedcom4j.parser.StringTreeBuilder.appendLine(StringTreeBuilder.java:158)
+//                at org.gedcom4j.parser.GedcomParser.load(GedcomParser.java:324)
+//                at org.gedcom4j.parser.GedcomParser.load(GedcomParser.java:350)
+//                at com.GedcomList.main(GedcomList.java:55)
+                ged = System.getProperty("user.home") + "/" + "/sarnobat.git/genealogy/sarnobat.ged";
 //                              "/sarnobat.git/genealogy/rohidekar.ged"));
+            }
+        }
+        System.err.println("GedcomList.main() ged = " + ged);
+        gedcomParser.load(ged);
         Gedcom g = gedcomParser.getGedcom();
 
         Map<String, Individual> individuals = g.getIndividuals();
 
-if (false) { // Move this to a separate program
-        // Individual root = null;
-        for (String id : individuals.keySet()) {
-            Individual ind = individuals.get(id);
-            System.out.println(id + "\t" + ind.getFormattedName());
-            if (ind.getFamiliesWhereChild() == null
-                    || ind.getFamiliesWhereChild() != null
-                    && ind.getFamiliesWhereChild().size() == 0) {
-                // root = ind;
-                // System.out.println("GedcomList.main() root = "
-                // + root.getFormattedName());
+        if (false) { // Move this to a separate program
+            // Individual root = null;
+            for (String id : individuals.keySet()) {
+                Individual ind = individuals.get(id);
+                System.out.println(id + "\t" + ind.getFormattedName());
+                if (ind.getFamiliesWhereChild() == null
+                        || ind.getFamiliesWhereChild() != null && ind.getFamiliesWhereChild().size() == 0) {
+                    // root = ind;
+                    // System.out.println("GedcomList.main() root = "
+                    // + root.getFormattedName());
+                }
             }
+            System.out.println();
         }
-        System.out.println();
-}
         System.out.println("(" + individuals.size() + " rows)");
 
-        Individual root = individuals.get("@" +  System.getProperty("root", "I210") + "@");
+        Individual root2 = individuals.get("@" + root + "@");
 
-        String ret = printFamilyOf(root, "", star);
+        String ret = printFamilyOf(root2, "", star);
         System.out.println(ret);
-        System.err.println("TIP: Use PlantUML (https://plantuml.com/style-evolution) or pandoc (see tree_rohidekar_master.mwk header for command)");
+        System.err.println(
+                "TIP: Use PlantUML (https://plantuml.com/style-evolution) or pandoc (see tree_rohidekar_master.mwk header for command)");
 
     }
 
@@ -82,7 +106,7 @@ if (false) { // Move this to a separate program
                     String first = personalName.getBasic().replace("/", "");
                     familyStr += first;
                 }
-                //familyStr += "\nTODO: why are the latest generation missing?"
+                // familyStr += "\nTODO: why are the latest generation missing?"
                 System.out.print("TODO: why are the latest generation missing?\n");
             }
         }
@@ -91,8 +115,7 @@ if (false) { // Move this to a separate program
         if (familiesWhereSpouse != null) {
             for (FamilySpouse familySpouse : familiesWhereSpouse) {
                 Family family2 = familySpouse.getFamily();
-                IndividualReference spouse = root.equals(family2.getWife()) ? family2
-                        .getHusband() : family2.getWife();
+                IndividualReference spouse = root.equals(family2.getWife()) ? family2.getHusband() : family2.getWife();
                 if (spouse != null) {
                     Individual individual = spouse.getIndividual();
                     familyStr += "  " + individual.getFormattedName();
@@ -102,8 +125,7 @@ if (false) { // Move this to a separate program
                     if (family.getChildren() != null) {
                         for (IndividualReference ir : family.getChildren()) {
                             // System.out.print("\n");
-                            familyStr2 += printFamilyOf(ir.getIndividual(),
-                                    indentation + star, star);
+                            familyStr2 += printFamilyOf(ir.getIndividual(), indentation + star, star);
                         }
 //                      familyStr2 += "\n";
                     }
