@@ -34,11 +34,12 @@ public class GedcomList {
             
         GedcomParser gedcomParser = new GedcomParser();
         String ged ;
-        if (System.hasProperty("ged")) {
+        if (System.getProperty("ged") != null) {
             ged = System.getProperty("ged");
         } else {
             ged = System.getProperty("user.home") + "/" +  "/sarnobat.git/genealogy/sarnobat.ged";
         }
+        System.err.println("GedcomList.main() ged = " + ged );
         gedcomParser.load(ged);
 //                              "/sarnobat.git/genealogy/rohidekar.ged"));
         Gedcom g = gedcomParser.getGedcom();
