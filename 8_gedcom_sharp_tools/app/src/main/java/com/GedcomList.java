@@ -87,7 +87,7 @@ public class GedcomList {
             }
             System.out.println();
         }
-        System.out.println("(" + individuals.size() + " rows)");
+        System.err.println("(" + individuals.size() + " rows)");
 
         Individual root2 = individuals.get("@" + root + "@");
 
