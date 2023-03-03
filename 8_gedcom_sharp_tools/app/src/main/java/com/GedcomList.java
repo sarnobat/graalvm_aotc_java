@@ -39,12 +39,13 @@ public class GedcomList {
 
         if (true) {
             if (args.length == 0) {
-                ged = System.getProperty("user.home") + "/" + "sarnobat.git/genealogy/sarnobat.ged";
+                ged = System.getProperty("user.home") + "/" + "sarnobat.git/genealogy/rohidekar.ged";
+//                root = System.getProperty("root", "I30");
             } else {
                 ged = args[0];
                 //root = System.getProperty("root", "I210");
-                root = System.getProperty("root", "I30");
             }
+            root = System.getProperty("root", "I30");
            
         } else { // JIT
             // With graalvm native image this gets ignored despite what the documentation
@@ -98,34 +99,26 @@ public class GedcomList {
 
     }
 
-    private static String printFamilyOf(Individual root, String indentation, String star) {
-        List<PersonalName> names = root.getNames();
-        String familyStr = indentation + " ";
-        if (names != null) {
-            if (names.size() > 0) {
-                for (PersonalName pn : names) {
-                    PersonalName personalName = pn;
-                    String first = personalName.getBasic().replace("/", "");
-                    familyStr += first;
-                }
-            }
-        }
+    private static String printFamilyOf(Individual iIndividual, String iIndentation, String star) {
+        String familyStr = iIndentation + " ";
+        familyStr += getPersonalNames(iIndividual); 
         String familyStr2 = "";
-        List<FamilySpouse> familiesWhereSpouse = root.getFamiliesWhereSpouse();
+        List<FamilySpouse> familiesWhereSpouse = iIndividual.getFamiliesWhereSpouse();
         if (familiesWhereSpouse != null) {
-            for (FamilySpouse familySpouse : familiesWhereSpouse) {
-                Family family2 = familySpouse.getFamily();
-                IndividualReference spouse = root.equals(family2.getWife()) ? family2.getHusband() : family2.getWife();
-                if (spouse != null) {
-                    Individual individual = spouse.getIndividual();
-                    familyStr += "  " + individual.getFormattedName();
+            for (FamilySpouse aFamilySpouse : familiesWhereSpouse) {
+                Family aFamily2 = aFamilySpouse.getFamily();
+                IndividualReference aSpouse = iIndividual.equals(aFamily2.getWife()) ? aFamily2.getHusband() : aFamily2.getWife();
+                if (aSpouse != null) {
+                    Individual anIndividual = aSpouse.getIndividual();
+                    System.err.println("GedcomList.printFamilyOf() - anIndividual.getFormattedName() = " + anIndividual.getFormattedName().toString());
+                    familyStr += "  " + anIndividual.getFormattedName();
                 }
-                Family family = family2;
-                if (family != null) {
-                    if (family.getChildren() != null) {
-                        for (IndividualReference ir : family.getChildren()) {
+                Family aFamily = aFamily2;
+                if (aFamily != null) {
+                    if (aFamily.getChildren() != null) {
+                        for (IndividualReference aChildReference : aFamily.getChildren()) {
                             // System.out.print("\n");
-                            familyStr2 += printFamilyOf(ir.getIndividual(), indentation + star, star);
+                            familyStr2 += printFamilyOf(aChildReference.getIndividual(), iIndentation + star, star);
                         }
 //                      familyStr2 += "\n";
                     }
@@ -134,5 +127,19 @@ public class GedcomList {
         }
         // System.out.print("\n");
         return familyStr + "\n" + familyStr2;
+    }
+
+    private static String getPersonalNames(Individual iIndividual) {
+        String familyStrRet = "";
+        if (iIndividual.getNames() != null) {
+            if (iIndividual.getNames().size() > 0) {
+                for (PersonalName aPersonalName : iIndividual.getNames()) {
+                    String basicName = aPersonalName.getBasic().replace("/", "");
+                    System.err.println("GedcomList.printFamilyOf() basicName = " + basicName);
+                    familyStrRet += basicName;
+                }
+            }
+        }
+        return familyStrRet;
     }
 }
