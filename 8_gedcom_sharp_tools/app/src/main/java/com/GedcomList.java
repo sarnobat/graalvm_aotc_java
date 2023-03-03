@@ -35,7 +35,7 @@ public class GedcomList {
         GedcomParser gedcomParser = new GedcomParser();
         String ged;
         //I30
-        String root = "I210";
+        String root;
 
         if (true) {
             if (args.length == 0) {
@@ -48,6 +48,7 @@ public class GedcomList {
             root = System.getProperty("root", "I30");
            
         } else { // JIT
+            root = "I210";
             // With graalvm native image this gets ignored despite what the documentation
             // claims
             if (System.getProperty("ged") != null) {
@@ -107,8 +108,20 @@ public class GedcomList {
         if (familiesWhereSpouse != null) {
             for (FamilySpouse aFamilySpouse : familiesWhereSpouse) {
                 Family aFamily2 = aFamilySpouse.getFamily();
-                IndividualReference aSpouse = iIndividual.equals(aFamily2.getWife()) ? aFamily2.getHusband() : aFamily2.getWife();
+                IndividualReference aSpouse = iIndividual.equals(aFamily2.getWife().getIndividual()) ? aFamily2.getHusband() : aFamily2.getWife();
                 if (aSpouse != null) {
+                    // sanity check
+                    if (aSpouse.getIndividual().getXref().equals(iIndividual.getXref())) {
+                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual().getXref() = " + aSpouse.getIndividual().getXref());
+                        System.err.println("[error] GedcomList.printFamilyOf() iIndividual.getXref() = " + iIndividual.getXref());
+                        System.err.println("[error] GedcomList.printFamilyOf() iIndividual.getFormattedName() = " + iIndividual.getFormattedName());
+                        System.err.println("[error] GedcomList.printFamilyOf() aFamily2.getHusband().getIndividual().getXref() = " + aFamily2.getHusband().getIndividual().getXref());
+                        System.exit(-1);
+                    }
+                    if (getName(aSpouse.getIndividual()).contains(getName(iIndividual))) {
+                        System.err.println("[error] GedcomList.printFamilyOf() aSpouse.getIndividual() = " + aSpouse.getIndividual());
+                        System.exit(-1);
+                    }
                     familyStr += " (-- " + getName(aSpouse.getIndividual()) + ")";
                 }
                 Family aFamily = aFamily2;
