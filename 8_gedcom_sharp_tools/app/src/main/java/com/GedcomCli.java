@@ -160,6 +160,7 @@ public class GedcomCli {
                 System.out.println(printIndividuals(idToIndividual));
                 break;
             case "find":
+            case "csv":
             case "edges":
                 System.out.println(printEdges(idToFamily));
                 System.out.flush();
