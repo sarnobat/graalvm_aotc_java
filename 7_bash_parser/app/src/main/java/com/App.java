@@ -22,145 +22,168 @@ import org.gentoo.libbash.java_libbashLexer;
 import org.gentoo.libbash.java_libbashParser;
 
 /**
- * Unlike some rudimentary regex, we parse the bash script properly so that whitespace 
- * inside legitimate commands gets interpreted correctly.
+ * Unlike some rudimentary regex, we parse the bash script properly so that
+ * whitespace inside legitimate commands gets interpreted correctly.
  */
 public class App {
 
-	public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
-			RecognitionException, InterruptedException {
-		Set<String> visited = new HashSet<String>();
-		java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
-				new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
-		Stream<String> s1 = Stream.of();
-		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<>();
-		Thread t = new Thread() {
+    public static void main(String[] args) throws ClassNotFoundException, FileNotFoundException, IOException,
+            RecognitionException, InterruptedException {
+        Set<String> allVisited = new HashSet<String>();
+        java_libbashParser theParser = new java_libbashParser(new CommonTokenStream(
+                new java_libbashLexer(new ANTLRInputStream(new FileInputStream(Paths.get(getArg(args)).toFile())))));
+        Stream<String> s1 = Stream.of();
+        ConcurrentLinkedQueue<String> theSymbolsFoundQueue = new ConcurrentLinkedQueue<>();
+        Thread theFindSymbolsThread = new Thread() {
 
-			@Override
-			public void run() {
-				try {
-					extracted(theParser, s1, q);
-				} catch (RecognitionException e) {
-					e.printStackTrace();
-				}
-			}
+            @Override
+            public void run() {
+                try {
+                    extracted(theParser, s1, theSymbolsFoundQueue);
+                } catch (RecognitionException e) {
+                    e.printStackTrace();
+                }
+            }
 
-		};
-		t.start();
-		t.join();
-		// I don't think it's possible to use a stream instead of a queue.
-		// Streams need to be closed before being consumed, apparently.
-		while (!q.isEmpty()) {
-			String symbol = q.remove();
-			if (visited.contains(symbol)) {
-				continue;
-			}
-			visited.add(symbol);
-			
-			if (symbol.startsWith("-")) {
-				continue;
-			} else if (symbol.startsWith("$")) {
-				continue;
-			}
-			System.out.println(symbol);
-		}
+        };
+        theFindSymbolsThread.start();
+        theFindSymbolsThread.join();
+        // I don't think it's possible to use a stream instead of a queue.
+        // Streams need to be closed before being consumed, apparently.
+        while (!theSymbolsFoundQueue.isEmpty()) {
+            String symbol = theSymbolsFoundQueue.remove();
+            if (allVisited.contains(symbol)) {
+                continue;
+            }
+            allVisited.add(symbol);
 
-	}
+            if (symbol.startsWith("-")) {
+                continue;
+            } else if (symbol.startsWith("$")) {
+                continue;
+            }
+            if (symbol.length() > 100) {
+                System.err.println("[multiline] " + symbol.substring(0, 100));
+            } else if (symbol.startsWith("set")) {
+                System.err.println("[set] " + symbol);
+            } else if (symbol.contains("*")) {
+                System.out.println("[wildcard] " + symbol);
+            } else if (symbol.contains("/")) {
+                int ret = new ProcessBuilder().command("ls", symbol).start().waitFor();
+                if (ret == 0) {
+                    System.out.println("[path] found: " + symbol);
+                } else {
+                    System.out.println("[path] not found: " + symbol);
+                }
+            } else {
+                int ret = new ProcessBuilder().command("which", symbol).start().waitFor();
+                if (ret == 0) {
+                    System.err.println("[symbol] found: " + symbol);
+                } else {
+                    System.out.println("[symbol] not found: " + symbol);
+                }
+            }
+        }
 
-	private static void debug(String msg) {
-		if (false) {
-			System.err.println(msg);
-		}
-	}
+    }
 
-	private static String getArg(String[] args) {
-		String script;
-		if (args.length < 1) {
-			script = System.getProperty("user.home") + "/bin/du_inodes.sh";
-			debug("[warn] No input file specified, using " + script);
-		} else {
-			script = args[0];
-		}
-		return script;
-	}
+    private static void debug(String msg) {
+        if (false) {
+            System.err.println(msg);
+        }
+    }
 
-	private static void extracted(java_libbashParser theParser, Stream<String> s1, ConcurrentLinkedQueue<String> q)
-			throws RecognitionException {
-		new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
-			public Object pre(Object iObject) {
-				return iObject;
-			}
+    private static String getArg(String[] args) {
+        String script;
+        if (args.length < 1) {
+            // script = System.getProperty("user.home") + "/bin/du_inodes.sh";
+            script = System.getProperty("user.home") + "/bin/mwk_slice_multiple.sh";
+            // script = System.getProperty("user.home") +
+            // "/bin/epic_workspace_documentaries.sh";
+            debug("[warn] No input file specified, using " + script);
+        } else {
+            script = args[0];
+        }
+        return script;
+    }
 
-			public Object post(Object iObject) {
+    private static void extracted(java_libbashParser theParser, Stream<String> s1, ConcurrentLinkedQueue<String> q)
+            throws RecognitionException {
+        new TreeVisitor(theParser.getTreeAdaptor()).visit(theParser.start().getTree(), new TreeVisitorAction() {
+            public Object pre(Object iObject) {
+                return iObject;
+            }
 
-				if (iObject instanceof CommonTree) {
-					CommonTree aTreeObject = (CommonTree) iObject;
-					int aType = aTreeObject.getType();
-					if (aType == java_libbashParser.STRING) {
+            public Object post(Object iObject) {
 
-						StringBuffer aStringBuffer = new StringBuffer();
-						for (Object child : aTreeObject.getChildren()) {
-							CommonTree aChildTree = (CommonTree) child;
-							if (aChildTree.getText().equals("SINGLE_QUOTED_STRING")) {
-								// don't add this, just add what's inside it
-							} else if (aChildTree.getText().equals("DOUBLE_QUOTED_STRING")) {
-								// don't add this, just add what's inside it
-							} else if (aChildTree.getText().equals("COMMAND_SUB")) {
-								// don't add this, just add what's inside it
-							} else if (aChildTree.getText().equals("VAR_REF")) {
-								// don't add this, just add what's inside it
-							} else {
-								aStringBuffer.append(aChildTree.getText());
-							}
-						}
-						if (aStringBuffer.length() > 0) {
-							q.add(aStringBuffer.toString());
-						}
-						debug("App.extracted(...).new TreeVisitorAction() {...}.post() STRING - "
-								+ aStringBuffer.toString());
-					} else if (aType == java_libbashParser.RBRACE) {
-					} else if (aType == java_libbashParser.USE_DEFAULT_WHEN_UNSET_OR_NULL) {
-					} else if (aType == java_libbashParser.VARIABLE_DEFINITIONS) {
-					} else if (aType == java_libbashParser.VAR_REF) {
-					} else if (aType == java_libbashParser.LSHIFT) {
-					} else if (aType == java_libbashParser.ARRAY_SIZE) {
-					} else if (aType == java_libbashParser.OP) {
-					} else if (aType == java_libbashParser.MATCH_ANY) {
-					} else if (aType == java_libbashParser.COMMAND_SUB) {
-						//						System.out.println("App.extracted(...).new TreeVisitorAction() {...}.post()  - are we coming here?");
-						//						System.exit(-1);
-					} else if (aType == java_libbashParser.DOUBLE_QUOTED_STRING) {
-					} else if (aType == java_libbashParser.SINGLE_QUOTED_STRING) {
-						//
-						//						StringBuffer aStringBuffer = new StringBuffer();
-						//						for (Object child : aTreeObject.getChildren()) {
-						//							CommonTree aChildTree = (CommonTree) child;
-						//							aStringBuffer.append(aChildTree.getText());
-						//						}
-						//						q.add(aStringBuffer.toString());
-					} else if (aType == java_libbashParser.NAME) {
-					} else if (aType == java_libbashParser.COMMAND) {
-					} else if (aType == java_libbashParser.LIST) {
-						for (Object aChild : aTreeObject.getChildren()) {
-							CommonTree aChildTree = (CommonTree) aChild;
-							debug(
-									"App.main() LIST aChildTree.toStringTree() = " + aChildTree.toStringTree());
-						}
+                if (iObject instanceof CommonTree) {
+                    CommonTree aTreeObject = (CommonTree) iObject;
+                    int aType = aTreeObject.getType();
+                    if (aType == java_libbashParser.STRING) {
 
-					} else if (aType == java_libbashParser.CURRENT_SHELL) {
-					} else if (aType == java_libbashParser.SLASH) {
-					} else if (aType == 2) {
-						// pipe
-					} else {
-						debug("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
-						debug("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
-					}
+                        StringBuffer aStringBuffer = new StringBuffer();
+                        for (Object child : aTreeObject.getChildren()) {
+                            CommonTree aChildTree = (CommonTree) child;
+                            if (aChildTree.getText().equals("SINGLE_QUOTED_STRING")) {
+                                // don't add this, just add what's inside it
+                            } else if (aChildTree.getText().equals("DOUBLE_QUOTED_STRING")) {
+                                // don't add this, just add what's inside it
+                            } else if (aChildTree.getText().equals("COMMAND_SUB")) {
+                                // don't add this, just add what's inside it
+                            } else if (aChildTree.getText().equals("VAR_REF")) {
+                                // don't add this, just add what's inside it
+                            } else {
+                                aStringBuffer.append(aChildTree.getText());
+                            }
+                        }
+                        if (aStringBuffer.length() > 0) {
+                            q.add(aStringBuffer.toString());
+                        }
+                        debug("App.extracted(...).new TreeVisitorAction() {...}.post() STRING - "
+                                + aStringBuffer.toString());
+                    } else if (aType == java_libbashParser.RBRACE) {
+                    } else if (aType == java_libbashParser.USE_DEFAULT_WHEN_UNSET_OR_NULL) {
+                    } else if (aType == java_libbashParser.VARIABLE_DEFINITIONS) {
+                    } else if (aType == java_libbashParser.VAR_REF) {
+                    } else if (aType == java_libbashParser.LSHIFT) {
+                    } else if (aType == java_libbashParser.ARRAY_SIZE) {
+                    } else if (aType == java_libbashParser.OP) {
+                    } else if (aType == java_libbashParser.MATCH_ANY) {
+                    } else if (aType == java_libbashParser.COMMAND_SUB) {
+                        // System.out.println("App.extracted(...).new TreeVisitorAction() {...}.post() -
+                        // are we coming here?");
+                        // System.exit(-1);
+                    } else if (aType == java_libbashParser.DOUBLE_QUOTED_STRING) {
+                    } else if (aType == java_libbashParser.SINGLE_QUOTED_STRING) {
+                        //
+                        // StringBuffer aStringBuffer = new StringBuffer();
+                        // for (Object child : aTreeObject.getChildren()) {
+                        // CommonTree aChildTree = (CommonTree) child;
+                        // aStringBuffer.append(aChildTree.getText());
+                        // }
+                        // q.add(aStringBuffer.toString());
+                    } else if (aType == java_libbashParser.NAME) {
+                    } else if (aType == java_libbashParser.COMMAND) {
+                    } else if (aType == java_libbashParser.LIST) {
+                        for (Object aChild : aTreeObject.getChildren()) {
+                            CommonTree aChildTree = (CommonTree) aChild;
+                            debug("App.main() LIST aChildTree.toStringTree() = " + aChildTree.toStringTree());
+                        }
 
-				} else {
-					debug("App.main() " + iObject.getClass());
-				}
-				return iObject;
-			}
-		});
-	};
+                    } else if (aType == java_libbashParser.CURRENT_SHELL) {
+                    } else if (aType == java_libbashParser.SLASH) {
+                    } else if (aType == 2) {
+                        // pipe
+                    } else {
+                        debug("App.main() UNKNOWN 4 treeObject.getLine() = " + aTreeObject.getLine());
+                        debug("App.main() UNKNOWN 4 treeObject.getText() = " + aTreeObject.getText());
+                    }
+
+                } else {
+                    debug("App.main() " + iObject.getClass());
+                }
+                return iObject;
+            }
+        });
+    };
 }
