@@ -10,8 +10,11 @@ import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilySpouse;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.IndividualReference;
 import org.gedcom4j.model.PersonalName;
+import org.gedcom4j.model.StringWithCustomFacts;
+import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.GedcomParser;
 
 /*
@@ -105,6 +108,7 @@ public class GedcomList {
         String familyStr = iIndentation + " ";
         familyStr += getName(iIndividual);
         String familyStr2 = "";
+        familyStr += getLifetime(iIndividual);
         List<FamilySpouse> familiesWhereSpouse = iIndividual.getFamiliesWhereSpouse();
         if (familiesWhereSpouse != null) {
             for (FamilySpouse aFamilySpouse : familiesWhereSpouse) {
@@ -149,6 +153,36 @@ public class GedcomList {
         return familyStr + "\n" + familyStr2;
     }
 
+    private static String getLifetime(Individual iIndividual) {
+        String dates = "";
+        boolean hasBirthData = false;
+        String birthDate = "";
+        String deathDate = "";
+        boolean hasDeathData = false;
+        List<IndividualEvent> birth = iIndividual.getEventsOfType(IndividualEventType.BIRTH);
+        if (birth != null && birth.size() > 0) {
+            StringWithCustomFacts date = birth.get(0).getDate();
+            if (date != null) {
+                hasBirthData = true;
+                birthDate = date.getValue();
+            }
+        }
+        List<IndividualEvent> death = iIndividual.getEventsOfType(IndividualEventType.DEATH);
+        if (death != null && death.size() > 0) {
+            StringWithCustomFacts date = death.get(0).getDate();
+            if (date != null) {
+                deathDate = date.getValue();
+                hasDeathData = true;
+            }
+        }
+        if (hasBirthData && hasDeathData) {
+            dates = " [" + birthDate + "-" + deathDate + "] ";
+        } else {
+            dates = "";
+        }
+        return dates;
+    }
+
     private static String getName(Individual iIndividual) {
         String familyStrRet = "";
         if (iIndividual.getNames() != null) {
@@ -167,7 +201,7 @@ public class GedcomList {
         }
         if (familyStrRet.length() == 0) {
             familyStrRet = iIndividual.getXref();
-        } 
+        }
         return familyStrRet.replaceAll("Vallis", "").trim();
     }
 }
