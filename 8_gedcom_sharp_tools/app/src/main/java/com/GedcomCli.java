@@ -150,6 +150,7 @@ public class GedcomCli {
         }
         if (true) {
             switch (args[0]) {
+            case "truee":
             case "dump":
                 System.out.println(printFamiliesRecursive(idToIndividual.get(ROOT_ID).getChildFamily(), ""));
                 break;
