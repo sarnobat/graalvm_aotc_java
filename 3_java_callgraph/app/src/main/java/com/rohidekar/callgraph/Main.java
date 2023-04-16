@@ -6,6 +6,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Collections;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -50,6 +52,21 @@ public class Main {
       LinkedHashMultimap.create();
 
   public static void main(String[] args) {
+
+    {
+        /*
+	InputStream source = System.in;
+        Scanner in = new Scanner(source);
+        while(in.hasNext()){
+            String input = in.nextLine(); // Use in.nextLine() for line-by-line reading
+            Map<String, JavaClass> javaClassesFromResource = getJavaClassesFromResource(input);
+            for (JavaClass jc : javaClassesFromResource.values()) {
+                System.err.println("Main.main() TODO: get classes from resource");
+            }
+        }
+        in.close();
+	*/
+    }
     String resource;
     if (args == null || args.length < 1) {
       throw new RuntimeException("Please specify a project path");
@@ -57,6 +74,8 @@ public class Main {
       resource = args[0];
     }
     Map<String, JavaClass> javaClassesFromResource = getJavaClassesFromResource(resource);
+
+    // TODO: Reduce the scope of these mutable input parameters.
     RelationshipsPackageDepth relationshipsPackageDepth = new RelationshipsPackageDepth();
     RelationshipsClassNames relationshipsClassNames =
         new RelationshipsClassNames(javaClassesFromResource);
