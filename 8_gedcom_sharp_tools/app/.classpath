@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry output="bin/main" kind="src" path="src/main/java">
+	<classpathentry kind="src" output="bin/main" path="src/main/java">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="bin/default"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.0.1-jre/d34772c01bd6637982d1aafe895c4fcd8b42e139/guava-31.0.1-jre-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.0.1-jre/119ea2b2bc205b138974d351777b20f02b92704b/guava-31.0.1-jre.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.0.1-jre/119ea2b2bc205b138974d351777b20f02b92704b/guava-31.0.1-jre.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.0.1-jre/d34772c01bd6637982d1aafe895c4fcd8b42e139/guava-31.0.1-jre-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.4/57a73190ad97f56c0cb83a6a5b6c08d5d428319b/antlr-runtime-3.4-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.4/8f011408269a8e42b8548687e137d8eeb56df4b4/antlr-runtime-3.4.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.4/8f011408269a8e42b8548687e137d8eeb56df4b4/antlr-runtime-3.4.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.4/57a73190ad97f56c0cb83a6a5b6c08d5d428319b/antlr-runtime-3.4-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.gedcom4j/gedcom4j/4.0.1/b5b1812aa3d057be3e093fd1a15efbdd4da7f11d/gedcom4j-4.0.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.gedcom4j/gedcom4j/4.0.1/22fcad26e9ba93912e5681dfdb35c67a01fc3258/gedcom4j-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -28,27 +31,72 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/b19b5927c2c25b6c70f093767041e641ae0b1b35/jsr305-3.0.2-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.plugins/maven-project-info-reports-plugin/2.9/3e3d04a19bd9a6e0d1707acaee48995f45c7c906/maven-project-info-reports-plugin-2.9.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.plugins/maven-project-info-reports-plugin/2.9/fcad8c2ac27566330b8ea7b30dd33949af9d7dd5/maven-project-info-reports-plugin-2.9-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/10dacb8b36398debceca36cd0db5f3316967f80e/checker-qual-3.12.0-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.reporting/maven-reporting-impl/2.3/1f70dc5c88c48ba8fc785608228f1b55bfc01e5e/maven-reporting-impl-2.3.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.reporting/maven-reporting-impl/2.3/de72088ab7b77f499bcce4216613349d7d2874ff/maven-reporting-impl-2.3-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.7.1/2ca80bf7ac820fce6c743561b550c8bfb6c87c57/error_prone_annotations-2.7.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.7.1/458d9042f7aa6fa9a634df902b37f544e15aacac/error_prone_annotations-2.7.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-shared-jar/1.2/569e3d279943c2b50facaf302e43ef418e0567af/maven-shared-jar-1.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-shared-jar/1.2/798aa16cd89f8853668b0dd7fde841a22873622a/maven-shared-jar-1.2-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/d26c56180205cbb50447c3eca98ecb617cf9f58b/j2objc-annotations-1.3-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-shared-utils/0.9/8971edf65499b23482d4a68c31ba08dbc6ef2378/maven-shared-utils-0.9.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-shared-utils/0.9/f9d3d154366e5e806a89ec51faa870f2f3985087/maven-shared-utils-0.9-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/stringtemplate/3.2.1/105785687b0c85a7f70cddfdc3a391bcab121872/stringtemplate-3.2.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/stringtemplate/3.2.1/59ec8083721eae215c6f3caee944c410d2be34de/stringtemplate-3.2.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/b19b5927c2c25b6c70f093767041e641ae0b1b35/jsr305-3.0.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/10dacb8b36398debceca36cd0db5f3316967f80e/checker-qual-3.12.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.7.1/458d9042f7aa6fa9a634df902b37f544e15aacac/error_prone_annotations-2.7.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.7.1/2ca80bf7ac820fce6c743561b550c8bfb6c87c57/error_prone_annotations-2.7.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/d26c56180205cbb50447c3eca98ecb617cf9f58b/j2objc-annotations-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/stringtemplate/3.2.1/59ec8083721eae215c6f3caee944c410d2be34de/stringtemplate-3.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.antlr/stringtemplate/3.2.1/105785687b0c85a7f70cddfdc3a391bcab121872/stringtemplate-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-site-renderer/1.6/99ca276310172f91700577383730090c285c5126/doxia-site-renderer-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-site-renderer/1.6/e6471ad14172148dab4ef0763c4cd9bf2a7225aa/doxia-site-renderer-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.velocity/velocity-tools/2.0/69936384de86857018b023a8c56ae0635c56b6a0/velocity-tools-2.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-taglib/1.3.8/e87e9817bdf03c2367fb5f6d5ead953db2df4c21/struts-taglib-1.3.8.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-taglib/1.3.8/326cbc8224f3700cba31a88d9418665bc4fdc660/struts-taglib-1.3.8-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-tiles/1.3.8/6d212f8ea5d908bc9906e669428b7694dff60785/struts-tiles-1.3.8.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-tiles/1.3.8/8c32eb8f1338bddba935f26858e8950f9f976e50/struts-tiles-1.3.8-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-core/1.3.8/66178d4a9279ebb1cd1eb79c10dc204b4199f061/struts-core-1.3.8.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.struts/struts-core/1.3.8/4e26791bbf52f6cf2a324216c9429f42e9447695/struts-core-1.3.8-sources.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
@@ -58,70 +106,503 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/afc478acad44d01bdb208834d5785dc326b61e56/junit-platform-native-0.9.13-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/9090abf809877fa90d5a51ba0c8cad2430adf843/junit-platform-native-0.9.13.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-integration-tools/1.6/aa12128117facfa64c1ac8b8f70c6cf1dbf8b5ca/doxia-integration-tools-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-integration-tools/1.6/2426693c9aaafe6f4e56fad9073050adbca4e741/doxia-integration-tools-1.6-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/c8094df9ba31ddf07a9a7ae91d6eb6aff4aa25b6/junit-platform-console-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/3499405657205c4d6307c1886155edd3c51b6ee1/junit-platform-console-1.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.reporting/maven-reporting-api/3.0/b2541dd07d08cd5eff9bd4554a2ad6a4198e2dfe/maven-reporting-api-3.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.reporting/maven-reporting-api/3.0/121a003e89a50d4e12c8748c920bd7c8874a958/maven-reporting-api-3.0-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/427b4e79162e24bb9f245a322ff61f1da710b3bc/junit-platform-reporting-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/20dde69627366422eb49055414a57e226a3650be/junit-platform-reporting-1.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-common-artifact-filters/1.4/de97ff2efd804f06c3698a914f2d55205742bcc4/maven-common-artifact-filters-1.4.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-common-artifact-filters/1.4/d9f3631ce5fa25a81afe276e49774e86172fbb6e/maven-common-artifact-filters-1.4-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c402dbc15f998e67966816133fcc49196faa8aa3/junit-platform-launcher-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c77eab66c4c4ef92ce6bd2175a5184771ff1d0dd/junit-platform-launcher-1.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-project/2.2.1/8239e98c16f641d55a4ad0e0bab0aee3aff8933f/maven-project-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-project/2.2.1/48d00094f3534d54ac9103cc1e1ac0d19373f96d/maven-project-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/5fd01c33132462aab3905cb74bd1097a713ab91a/junit-jupiter-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/73a218cf02d36d4e87bb9697fdbe0780e92b6bd3/junit-jupiter-5.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact-manager/2.2.1/ec355b913c34d37080810f98e3f51abecbe1572b/maven-artifact-manager-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact-manager/2.2.1/4cbd2b82fd13793898272e3efde94553e0a34766/maven-artifact-manager-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/ea87fe3d752e24397f71f347872e79a89c61a704/junit-jupiter-engine-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/21b86e08aae2720bbf017703669948be96d1388c/junit-jupiter-engine-5.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/2.2.1/23600f790d4dab2cb965419eaa982e3e84c428f8/maven-artifact-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/2.2.1/2254a7c4df37ee565bb557e46325f8483942a368/maven-artifact-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/9d87ea7959823714ad803aa91e0618bf2213b52c/junit-platform-engine-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/e6c63bf990dc88a6527b4ed617b23e47048f07e0/junit-platform-engine-1.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-settings/2.2.1/2236ffe71fa5f78ce42b0f5fc22c54ed45f14294/maven-settings-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-settings/2.2.1/9b5adc6a8a8de7bba166f189551630ed6c879c0/maven-settings-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/d69300e26c3af1d798f412df28d060333e052472/junit-jupiter-params-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/13afdb5d414cbe991fce3ef6b864de77c9644dae/junit-jupiter-params-5.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-profile/2.2.1/3950071587027e5086e9c395574a60650c432738/maven-profile-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-profile/2.2.1/c20d767b267a679af494ee62c313e2ff8ba43116/maven-profile-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/a3e13f34a2a47fb2c0d7385c5e6e0e8623194061/junit-jupiter-api-5.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/6538b88eb8bf8811bc7b6efb5246f835c15e0bfe/junit-jupiter-api-5.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-model/2.2.1/c0a1c17436ec3ff5a56207c031d82277b4250a29/maven-model-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-model/2.2.1/3d7c035d8455862ea4e4d7df0f19f96426da8cd6/maven-model-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/386b61876dd33d0ef0381189d3c1db9455d99659/junit-platform-commons-1.8.1-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/1e362cbe6d0f225b066757865e233972557484/junit-platform-commons-1.8.1.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-plugin-api/2.2.1/d60c36b60f760e0b5b87dd0c6311f93a72dc4585/maven-plugin-api-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-plugin-api/2.2.1/593f9be88010de93fcc8a57c62edea926a0418fc/maven-plugin-api-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/41d55b3c2254de9837b4ec8923cbd371b8a7eab5/opentest4j-1.2.0-sources.jar" kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar">
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-repository-metadata/2.2.1/98f0c07fcf1eeb213bef8d9316a9935184084b06/maven-repository-metadata-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-repository-metadata/2.2.1/3b32786962e043891fc08265618c8b1d37c120b9/maven-repository-metadata-2.2.1-sources.jar">
 		<attributes>
-			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-dependency-tree/2.2/5d9ce6add7b714b8095f0e3e396c5e9f8c5dcfef/maven-dependency-tree-2.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.shared/maven-dependency-tree/2.2/f116b9918d1bda63b6d38168e0b0df2ba6e1fc12/maven-dependency-tree-2.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-provider-api/2.7/c6688735e1ddf17346c666ceafdfd9e3e067bfc0/wagon-provider-api-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-provider-api/2.7/a997325c30607269160e4e3342d280ca55da2751/wagon-provider-api-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-hg/1.9.2/3616f023e1cd4b5ac74f99640187e07a4a8875e3/maven-scm-provider-hg-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-hg/1.9.2/1cd4ed700c3036eaef8bd3a8a5c4a5bf6f3fe8b9/maven-scm-provider-hg-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-perforce/1.9.2/4699f0e58e3b7662140b893df1128b35851bb6dd/maven-scm-provider-perforce-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-perforce/1.9.2/b553400678cf61333afb936098391d560c24e53a/maven-scm-provider-perforce-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-starteam/1.9.2/cdde3bcdf08ececde6f0b4105d1f8ba570305de1/maven-scm-provider-starteam-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-starteam/1.9.2/d46a2f7b9839af63e43b0d0aa5dd0817a9beed02/maven-scm-provider-starteam-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-svn-commons/1.9.2/cf7ccf82e7dd9f2261fca508dedd82bc9e2e4502/maven-scm-provider-svn-commons-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-svn-commons/1.9.2/a579092f96d29b4d6f9498e80d7ffda3b5796d3b/maven-scm-provider-svn-commons-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvs-commons/1.9.2/4f65b88f1c1d61c1e94d3f2deebba0ec3f80e12e/maven-scm-provider-cvs-commons-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvs-commons/1.9.2/80e6b3f3aff1d2d9df0e03b2ce28470b6f1b905/maven-scm-provider-cvs-commons-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-git-commons/1.9.2/dd202a7ef6a0c932c442becaaf6cc85c6db008d8/maven-scm-provider-git-commons-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-git-commons/1.9.2/b007630ccd21bf058e2280bad3b82b8fb083d50/maven-scm-provider-git-commons-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-api/1.9.2/5d6160ab0094e253d16c8693d7e0c183bcf2cee1/maven-scm-api-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-api/1.9.2/6df3da954eb109ec90ee7db9c5fee71fc421fde/maven-scm-api-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-module-xhtml/1.6/71dc8d1ce4c5fcd976aecb8339e331ba9f46f7e3/doxia-module-xhtml-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-module-xhtml/1.6/e2fc88a9c700098b2c22ae7e7222648749bd21c3/doxia-module-xhtml-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-module-fml/1.6/67e3faa49307e003ba717eb53330aeb02861de19/doxia-module-fml-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-module-fml/1.6/20c152e3fdf04924f122b684e07da9cab67f6d73/doxia-module-fml-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-core/1.6/61dd1084ec7d093086db714537439b02c76f0deb/doxia-core-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-core/1.6/73bb6ce36af31c34d02e804c845e94b41ba3f1a7/doxia-core-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-sink-api/1.6/394e19f6f706b8ab35ac2f443234217d620c2aee/doxia-sink-api-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-sink-api/1.6/7e96a134792fd49351879e9e4f9690f3c8703f4d/doxia-sink-api-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-decoration-model/1.6/5143fc30d9b6e6b8636212b5caf4139f1b68ad2f/doxia-decoration-model-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-decoration-model/1.6/ed840c155215ae8d49858f248fbc5bef22e17aa7/doxia-decoration-model-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-i18n/1.0-beta-10/27506f59e54cc80b8c28b977c2bcd0478094e0cc/plexus-i18n-1.0-beta-10.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-plugin-registry/2.2.1/72a24b7775649af78f3986b5aa7eb354b9674cfd/maven-plugin-registry-2.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-plugin-registry/2.2.1/4bb2899cf7f21818266035efab67a8cd5068ebd0/maven-plugin-registry-2.2.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-logging-api/1.6/aca027f3574edcd530014361f3d2af413ba7a593/doxia-logging-api-1.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.doxia/doxia-logging-api/1.6/6403bb9d5106db5a2f0d272db978e68623d90dd2/doxia-logging-api-1.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-digest/1.0/5f6a5a5140cd39e8c987cf6c31429d917b31166e/plexus-digest-1.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-digest/1.0/3539182413e3af27aa3a5a8eb37d36e8a9f844fe/plexus-digest-1.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-velocity/1.1.7/1440fc2552d1405b1c2d380ef3b96c4d9c6dbd0b/plexus-velocity-1.1.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-velocity/1.1.7/b91e2890d79e17c34121e1d565506efbc367dd7c/plexus-velocity-1.1.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-container-default/1.5.5/265fa2851d31c2e2177859a518987595efe146b/plexus-container-default-1.5.5.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-container-default/1.5.5/5a8d85ede02b1a32f79f8b17f0fe2077d952de2d/plexus-container-default-1.5.5-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-utils/3.0.20/e121ed37af8ee3928952f6d8a303de24e019aab0/plexus-utils-3.0.20.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-utils/3.0.20/26853754b29534121010a00464b71e6cc0c403f2/plexus-utils-3.0.20-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-interpolation/1.21/f92de59d295f16868001644acc21720f3ec9eb15/plexus-interpolation-1.21.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-interpolation/1.21/ec18e4d93661b15baf6868a8596b0a12f2678b0d/plexus-interpolation-1.21-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.4.0/42fa1046955ade59f5354a1876cfc523cea33815/commons-validator-1.4.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.4.0/de47dafdf8eeb73b10198706c797b45b7fe0b51e/commons-validator-1.4.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.velocity/velocity/1.6.2/1b470ec12a9b8aa69b0458a7e477dacb2cbdd6a0/velocity-1.6.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/67313d715fbf0ea4fd0bdb69217fb77f807a8ce5/commons-lang-2.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/backport-util-concurrent/backport-util-concurrent/3.1/682f7ac17fed79e92f8e87d8455192b63376347b/backport-util-concurrent-3.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/backport-util-concurrent/backport-util-concurrent/3.1/eff8366924cf1a666dd20aa632febf1c2c05b8cb/backport-util-concurrent-3.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-component-annotations/1.5.5/c72f2660d0cbed24246ddb55d7fdc4f7374d2078/plexus-component-annotations-1.5.5.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-component-annotations/1.5.5/b10462efcf1ac1915797958d479c724d1bd5008d/plexus-component-annotations-1.5.5-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.eclipse.aether/aether-util/0.9.0.M2/b957089deb654647da320ad7507b0a4b5ce23813/aether-util-0.9.0.M2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.eclipse.aether/aether-util/0.9.0.M2/fa7bb4ebe56309719184146038f07a45e2a210de/aether-util-0.9.0.M2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/1.4/a8762d07e76cfde2395257a5da47ba7c1dbd3dce/commons-io-1.4.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/1.4/48753e43ff29409fbbeadfb36186cbe27e41b179/commons-io-1.4-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/bcel-findbugs/6.0/7a7563ba41dceff3da4af4927b7c09908bd5132c/bcel-findbugs-6.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/bcel-findbugs/6.0/936f4430478909ed7b138d42f9ad73c919a87b26/bcel-findbugs-6.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/761ea405b9b37ced573d2df0d1e3a4e0f9edc668/commons-collections-3.2.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/fa095ef874374e5b2a11f8b06c26a5d68c7cb3a4/commons-collections-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.9.1/7bc7e49ddfe4fb5f193ed37ecc96c12292c8ceb6/xercesImpl-2.9.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.0.2/781b68c2fd5335de914166241b8d4bfe8c2f91b7/httpclient-4.0.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.0.2/23ca7b7ddc89c3b9236950ad4340176aeb048045/httpclient-4.0.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.0.1/e813b8722c387b22e1adccf7914729db09bcb4a9/httpcore-4.0.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.0.1/69febd50593a006a4593ef64a697b14208a55b7b/httpcore-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/xmlunit/xmlunit/1.5/7789cef5caffdecab50fd6099535ad2bc2e98044/xmlunit-1.5.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/xmlunit/xmlunit/1.5/fca719d9f09ccf77b2df232099067d202309ad2c/xmlunit-1.5-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-chain/commons-chain/1.1/3038bd41dcdb2b63b8c6dcc8c15f0fdf3f389012/commons-chain-1.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-chain/commons-chain/1.1/2b206037ef7277949a869b6d4f795389e13b4409/commons-chain-1.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-digester/commons-digester/1.8/dc6a73fdbd1fa3f0944e8497c6c872fa21dca37e/commons-digester-1.8.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-digester/commons-digester/1.8/6c296de7dc352e0af9a40f92f5af995314d41fc9/commons-digester-1.8-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.3/686ef3410bcf4ab8ce7fd0b899e832aaba5facf7/commons-beanutils-1.8.3.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.3/170d03db4cb48be2f8f35ce3243d62c4b2204e2e/commons-beanutils-1.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.1/5043bfebc3db072ed80fbd362e7caf00e885d8ae/commons-logging-1.1.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.1/f3f156cbff0e0fb0d64bfce31a352cce4a33bc19/commons-logging-1.1.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-classworlds/2.2.2/3a2bad2b58c1ca765d3f471cea8c1655d70fdfd9/plexus-classworlds-2.2.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-classworlds/2.2.2/b5e33106279bbc09be9078890478112ebe3623ef/plexus-classworlds-2.2.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.xbean/xbean-reflect/3.4/26fd55dceb037f4789b399b22874d74f4d2db66f/xbean-reflect-3.4.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.xbean/xbean-reflect/3.4/77c8a006107cb5520096d629aedd0ff733e11fe1/xbean-reflect-3.4-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.collections/google-collections/1.0/9ffe71ac6dcab6bc03ea13f5c2e7b2804e69b357/google-collections-1.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.google.collections/google-collections/1.0/8283dd0edd369f2cb594cd3f2433c498801bcb09/google-collections-1.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/junit/junit/3.8.2/7e4cde26b53a9a0e3fe5b00d1dbbc7cc1d46060/junit-3.8.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/junit/junit/3.8.2/aaa058540bf14ad600dd784de979c46c721ccbbe/junit-3.8.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.3.04/90b215f48fe42776c8c7f6e3509ec54e84fd65ef/xml-apis-1.3.04.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.3.04/d89105ccbe3fd823865330fd964233baf2b53e88/xml-apis-1.3.04-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.3/fd32786786e2adb664d5ecc965da47629dca14ba/commons-codec-1.3.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.3/ee264b5d7a0f939d5999398c7f1ade031db3fcec/commons-codec-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/oro/oro/2.0.8/5592374f834645c4ae250f4c9fbb314c9369d698/oro-2.0.8.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/oro/oro/2.0.8/3598e790ecd76ff7eb249853d4d00822ae1a5e71/oro-2.0.8-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.1/690b3108a502c8f033ea87e7278aec309ffa668/dom4j-1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/sslext/sslext/1.2-0/c86a7db4ac0bc450e675f3d44b3d64cdc934361b/sslext-1.2-0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/sslext/sslext/1.2-0/a7d06841a9a2d3222ccb2af8ad7e175d431ab8fe/sslext-1.2-0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.12/57b8740427ee6d7b0b60792751356cad17dc0d9/log4j-1.2.12.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging-api/1.1/7d4cf5231d46c8524f9b9ed75bb2d1c69ab93322/commons-logging-api-1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-ssh/2.7/f1cbee4854b4c3bd72fef2ddb573f3e4e6edf152/wagon-ssh-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-ssh/2.7/ce0cc73cb12d0ad1f3551bb95ca845313c27271a/wagon-ssh-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-file/2.7/cb6acc07e78040882f3098b614f9c9f84475f770/wagon-file-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-file/2.7/c49b628136296e09e56bb3e7fe6a68fdf927e54a/wagon-file-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-http-lightweight/2.7/5041b265f51b977e5e91f49f8da97a6093b3853c/wagon-http-lightweight-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-http-lightweight/2.7/5c4bf2fefc0923109c7c1a93b4e9ab662295b1d/wagon-http-lightweight-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-ssh-common/2.7/34a2434480011491513f15b8bb5facc1aafacb84/wagon-ssh-common-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-ssh-common/2.7/8ce1ad3470b1728753518df8ff96795c7615683b/wagon-ssh-common-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-http-shared/2.7/1bc428f7a784dfb21f1f17b6a439a0d7d972e38/wagon-http-shared-2.7.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.wagon/wagon-http-shared/2.7/aadd121360531f16397eabc5b29e15e66aab8dcc/wagon-http-shared-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-manager-plexus/1.9.2/dde5adf324746f84a520908fcbaab54ab820c619/maven-scm-manager-plexus-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-manager-plexus/1.9.2/332c018d96b2f973a5243c7cfe1ead9c0fe48a94/maven-scm-manager-plexus-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-svnexe/1.9.2/e2c0da8e323b24010b98e0c620d1bde452691b05/maven-scm-provider-svnexe-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-svnexe/1.9.2/ff6bb01fea2b19672b3f600db78c9dd8925c5ef8/maven-scm-provider-svnexe-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvsexe/1.9.2/f093787cf4d7e05508cb155f4f509540acaaf272/maven-scm-provider-cvsexe-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvsexe/1.9.2/f07ada1c55eeba2b9e389191e23a899d18c500fd/maven-scm-provider-cvsexe-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvsjava/1.9.2/97279e4c2523c00b7cfbcbcb9cfddaffe0e06dda/maven-scm-provider-cvsjava-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-cvsjava/1.9.2/289b4b9c0bfb990094144050e84dbb53faf9eb81/maven-scm-provider-cvsjava-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-gitexe/1.9.2/b1ca6ca89281d3031b47d1950a7e071630c03a9/maven-scm-provider-gitexe-1.9.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.apache.maven.scm/maven-scm-provider-gitexe/1.9.2/452f35ade3a784bcca9bb08b2d687f51b5176062/maven-scm-provider-gitexe-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-interactivity-api/1.0-alpha-6/c06f0eb818633033f09a87d14c4cfb6f39af9a37/plexus-interactivity-api-1.0-alpha-6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.codehaus.plexus/plexus-interactivity-api/1.0-alpha-6/ca38443f33fc06eab96259b607f7e2eb0a712f17/plexus-interactivity-api-1.0-alpha-6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.2/83b5b8a7ba1c08f9e8c8ff2373724e33d3c1e22a/commons-io-2.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.2/8d6b98f21262995489a8418fff8da992d7e25c1e/commons-io-2.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.jsch/0.0.6/aee40b481ad104a578584335b4859e49d4be4f7a/jsch.agentproxy.jsch-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.jsch/0.0.6/43e326292c39f7dd4926fa01d626b65e55f0b5d9/jsch.agentproxy.jsch-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.50/fae4a0b1f2a96cb8f58f38da2650814c991cea01/jsch-0.1.50.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.50/b6eca0935acca8dcd773df56f0fccec5d9877252/jsch-0.1.50-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.connector-factory/0.0.6/250ab907c35a1777e70d54038086e84855d74aea/jsch.agentproxy.connector-factory-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.connector-factory/0.0.6/4d5930829550cecd5deee0bded739a645aa7047f/jsch.agentproxy.connector-factory-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.netbeans.lib/cvsclient/20060125/cc80bd0085c79be7ed332cbdc1db77498bff1fda/cvsclient-20060125.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/ch.ethz.ganymed/ganymed-ssh2/build210/b2f81c85a7a2a1b43727d2582710af85c979050b/ganymed-ssh2-build210.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/ch.ethz.ganymed/ganymed-ssh2/build210/eebdf9d4bb0d194943d17f0e7b36aae9af7653b5/ganymed-ssh2-build210-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.usocket-jna/0.0.6/e5e027a2d77296a89088820d5b3ffd2705f513f1/jsch.agentproxy.usocket-jna-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.usocket-jna/0.0.6/12493704212b0d363c9a35249a7bb4205e1dc6f2/jsch.agentproxy.usocket-jna-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.usocket-nc/0.0.6/1ae336deaeb39fd712f9134b24343094901c03a/jsch.agentproxy.usocket-nc-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.usocket-nc/0.0.6/750d0e4c729e17c39988f76b57a4e5dca8b40738/jsch.agentproxy.usocket-nc-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.sshagent/0.0.6/c552a54fece150f69350fa11b9c28d0e455bcf4b/jsch.agentproxy.sshagent-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.sshagent/0.0.6/7b8f19c323439afc70962cbda0a80ab57ef34a53/jsch.agentproxy.sshagent-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.pageant/0.0.6/a4b88191bed87d3210d9666071b15b98e0447484/jsch.agentproxy.pageant-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.pageant/0.0.6/78111bfd59ee975ed3c31af3ad5c25a4f2a255cf/jsch.agentproxy.pageant-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.core/0.0.6/fb27d5a19479c7617c74aaca4f1d38063ac7a25e/jsch.agentproxy.core-0.0.6.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch.agentproxy.core/0.0.6/e771922b5a207fccc1f32cee3700c6bbce79149/jsch.agentproxy.core-0.0.6-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.7.2/d7e275ba05aa380ca254f72d0c0ffebaedc3adcf/jsoup-1.7.2.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.7.2/833f425e7a40d7fc88922370a072965dda8ee216/jsoup-1.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.4.0/803ff252fedbd395baffd43b37341dc4a150a554/jna-3.4.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/3.4.0/2f42653596d0044f0ab456620cba54c9cf53c5ca/jna-3.4.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/platform/3.4.0/e3f70017be8100d3d6923f50b3d2ee17714e9c13/platform-3.4.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/platform/3.4.0/2f42653596d0044f0ab456620cba54c9cf53c5ca/platform-3.4.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/9090abf809877fa90d5a51ba0c8cad2430adf843/junit-platform-native-0.9.13.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/afc478acad44d01bdb208834d5785dc326b61e56/junit-platform-native-0.9.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/3499405657205c4d6307c1886155edd3c51b6ee1/junit-platform-console-1.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/c8094df9ba31ddf07a9a7ae91d6eb6aff4aa25b6/junit-platform-console-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/20dde69627366422eb49055414a57e226a3650be/junit-platform-reporting-1.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/427b4e79162e24bb9f245a322ff61f1da710b3bc/junit-platform-reporting-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c77eab66c4c4ef92ce6bd2175a5184771ff1d0dd/junit-platform-launcher-1.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c402dbc15f998e67966816133fcc49196faa8aa3/junit-platform-launcher-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/73a218cf02d36d4e87bb9697fdbe0780e92b6bd3/junit-jupiter-5.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/5fd01c33132462aab3905cb74bd1097a713ab91a/junit-jupiter-5.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/21b86e08aae2720bbf017703669948be96d1388c/junit-jupiter-engine-5.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/ea87fe3d752e24397f71f347872e79a89c61a704/junit-jupiter-engine-5.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/e6c63bf990dc88a6527b4ed617b23e47048f07e0/junit-platform-engine-1.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/9d87ea7959823714ad803aa91e0618bf2213b52c/junit-platform-engine-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/13afdb5d414cbe991fce3ef6b864de77c9644dae/junit-jupiter-params-5.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/d69300e26c3af1d798f412df28d060333e052472/junit-jupiter-params-5.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/6538b88eb8bf8811bc7b6efb5246f835c15e0bfe/junit-jupiter-api-5.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/a3e13f34a2a47fb2c0d7385c5e6e0e8623194061/junit-jupiter-api-5.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/1e362cbe6d0f225b066757865e233972557484/junit-platform-commons-1.8.1.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/386b61876dd33d0ef0381189d3c1db9455d99659/junit-platform-commons-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar" sourcepath="/Users/sarnobat/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/41d55b3c2254de9837b4ec8923cbd371b8a7eab5/opentest4j-1.2.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle_used_by_scope" value="test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Volumes/git/github/graalvm_aotc_java/8_gedcom_sharp_tools/gedcom4j-4.0.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin/default"/>
 </classpath>

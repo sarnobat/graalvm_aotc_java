@@ -271,9 +271,14 @@ public class Main {
       for (File aClass : files) {
         try {
           ClassParser classParser = new ClassParser(checkNotNull(aClass.getAbsolutePath()));
+          System.err.println("[debug] aClass = " + aClass.getAbsolutePath());
           JavaClass jc = checkNotNull(checkNotNull(classParser).parse());
           javaClasses.put(jc.getClassName(), jc);
-        } catch (IOException e) {
+        } catch (Exception e) {
+		  System.err.println("[debug] exception = " + e.toString());
+          e.printStackTrace();
+        } catch ( java.lang.ExceptionInInitializerError e) {
+		  System.err.println("[debug] exception = " + e.toString());
           e.printStackTrace();
         }
       }
