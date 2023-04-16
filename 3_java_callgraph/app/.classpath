@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry output="bin/main" kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="gradle_scope" value="main"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.apache.bcel/bcel/6.0/206dfd32271b9b0150d8211070e5dbbe69cf5154/bcel-6.0-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.apache.bcel/bcel/6.0/7d08bcac4832f81467d3e2ca5bd58ad627288656/bcel-6.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/javassist/javassist/3.12.1.GA/cc64c85182743e0e8166cfc072a4359e54bbc7e9/javassist-3.12.1.GA-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/javassist/javassist/3.12.1.GA/526633327faa61aee448a519e8a4d53ec3057885/javassist-3.12.1.GA.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.4/2b8c4b3035e45520ef42033e823c7d33e4b4402c/commons-lang-2.4-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.4/16313e02a793435009f1e458fa4af5d879f6fb11/commons-lang-2.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/net.sf.opencsv/opencsv/2.3/235993117036d44d126f76db9ea2202ee4884682/opencsv-2.3-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/net.sf.opencsv/opencsv/2.3/c23708cdb9e80a144db433e23344a788a1fd6599/opencsv-2.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/f2d8698c46d1167ff24b06a840a87d91a02db891/commons-io-2.4-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/afc478acad44d01bdb208834d5785dc326b61e56/junit-platform-native-0.9.13-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.graalvm.buildtools/junit-platform-native/0.9.13/9090abf809877fa90d5a51ba0c8cad2430adf843/junit-platform-native-0.9.13.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/c8094df9ba31ddf07a9a7ae91d6eb6aff4aa25b6/junit-platform-console-1.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.8.1/3499405657205c4d6307c1886155edd3c51b6ee1/junit-platform-console-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/427b4e79162e24bb9f245a322ff61f1da710b3bc/junit-platform-reporting-1.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-reporting/1.8.1/20dde69627366422eb49055414a57e226a3650be/junit-platform-reporting-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c402dbc15f998e67966816133fcc49196faa8aa3/junit-platform-launcher-1.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.8.1/c77eab66c4c4ef92ce6bd2175a5184771ff1d0dd/junit-platform-launcher-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/5fd01c33132462aab3905cb74bd1097a713ab91a/junit-jupiter-5.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.1/73a218cf02d36d4e87bb9697fdbe0780e92b6bd3/junit-jupiter-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/ea87fe3d752e24397f71f347872e79a89c61a704/junit-jupiter-engine-5.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.1/21b86e08aae2720bbf017703669948be96d1388c/junit-jupiter-engine-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/9d87ea7959823714ad803aa91e0618bf2213b52c/junit-platform-engine-1.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.1/e6c63bf990dc88a6527b4ed617b23e47048f07e0/junit-platform-engine-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/d69300e26c3af1d798f412df28d060333e052472/junit-jupiter-params-5.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.1/13afdb5d414cbe991fce3ef6b864de77c9644dae/junit-jupiter-params-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/a3e13f34a2a47fb2c0d7385c5e6e0e8623194061/junit-jupiter-api-5.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.1/6538b88eb8bf8811bc7b6efb5246f835c15e0bfe/junit-jupiter-api-5.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/386b61876dd33d0ef0381189d3c1db9455d99659/junit-platform-commons-1.8.1-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.1/1e362cbe6d0f225b066757865e233972557484/junit-platform-commons-1.8.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/41d55b3c2254de9837b4ec8923cbd371b8a7eab5/opentest4j-1.2.0-sources.jar" kind="lib" path="/Users/srsarnob/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+</classpath>

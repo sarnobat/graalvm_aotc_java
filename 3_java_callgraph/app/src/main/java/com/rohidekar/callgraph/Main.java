@@ -214,7 +214,8 @@ public class Main {
     printTreeTest(depthToRootNodes, out);
     System.err.println(
         "Now use d3_helloworld_csv.git/singlefile_automated/ for visualization. For example: ");
-    System.err.println("  cd ~/github/d3_csv/singlefile_automated/ && cat /tmp/calls.csv | sh ~/work/code_comprehension/filter.sh | sh csv2d3.sh | tee /tmp/index.html");
+	System.err.println("  sh ~/github/d3_csv/singlefile_automated/run_automated.sh | tee /tmp/index.html");
+//    System.err.println("  cd ~/github/d3_csv/singlefile_automated/ && cat /tmp/calls.csv | sh ~/work/code_comprehension/filter.sh | sh csv2d3.sh | tee /tmp/index.html");
   }
 
   @SuppressWarnings("resource")
