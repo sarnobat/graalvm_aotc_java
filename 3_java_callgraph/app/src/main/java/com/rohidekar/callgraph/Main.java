@@ -53,29 +53,38 @@ public class Main {
 
   public static void main(String[] args) {
 
-    {
-        /*
-	InputStream source = System.in;
-        Scanner in = new Scanner(source);
-        while(in.hasNext()){
-            String input = in.nextLine(); // Use in.nextLine() for line-by-line reading
-            Map<String, JavaClass> javaClassesFromResource = getJavaClassesFromResource(input);
-            for (JavaClass jc : javaClassesFromResource.values()) {
-                System.err.println("Main.main() TODO: get classes from resource");
-            }
-        }
-        in.close();
-	*/
-    }
+
+    Map<String, JavaClass> javaClassesFromResource = new HashMap<>();
     String resource;
     if (args == null || args.length < 1) {
-      throw new RuntimeException("Please specify a project path");
+//      throw new RuntimeException("Please specify a project path");
     } else {
       resource = args[0];
+      Map<String, JavaClass> javaClassesFromResource1 = getJavaClassesFromResource(resource);
+      javaClassesFromResource.putAll(javaClassesFromResource1);
     }
-    Map<String, JavaClass> javaClassesFromResource = getJavaClassesFromResource(resource);
-
-    // TODO: Reduce the scope of these mutable input parameters.
+    {
+    InputStream source = System.in;
+        Scanner in = new Scanner(source);
+        while(in.hasNext()){
+            String input = in.nextLine();
+            
+            
+              try {
+                ClassParser classParser = new ClassParser(input);
+                JavaClass jc = checkNotNull(checkNotNull(classParser).parse());
+                javaClassesFromResource.put(jc.getClassName(), jc);
+              } catch (Exception e) {
+                System.err.println("[debug] exception = " + e.toString());
+                e.printStackTrace();
+              } catch ( java.lang.ExceptionInInitializerError e) {
+                System.err.println("[debug] exception = " + e.toString());
+                e.printStackTrace();
+              }
+            
+        }
+        in.close();
+    }
     RelationshipsPackageDepth relationshipsPackageDepth = new RelationshipsPackageDepth();
     RelationshipsClassNames relationshipsClassNames =
         new RelationshipsClassNames(javaClassesFromResource);
