@@ -1,13 +1,18 @@
-## This doesn't use a gradle plugin for native compilation, see next code sample
-
 set -e
 #set -o pipefail
 
-
-GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/
+# GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/
+GRAALVM_HOME=/Volumes/trash/trash/graalvm-jdk-17.0.7+8.1
 
 test -d $GRAALVM_HOME || echo "Does not exist: $GRAALVM_HOME"
 test -d $GRAALVM_HOME || exit 1
+
+cat <<EOF | batcat --plain --paging=never --language sh --theme TwoDark
+## This doesn't use a gradle plugin for native compilation, see next code sample
+
+
+
+
 
 # Downloads "native-image"
 $GRAALVM_HOME/bin/gu install native-image
@@ -33,3 +38,4 @@ java -jar /Volumes/git/github/docker_image_helloworld/graal_aotc_java/build/libs
 $NATIVE_IMAGE -jar $JAR_WITH_DEPS --no-fallback --no-server -H:Class=com.Helloworld -H:Name=helloworld.macos
 
 ./helloworld.macos
+EOF
