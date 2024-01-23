@@ -56,5 +56,5 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
