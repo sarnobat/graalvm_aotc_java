@@ -6,9 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.gedcom4j.exception.GedcomParserException;
@@ -22,6 +23,9 @@ import org.gedcom4j.model.PersonalName;
 import org.gedcom4j.model.StringWithCustomFacts;
 import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.GedcomParser;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 /*
 
@@ -112,16 +116,61 @@ public class GedcomList {
 
     private static class ChildOrder implements Comparator<IndividualReference> {
         
+        private final Multimap<String,String> childrenInTextualOrder = HashMultimap.create();
+        
+        // Assumption: each child can only belong to one family (for printing a tree, I think it is)
+        Map<String,String> childToFamilyCode = new HashMap<>();
         ChildOrder(Path path) throws IOException {
             if (!path.toFile().exists()) {
                 throw new RuntimeException(path.toAbsolutePath().toString());
             }
-            Files.lines(path).forEachOrdered(s -> {});
+//            Multimap<String,String> childrenInTextualOrder = new SetMultimapBuilder<String,String>();
+//            SetMultimapBuilder<String,String> childrenInTextualOrderBuilder = SetMultimapBuilder<String,String>();
+            //Multimaps.newSetMultimap();
+            String familyCode = "invalid";
+            for (String s : Files.lines(path).collect(Collectors.toList())) {
+
+                if (s.matches("^0.*FAM$")) {
+                    familyCode = s.replaceAll("0\\s*", "").replaceAll("\\s*FAM$", "");
+                } else if (s.matches("1 CHIL.*")) {
+                    String childCode = s.replaceAll("1\\s*CHIL\\s*", "").replaceAll("$", "");
+                    childrenInTextualOrder.put(familyCode, childCode);
+                    childToFamilyCode.put(childCode, familyCode);
+                } else {
+                    if (s.contains("CHIL")) {
+                    System.out.println("GedcomList.ChildOrder.ChildOrder() s = " + s);
+                    }
+                }
+            }
+//.forEachOrdered(s -> {
+//            });
+            if (childrenInTextualOrder.size() < 1) {
+                throw new RuntimeException();
+            }
+            if (childToFamilyCode.size() < 1) {
+                throw new RuntimeException();
+            }
         }
         
         @Override
         public int compare(IndividualReference o1, IndividualReference o2) {
-            return 0;
+            List<String> siblings = new LinkedList<>(childrenInTextualOrder.get(childToFamilyCode.get(o1.getIndividual().getXref())));
+            if (o1.getIndividual().getFormattedName().contains("avant") || o2.getIndividual().getFormattedName().contains("avant")) {
+                System.out.println();
+            }
+            int indexOf = siblings.indexOf(o1.getIndividual().getXref());
+            int indexOf2 = siblings.indexOf(o2.getIndividual().getXref());
+            if (indexOf < 0) {
+//                throw new RuntimeException();
+                System.err.println("[error] GedcomList.ChildOrder.compare()");
+            }
+            if (indexOf2 < 0) {
+//                throw new RuntimeException();
+                System.err.println("[error] GedcomList.ChildOrder.compare()");
+            }
+            int i = indexOf - indexOf2;
+            System.err.println("GedcomList.ChildOrder.compare() " + i);
+            return  i;
         }
     };
 
