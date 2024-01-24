@@ -2,11 +2,13 @@ package com;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.gedcom4j.exception.GedcomParserException;
@@ -110,10 +112,11 @@ public class GedcomList {
 
     private static class ChildOrder implements Comparator<IndividualReference> {
         
-        ChildOrder(Path path) {
+        ChildOrder(Path path) throws IOException {
             if (!path.toFile().exists()) {
                 throw new RuntimeException(path.toAbsolutePath().toString());
             }
+            Files.lines(path).forEachOrdered(s -> {});
         }
         
         @Override
