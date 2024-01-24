@@ -2,8 +2,12 @@ package com;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.gedcom4j.exception.GedcomParserException;
 import org.gedcom4j.model.Family;
@@ -95,7 +99,7 @@ public class GedcomList {
 
         Individual root2 = individuals.get("@" + root + "@");
 
-        String ret = printFamilyOf(root2, "", star);
+        String ret = printFamilyOf(root2, "*", star, new ChildOrder(Paths.get(ged)));
         System.out.println(ret);
         System.err.println(
                 "TIP: Use PlantUML (https://plantuml.com/style-evolution) or pandoc (see tree_rohidekar_master.mwk header for command)");
@@ -104,7 +108,21 @@ public class GedcomList {
 
     }
 
-    private static String printFamilyOf(Individual iIndividual, String iIndentation, String star) {
+    private static class ChildOrder implements Comparator<IndividualReference> {
+        
+        ChildOrder(Path path) {
+            if (!path.toFile().exists()) {
+                throw new RuntimeException(path.toAbsolutePath().toString());
+            }
+        }
+        
+        @Override
+        public int compare(IndividualReference o1, IndividualReference o2) {
+            return 0;
+        }
+    };
+
+    private static String printFamilyOf(Individual iIndividual, String iIndentation, String star, Comparator<IndividualReference> childOrder) {
         String familyStr = iIndentation + " ";
         familyStr += getName(iIndividual);
         String familyStr2 = "";
@@ -140,9 +158,11 @@ public class GedcomList {
                 Family aFamily = aFamily2;
                 if (aFamily != null) {
                     if (aFamily.getChildren() != null) {
-                        for (IndividualReference aChildReference : aFamily.getChildren()) {
+                        
+                        for (IndividualReference aChildReference : aFamily.getChildren().stream()
+                                .sorted(childOrder).collect(Collectors.toList())) {
                             // System.out.print("\n");
-                            familyStr2 += printFamilyOf(aChildReference.getIndividual(), iIndentation + star, star);
+                            familyStr2 += printFamilyOf(aChildReference.getIndividual(), iIndentation + star, star, childOrder);
                         }
 //                      familyStr2 += "\n";
                     }
