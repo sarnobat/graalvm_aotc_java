@@ -25,6 +25,7 @@ import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.GedcomParser;
 
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 
 /*
@@ -116,7 +117,7 @@ public class GedcomList {
 
     private static class ChildOrder implements Comparator<IndividualReference> {
         
-        private final Multimap<String,String> childrenInTextualOrder = HashMultimap.create();
+        private final Multimap<String,String> childrenInTextualOrder = LinkedListMultimap.create();
         
         // Assumption: each child can only belong to one family (for printing a tree, I think it is)
         Map<String,String> childToFamilyCode = new HashMap<>();
@@ -162,14 +163,14 @@ public class GedcomList {
             int indexOf2 = siblings.indexOf(o2.getIndividual().getXref());
             if (indexOf < 0) {
 //                throw new RuntimeException();
-                System.err.println("[error] GedcomList.ChildOrder.compare()");
+//                System.err.println("[error] GedcomList.ChildOrder.compare()");
             }
             if (indexOf2 < 0) {
 //                throw new RuntimeException();
-                System.err.println("[error] GedcomList.ChildOrder.compare()");
+//                System.err.println("[error] GedcomList.ChildOrder.compare()");
             }
             int i = indexOf - indexOf2;
-            System.err.println("GedcomList.ChildOrder.compare() " + i);
+//            System.err.println("GedcomList.ChildOrder.compare() " + i);
             return  i;
         }
     };
