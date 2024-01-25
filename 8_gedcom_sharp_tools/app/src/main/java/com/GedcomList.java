@@ -179,7 +179,9 @@ public class GedcomList {
         String familyStr = iIndentation + " ";
         familyStr += getName(iIndividual);
         String familyStr2 = "";
-        familyStr += getLifetime(iIndividual);
+        if (Boolean.valueOf(System.getProperty("dates", "false"))) {
+            familyStr += getLifetime(iIndividual);
+        }
         List<FamilySpouse> familiesWhereSpouse = iIndividual.getFamiliesWhereSpouse();
         if (familiesWhereSpouse != null) {
             for (FamilySpouse aFamilySpouse : familiesWhereSpouse) {
