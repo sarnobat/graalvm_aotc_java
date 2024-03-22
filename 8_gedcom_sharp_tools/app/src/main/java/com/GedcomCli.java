@@ -17,6 +17,8 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
+ * TODO 2024-03: describe what this does. I'm not clear what the output format is
+
  * ./gedcom.osx edges  | /Volumes/git/github/graalvm_aotc_java/9_csv2path/csv2path.osx | path2indent.osx --absolute
  */
 public class GedcomCli {
