@@ -57,7 +57,7 @@ jobs:
           pwd
           find .
       - name: native image
-        run: gradle nativeCompile
+        run: ./9_csv2path/gradlew nativeCompile
       - name: Find all files
         shell: bash
         run: |
