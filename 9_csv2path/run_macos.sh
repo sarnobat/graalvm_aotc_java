@@ -16,3 +16,6 @@ $GRAAL/Contents/Home/lib/installer/bin/gu  install native-image
 GRAALVM_HOME=$GRAAL/Contents/Home/ JAVA_HOME=$GRAAL/Contents/Home/ ./gradlew nativeCompile -b app/build.gradle
 ls -lh app/build/native/nativeCompile/app
 cp -v app/build/native/nativeCompile/app csv2path.osx
+
+# to do the native compile separately
+$GRAALVM_HOME/bin/native-image -H:Class=com.App -jar $GRAALVM_HOME/app/build/libs/app.jar -H:Name=csv2path.osx
