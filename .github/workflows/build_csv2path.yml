@@ -54,6 +54,8 @@ jobs:
           echo "JAVA_HOME: $JAVA_HOME"
           java --version
           native-image --version
+          pwd
+          find .
       - name: native image
         run: gradle nativeCompile
       - name: Find all files
