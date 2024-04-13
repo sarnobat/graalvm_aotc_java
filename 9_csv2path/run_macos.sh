@@ -1,4 +1,14 @@
 set -e
+
+GRAALVM_HOME=/Volumes/Apps/graalvm-ce-java11-22.2.0/Contents/Home/
+
+test -d $GRAALVM_HOME || echo "4 Does not exist: $GRAALVM_HOME"
+test -d $GRAALVM_HOME || exit 1
+
+NATIVE_IMAGE=$GRAALVM_HOME/lib/svm/bin/native-image
+echo "$NATIVE_IMAGE"
+
+set -e
 GRAAL=/Volumes/Apps/graalvm-ce-java11-22.2.0
 ls -d $GRAAL
 ls -d /Volumes/Apps/graalvm-ce-java11-22.2.0
