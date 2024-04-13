@@ -31,13 +31,13 @@ jobs:
         build_type: [Release]
         include:
           - os: windows-latest
-            output: ./build/native/nativeCompile/github_workflow_action_tutorial.java.exe
+            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java.exe
             binary: hello2.exe
           - os: ubuntu-latest
-            output: ./build/native/nativeCompile/github_workflow_action_tutorial.java
+            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java
             binary: hello2.linux
           - os: macos-latest
-            output: ./build/native/nativeCompile/github_workflow_action_tutorial.java
+            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java
             binary: hello2.darwin
   
     steps:
@@ -54,14 +54,12 @@ jobs:
           echo "JAVA_HOME: $JAVA_HOME"
           java --version
           native-image --version
-          pwd
-          find .
       - name: native image
         run: ./9_csv2path/gradlew nativeCompile -b ./9_csv2path/app/build.gradle
       - name: Find all files
         shell: bash
         run: |
-            find build
+            find ./9_csv2path/app/build
       - name: Permissions
         shell: bash
         run: |
