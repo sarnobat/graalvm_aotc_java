@@ -32,13 +32,13 @@ jobs:
         include:
           - os: windows-latest
             output: ./9_csv2path/app/build/native/nativeCompile/app.exe
-            binary: hello2.exe
+            binary: csv2path.exe
           - os: ubuntu-latest
             output: ./9_csv2path/app/build/native/nativeCompile/app
-            binary: hello2.linux
+            binary: csv2path.linux
           - os: macos-latest
             output: ./9_csv2path/app/build/native/nativeCompile/app
-            binary: hello2.darwin
+            binary: csv2path.darwin
   
     steps:
       - uses: actions/checkout@v4
