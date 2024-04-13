@@ -8,3 +8,11 @@ https://github.com/graalvm/native-build-tools/issues/292
 
 ### TODO
 2024-03: Build callgraph for windows
+
+
+## 2024-04
+
+Originally using this:
+https://github.com/sarnobat/java_aotc_graal_helloworld.2020/blob/master/run.sh
+
+

@@ -45,5 +45,6 @@ EOF
 
 cat <<EOF | batcat --style=plain --paging=never --language sh --theme TwoDark
 
+Note we don't use gradle to create the native image, just the jar
 sh /tmp/compile_graalvm.sh
 EOF
