@@ -31,13 +31,13 @@ jobs:
         build_type: [Release]
         include:
           - os: windows-latest
-            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java.exe
+            output: ./9_csv2path/app/build/native/nativeCompile/app.exe
             binary: hello2.exe
           - os: ubuntu-latest
-            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java
+            output: ./9_csv2path/app/build/native/nativeCompile/app
             binary: hello2.linux
           - os: macos-latest
-            output: ./9_csv2path/app/build/native/nativeCompile/github_workflow_action_tutorial.java
+            output: ./9_csv2path/app/build/native/nativeCompile/app
             binary: hello2.darwin
   
     steps:
