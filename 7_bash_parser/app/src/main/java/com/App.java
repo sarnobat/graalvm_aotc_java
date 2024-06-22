@@ -71,7 +71,7 @@ public class App {
             } else if (symbol.contains("/")) {
                 int ret = new ProcessBuilder().command("ls", symbol).start().waitFor();
                 if (ret == 0) {
-                    System.out.println("[path] found: " + symbol);
+                    System.err.println("[path] found: " + symbol);
                 } else {
                     System.out.println("[path] not found: " + symbol);
                 }
