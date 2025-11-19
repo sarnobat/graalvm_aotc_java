@@ -19,3 +19,11 @@ cp -v app/build/native/nativeCompile/app csv2path.osx
 
 # to do the native compile separately
 $GRAALVM_HOME/bin/native-image -H:Class=com.App -jar $GRAALVM_HOME/app/build/libs/app.jar -H:Name=csv2path.osx
+
+cat <<EOF
+see also
+--------
+csv2tree.sh:
+	cat ~/trash/code_comprehension_cassandra2.csv | ./csv2path.osx  | /Users/sarnobat/.cargo/bin/as-tree
+EOF
+cat input.csv | ./csv2path.osx
