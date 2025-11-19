@@ -67,9 +67,9 @@ public class App {
             } else if (symbol.startsWith("set")) {
                 System.err.println("[set] " + symbol);
             } else if (symbol.contains("*")) {
-                System.out.println("[wildcard] " + symbol);
+                System.err.println("[wildcard] " + symbol);
             } else if (symbol.contains("/")) {
-                int ret = new ProcessBuilder().command("ls", symbol).start().waitFor();
+                int ret = new ProcessBuilder().command("ls", symbol.replaceAll("~",System.getProperty("user.home"))).start().waitFor();
                 if (ret == 0) {
                     System.err.println("[path] found: " + symbol);
                 } else {
