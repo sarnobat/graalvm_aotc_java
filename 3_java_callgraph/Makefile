@@ -10,11 +10,17 @@ WORKDIR := $(PROJECT_DIR)/
 
 .PHONY: run build install-native-image
 
+run_x86_64: java_callgraph.x86_64
+	find $(PROJECT_DIR)/ -iname "*class" |  ./java_callgraph.x86_64
+
 run: build
-	@echo "$(NATIVE_BINARY) $(WORKDIR)"
+	find $(PROJECT_DIR)/ -iname "*class" | $(NATIVE_BINARY)
 
 build: install-native-image
 	GRAALVM_HOME=$(GRAALVM_HOME) JAVA_HOME=$(GRAALVM_HOME) $(GRADLEW) nativeCompile -b $(GRADLE_BUILD)
+
+java_callgraph.x86_64:	build
+	cp $(NATIVE_BINARY) java_callgraph.x86_64
 
 install-native-image:
 	ls -d $(GRAALVM)
