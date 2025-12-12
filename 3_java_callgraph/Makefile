@@ -14,7 +14,7 @@ NATIVE_IMAGE_BIN := $(GRAALVM_HOME)/bin/native-image
 # 	find $(PROJECT_DIR)/ -iname "*class" | ./java_callgraph.$(HOST_ARCH)
 
 run:	java_callgraph.$(HOST_ARCH)
-	find $(PROJECT_DIR)/ -iname "*class" | $(NATIVE_BINARY)
+	find $(PROJECT_DIR)/ -iname "*class" | ./java_callgraph.$(HOST_ARCH)
 
 # build: install-native-image
 # 	GRAALVM_HOME=$(GRAALVM_HOME) JAVA_HOME=$(GRAALVM_HOME) $(GRADLEW) nativeCompile -b $(GRADLE_BUILD)
