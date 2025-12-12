@@ -4,8 +4,9 @@ GRAALVM ?= /Volumes/apps/graalvm-ce-java11-22.2.0/
 GRAALVM_HOME := $(GRAALVM)/Contents/Home/
 GRADLEW := ./gradlew
 GRADLE_BUILD := app/build.gradle
-NATIVE_BINARY := /Volumes/git/github/graalvm_aotc_java/3_java_callgraph/app/build/native/nativeCompile/app
-WORKDIR := /Volumes/git/github/graalvm_aotc_java/3_java_callgraph/
+PROJECT_DIR := $(CURDIR)
+NATIVE_BINARY := $(PROJECT_DIR)/app/build/native/nativeCompile/app
+WORKDIR := $(PROJECT_DIR)/
 
 .PHONY: run build install-native-image
 
