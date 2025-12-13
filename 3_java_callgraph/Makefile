@@ -15,7 +15,7 @@ run: java_callgraph.$(HOST_ARCH)
 	sh ~/github/d3_csv/singlefile_automated/run_automated.sh | tee /tmp/index.html
 	cat /tmp/calls.csv | sort | uniq | tee /tmp/1.html | sh /tmp/filter_public.sh | sh /tmp/csv2d3.sh | tee /tmp/index2.html
 	open /tmp/index2.html
-	@echo "There is a python project that does something similar: ~/src.git/python/networkx_csv/"
+	@echo "There is a python project that does something similar: ~/src.git/python/d3_python/"
 
 java_callgraph.$(HOST_ARCH): $(NATIVE_IMAGE_BIN)
 	GRAALVM_HOME=$(GRAALVM_HOME) JAVA_HOME=$(GRAALVM_HOME) $(GRADLEW) nativeCompile -b $(GRADLE_BUILD)
