@@ -51,7 +51,11 @@ jar {
   manifest.attributes["Main-Class"] = 'com.HttpCatWithWrite'
 }
 
+
 graalvmNative {
+
+    toolchainDetection = false
+
     agent {
         defaultMode = "standard"
 
@@ -76,7 +80,7 @@ graalvmNative {
             buildArgs.add('--initialize-at-build-time=org.glassfish.jersey.client.internal.HttpUrlConnector')
             buildArgs.add('-H:+ReportExceptionStackTraces')
             buildArgs.add('--no-fallback')
-            buildArgs.add('-H:Name=httpcatpure')
+            buildArgs.add('-H:Name=httpcatwithwrite2')
             buildArgs.add('--report-unsupported-elements-at-runtime')
             buildArgs.add('-J--add-modules')
             buildArgs.add('-JALL-SYSTEM')
