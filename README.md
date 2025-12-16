@@ -7,6 +7,9 @@ It took me a while to get the gradle plugin working. This helped a lot:
 https://github.com/graalvm/native-build-tools/issues/292
 
 ### TODO
+2025-06: Add this: https://github.com/sarnobat/csv2txt_tree
+
+### TODO
 2024-03: Build callgraph for windows
 
 
