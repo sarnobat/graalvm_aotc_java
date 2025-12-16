@@ -19,6 +19,18 @@ GRAALVM_LINUX_IMAGE := ghcr.io/graalvm/native-image-community:17
 # ==============================
 # macOS native image
 # ==============================
+run:
+	# There are lots of dependencies: 
+	# txt files, port changes, hostname changes, static file paths 
+	# that need to be set up correctly. 
+	# A Dockerfile would be good probably
+	cd /Library/WebServer/Documents
+	ln -sf /Volumes/git/github/2024/repos/yurl
+	ls /Volumes/git/github/2024/repos/groovy_libraries
+	socat TCP-LISTEN:44443,reuseaddr,fork TCP:127.0.0.1:4443 &
+	./httpcatwithwrite2.arm.mac &
+	cd /Volumes/git/github/2024/repos/yurl && export JAVA_OPTS="$JAVA_OPTS -Xmx64M" && java -classpath "/Volumes/git/github/2024/repos/groovy_libraries/.groovy/lib/*:/Volumes/git/github/2024/repos/groovy_libraries/.groovy/lib_java11/*"  YurlList.java --port=4443 -DcacheUrls=true
+
 .PHONY: httpcatwithwrite2.arm.mac
 httpcatwithwrite2.arm.mac:
 	@echo "==> Building macOS arm64 native image"
